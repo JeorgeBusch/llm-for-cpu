@@ -35,3 +35,4 @@ ssh_key
 ssh_key.pub
 ~
 outputs
+images
