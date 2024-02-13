@@ -33,3 +33,5 @@ configs/dram/lowp_sweep.cfg
 .pyenv
 ssh_key
 ssh_key.pub
+~
+outputs
