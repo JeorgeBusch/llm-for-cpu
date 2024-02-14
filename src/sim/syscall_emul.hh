@@ -131,7 +131,9 @@ void warnUnsupportedOS(std::string syscall_name);
 /// Handler for unimplemented syscalls that we haven't thought about.
 SyscallReturn unimplementedFunc(SyscallDesc *desc, ThreadContext *tc);
 
-// Implemented syscall
+// Implemented syscalls
+
+SyscallReturn sendmmsgFunc(SyscallDesc *desc, ThreadContext *tc, int tgt_fd, VPtr<> msgVec, unsigned int vlen, int flags);
 
 SyscallReturn clock_nanosleepFunc(SyscallDesc *desc, ThreadContext *tc, clockid_t clock_id, int flags);
 

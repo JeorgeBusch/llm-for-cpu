@@ -354,7 +354,7 @@ SyscallDescTable<EmuLinux::SyscallABI64> EmuLinux::syscallDescs64 = {
     { 304, "open_by_handle_at" },
     { 305, "clock_adjtime" },
     { 306, "syncfs" },
-    { 307, "sendmmsg" },
+    { 307, "sendmmsg", sendmmsgFunc },
     { 308, "setns" },
     { 309, "getcpu", getcpuFunc },
     { 310, "proess_vm_readv" },

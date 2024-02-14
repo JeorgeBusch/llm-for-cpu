@@ -52,10 +52,11 @@
 #include "sim/syscall_desc.hh"
 #include "sim/system.hh"
 
-//Included
+//For Implemented syscalls
 #include <time.h>
 #include <sched.h>
 #include <sys/random.h>
+#include <sys/socket.h>
 
 namespace gem5
 {
@@ -68,6 +69,57 @@ warnUnsupportedOS(std::string syscall_name)
 
 
 // IMPLEMENTED
+
+SyscallReturn
+sendmmsgFunc(SyscallDesc *desc, ThreadContext *tc, int tgt_fd, VPtr<> msgVec, unsigned int vlen, int flags)
+{
+	
+    auto p = tc->getProcessPtr();
+
+    auto sfdp = std::dynamic_pointer_cast<SocketFDEntry>((*p->fds)[tgt_fd]);
+    if (!sfdp)
+        return -EBADF;
+    int sim_fd = sfdp->getSimFD();
+
+    SETranslatingPortProxy proxy(tc);
+	
+	for(unsigned int i = 0; i < vlen; i++){
+		const VPtr<> msgPtr = msgVec + static_cast<int>(sizeof(struct msghdr) * i);
+		BufferArg msgBuf(msgPtr, sizeof(struct msghdr));
+		msgBuf.copyIn(proxy);
+		struct msghdr msgHdr = *((struct msghdr *)msgBuf.bufferPtr());
+
+
+		struct iovec *iovPtr = msgHdr.msg_iov;
+		BufferArg iovBuf((Addr)iovPtr, sizeof(struct iovec) * msgHdr.msg_iovlen);
+		iovBuf.copyIn(proxy);
+		struct iovec *iov = (struct iovec *)iovBuf.bufferPtr();
+		msgHdr.msg_iov = iov;
+
+		BufferArg **bufferArray = (BufferArg **)malloc(msgHdr.msg_iovlen
+                                                   * sizeof(BufferArg *));
+
+		for (int iovIndex = 0 ; iovIndex < msgHdr.msg_iovlen; iovIndex++) {
+			Addr basePtr = (Addr) iov[iovIndex].iov_base;
+			bufferArray[iovIndex] = new BufferArg(basePtr, iov[iovIndex].iov_len);
+			bufferArray[iovIndex]->copyIn(proxy);
+			iov[iovIndex].iov_base = bufferArray[iovIndex]->bufferPtr();
+		}
+
+		ssize_t sent_size = sendmsg(sim_fd, &msgHdr, flags);
+		int local_errno = errno;
+
+
+		for (int iovIndex = 0 ; iovIndex < msgHdr.msg_iovlen; iovIndex++) {
+			BufferArg *baseBuf = ( BufferArg *)bufferArray[iovIndex];
+			delete(baseBuf);
+		}
+
+		free(bufferArray);
+		//msgPtr += static_cast<int>(sizeof(struct msghdr));
+	}
+	return vlen;
+}
 
 SyscallReturn
 clock_nanosleepFunc(SyscallDesc *desc, ThreadContext *tc, clockid_t clock_id, int flags)
@@ -107,7 +159,6 @@ unimplementedFunc(SyscallDesc *desc, ThreadContext *tc)
 {
     fatal("syscall %s (#%d) unimplemented.", desc->name(), desc->num());
 }
-
 
 SyscallReturn
 ignoreFunc(SyscallDesc *desc, ThreadContext *tc)
