@@ -15,7 +15,7 @@
 
 ## Running Bert SST in C++
 * Once `bert_sst.py` is running, you should be able to build and run the c++ implementation using cmake in `llm-for-cpu/scripts/embed_python`
-* In `llm-for-cpu/scripts/embed_python/test.cpp`, change the line `sys.attr("path").attr("append")("<path_to_local_python_modules>")` to your local python module path
+* In `llm-for-cpu/scripts/embed_python/bert_sst.cpp`, change the line `sys.attr("path").attr("append")("<path_to_local_python_modules>")` to your local python module path
 * You can get your local python module path by opening the linux shell and running the following commands: `python3`, `import numpy`, `print(numpy.__path__)`
 * Next, change the line `auto df = pd.attr("read_csv")("<path_to_dev_tsv>", py::arg("sep")="\t")` to the absoloute path to `dev.tsv`
 * If you built your Gem5 binary with the default C and C++ on linux, open `CMakeList.txt` and comment out the lines `set(CMAKE_C_COMPILER <path_to_gcc>)` and `set(CMAKE_CXX_COMPILER <path_to_g++>)`
@@ -23,7 +23,7 @@
 * Run `./embed_interpreter.sh`
 * This might also have some unresolved dependencies that you'll have to figure out as well
 * Once `./embed_interpreter.sh` executes without error, you'll have a new directory called `build` with the binary `example`
-* To execute, all you have to run is `./example` in `llm-for-cpu/scripts/embed_python/build` and it should produce the same or similar results to `bert_sst.py`
+* To execute, all you have to run is `./bert_sst` in `llm-for-cpu/scripts/embed_python/build` and it should produce the same or similar results to `bert_sst.py`
 
 ## Running Bert SST in Gem5
 * This is still ongoing, so it will error out if you do this, but that's not a problem
