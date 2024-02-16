@@ -36,7 +36,7 @@ system.mem_ctrl.port = system.membus.mem_side_ports
 #binary = 'tests/test-progs/hello/bin/x86/linux/hello'
 #binary = 'scripts/dist/hello/hello'
 #binary = 'scripts/a.out'
-binary = 'scripts/embed_python/build/example'
+binary = 'scripts/embed_python/build/bert_sst'
 
 # for gem5 V21 and beyond
 system.workload = SEWorkload.init_compatible(binary)
