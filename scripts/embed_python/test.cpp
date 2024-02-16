@@ -16,51 +16,36 @@ namespace py = pybind11;
 int main() {
 	
 	cout << endl << "Starting Interpreter..." << endl;
-    py::scoped_interpreter guard{}; // start the interpreter and keep it alive
+    py::scoped_interpreter guard{};
 	cout << "Interpreter Started Successfully!" << endl << endl;
-	
-	cout << endl << "Importing Modules..." << endl << endl;
 	
 	// Add local packages to system path
 	py::module sys = py::module::import("sys");
 	sys.attr("path").attr("append")("/home/jeorgebusch/.local/lib/python3.8/site-packages");
 	
-	// Set OpenBLAS thread limit enviornment variable
-	//if (const char* env_p = std::getenv("OMP_NUM_THREADS"))
-        //std::cout << "OMP_NUM_THREADS is: " << env_p << '\n';
-	//else{
-		//putenv("OMP_NUM_THREADS=1");
-		//std::cout << "OMP_NUM_THREADS is: " << std::getenv("OMP_NUM_THREADS") << '\n';
-	//}
+	// Set OpenBLAS thread limit enviornment variable if null
 	if (const char* env_p = std::getenv("OPENBLAS_NUM_THREADS"))
         std::cout << "OPENBLAS_NUM_THREADS is: " << env_p << '\n';
 	else{
 		putenv("OPENBLAS_NUM_THREADS=1");
 		std::cout << "OPENBLAS_NUM_THREADS is: " << std::getenv("OPENBLAS_NUM_THREADS") << '\n';
 	}
-	//if (const char* env_p = std::getenv("MKL_NUM_THREADS"))
-        //std::cout << "MKL_NUM_THREADS is: " << env_p << '\n';
-	//else{
-		//putenv("MKL_NUM_THREADS=1");
-		//std::cout << "MKL_NUM_THREADS is: " << std::getenv("MKL_NUM_THREADS") << '\n';
-	//}
-	//if (const char* env_p = std::getenv("NUMEXPR_NUM_THREADS"))
-        //std::cout << "NUMEXPR_NUM_THREADS is: " << env_p << '\n';
-	//else{
-		//putenv("NUMEXPR_NUM_THREADS=1");
-		//std::cout << "NUMEXPR_NUM_THREADS is: " << std::getenv("NUMEXPR_NUM_THREADS") << '\n';
-	//}
 	
-	cout << endl << "Importing Transformers..." << endl;
+	cout << endl << "Importing Modules..." << endl << endl;
+	
+	// Import transformers
+	cout << endl << "Importing Transformers..." << endl; 
 	auto transformers = py::module::import("transformers");
 	cout << "Loaded Transformers Successfully!" << endl;
 	cout << "Path: " << transformers.attr("__file__").cast<std::string>() << endl << endl;
 	
-	cout << endl << "Importing DistilBertTokenizer..." << endl;
+	// Import DistilBert tokenizer
+	cout << endl << "Importing DistilBertTokenizer..." << endl; 
     auto DistilBertTokenizer =  transformers.attr("DistilBertTokenizer");
 	cout << "Loaded DistilBertTokenizer from Transformers Successfully!" << endl << endl;
 	
-	cout << endl << "Retrieving Tokenizer: distilbert-base-uncased-finetuned-sst-2-english" << endl;
+	// Retrieve DistilBert tokenizer
+	cout << endl << "Retrieving Tokenizer: distilbert-base-uncased-finetuned-sst-2-english" << endl; 
 	auto tokenizer = DistilBertTokenizer.attr("from_pretrained")("distilbert-base-uncased-finetuned-sst-2-english");
 	cout << "Tokenizer Retrieved SUccessfully!" << endl << endl;
 	
@@ -80,37 +65,34 @@ int main() {
 	cout << "Path: " << torch.attr("__file__").cast<std::string>() << endl << endl;	
 	
 	
+	// Import transformers
 	
+	// Import DistilBert tokenizer
+	
+	// Import DistilBert model
 	cout << endl << "Importing DistilBertForSequenceClassification..." << endl;
 	auto DistilBertForSequenceClassification =  transformers.attr("DistilBertForSequenceClassification");
 	cout << "Loaded DistilBertForSequenceClassification from Transformers Successfully!" << endl << endl;
 	
 	cout << "All Modules Loaded Successfully!" << endl << endl;
 	
+	// Retrieve DistilBert tokeinzer and model
+	// Retrieve DistilBert tokenizer
 	
-	
+	// Retrieve DistilBert model
 	cout << endl << "Retrieving Model: distilbert-base-uncased-finetuned-sst-2-english" << endl;
 	auto model = DistilBertForSequenceClassification.attr("from_pretrained")("distilbert-base-uncased-finetuned-sst-2-english");
 	cout << "Model Retrieved Successfully!" << endl << endl;
 	
+	// Reading tsv file as
 	auto df = pd.attr("read_csv")("/mnt/c/Users/aej45/Desktop/gem5/gem5-21.2.1.1/scripts/embed_python/build/dev.tsv", py::arg("sep")="\t");
 	auto features = df["sentence"];
 	auto labels = df["label"];
 	
-	float correct = 0;
-	float num = 0;
-
-	float tp = 0;
-	float fp = 0;
-	float tn = 0;
-	float fn = 0;
-	
-	
+	// Converting pandas dataframes into python lists then std::vectors 
+	// THERE HAS TO BE A BETTER WAY TO DO THIS
 	py::list f = features.attr("tolist")();
 	py::list l = labels.attr("tolist")();
-	
-	// Converting python list objects into vectors
-	// THERE HAS TO BE A BETTER WAY TO DO THIS
 	vector<string> features_vec;
 	for (py::handle obj : f) {
 		features_vec.push_back(obj.attr("__str__")().cast<std::string>());
@@ -119,6 +101,13 @@ int main() {
 	for (py::handle obj : l) {
 		labels_vec.push_back(obj.attr("__str__")().cast<std::string>());
     }
+	
+	float correct = 0;
+	float num = 0;
+	float tp = 0;
+	float fp = 0;
+	float tn = 0;
+	float fn = 0;
 	
 	for (int i = 0; i < features_vec.size(); i ++){
 		auto inputs = tokenizer(features_vec.at(i), py::arg("return_tensors") = "pt");

@@ -131,7 +131,7 @@ void warnUnsupportedOS(std::string syscall_name);
 /// Handler for unimplemented syscalls that we haven't thought about.
 SyscallReturn unimplementedFunc(SyscallDesc *desc, ThreadContext *tc);
 
-// Implemented syscalls
+// Implemented
 
 SyscallReturn sendmmsgFunc(SyscallDesc *desc, ThreadContext *tc, int tgt_fd, VPtr<> msgVec, unsigned int vlen, int flags);
 
@@ -143,6 +143,8 @@ SyscallReturn getpriorityminFunc(SyscallDesc *desc, ThreadContext *tc, int polic
 
 //SyscallReturn getrandomFunc(SyscallDesc *desc, ThreadContext *tc);
 SyscallReturn getrandomFunc(SyscallDesc *desc, ThreadContext *tc, VPtr<> buff_ptr, size_t bufflen, unsigned int flags);
+
+// End Implemented
 
 /// Handler for unimplemented syscalls that we never intend to
 /// implement (signal handling, etc.) and should not affect the correct
