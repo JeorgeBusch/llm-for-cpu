@@ -29,5 +29,6 @@
 * This is still ongoing, so it will error out if you do this, but that's not a problem
 * Run `build/X86/gem5.opt --outdir=<output_dir> scripts/simple.py` too see how far you can get into execution before fatal error
 * This will take a few hours
-* At this point, i have nothing else for you guys to do, so just get familiar with the source code in `llm-for-cpu/src/arch/x86`
-* I'm currently working on `llm-for-cpu/src/arch/x86/`
+* At this point, i have nothing else, so just get familiar with the source code in `llm-for-cpu/src/arch/x86`
+* I'm currently working on `llm-for-cpu/src/arch/x86/linux/syscall_tbl64.cc`, `llm-for-cpu/src/sim/syscall_emul.hh`, and `llm-for-cpu/src/sim/syscall_emul.cc` to implement `sendmmsgFunc`
+* You can google the name of any syscall and find the linux manual page for it and information on usage
