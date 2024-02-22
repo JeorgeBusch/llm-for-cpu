@@ -73,7 +73,7 @@ warnUnsupportedOS(std::string syscall_name)
 SyscallReturn
 sendmmsgFunc(SyscallDesc *desc, ThreadContext *tc, int tgt_fd, VPtr<> msgVec, unsigned int vlen, int flags)
 {
-	/*
+	
     auto p = tc->getProcessPtr();
 
     auto sfdp = std::dynamic_pointer_cast<SocketFDEntry>((*p->fds)[tgt_fd]);
@@ -83,118 +83,11 @@ sendmmsgFunc(SyscallDesc *desc, ThreadContext *tc, int tgt_fd, VPtr<> msgVec, un
 
     SETranslatingPortProxy proxy(tc);
 	
-	for(unsigned int i = 0; i < vlen; i++){
-		//const VPtr<> msgPtr = msgVec + static_cast<int>(sizeof(struct msghdr) * (i + 1));
-		//BufferArg msgBuf(msgVec + sizeof(struct msghdr) * (i + 1), sizeof(struct msghdr));
-		BufferArg msgBuf(msgVec + (sizeof(struct msghdr) * i), sizeof(struct msghdr));
-		msgBuf.copyIn(proxy);
-		struct msghdr msgHdr = *((struct msghdr *)msgBuf.bufferPtr());
-
-
-		struct iovec *iovPtr = msgHdr.msg_iov;
-		BufferArg iovBuf((Addr)iovPtr, sizeof(struct iovec) * msgHdr.msg_iovlen);
-		iovBuf.copyIn(proxy);
-		struct iovec *iov = (struct iovec *)iovBuf.bufferPtr();
-		msgHdr.msg_iov = iov;
-
-		BufferArg **bufferArray = (BufferArg **)malloc(msgHdr.msg_iovlen
-                                                   * sizeof(BufferArg *));
-
-		for (int iovIndex = 0 ; iovIndex < msgHdr.msg_iovlen; iovIndex++) {
-			Addr basePtr = (Addr) iov[iovIndex].iov_base;
-			bufferArray[iovIndex] = new BufferArg(basePtr, iov[iovIndex].iov_len);
-			bufferArray[iovIndex]->copyIn(proxy);
-			iov[iovIndex].iov_base = bufferArray[iovIndex]->bufferPtr();
-		}
-
-		ssize_t sent_size = sendmsg(sim_fd, &msgHdr, flags);
-		int local_errno = errno;
-
-
-		for (int iovIndex = 0 ; iovIndex < msgHdr.msg_iovlen; iovIndex++) {
-			BufferArg *baseBuf = ( BufferArg *)bufferArray[iovIndex];
-			delete(baseBuf);
-		}
-
-		free(bufferArray);
-		//msgPtr += static_cast<int>(sizeof(struct msghdr));
-	}
-	return vlen;
-	*/
-	auto p = tc->getProcessPtr();
-
-    auto sfdp = std::dynamic_pointer_cast<SocketFDEntry>((*p->fds)[tgt_fd]);
-    if (!sfdp)
-        return -EBADF;
-    int sim_fd = sfdp->getSimFD();
-
-    SETranslatingPortProxy proxy(tc);
-
-    BufferArg msgBuf(msgVec, sizeof(struct msghdr));
-    msgBuf.copyIn(proxy);
-    struct msghdr msgHdr = *((struct msghdr *)msgBuf.bufferPtr());
-
-    struct iovec *iovPtr = msgHdr.msg_iov;
-    BufferArg iovBuf((Addr)iovPtr, sizeof(struct iovec) * msgHdr.msg_iovlen);
-    iovBuf.copyIn(proxy);
-    struct iovec *iov = (struct iovec *)iovBuf.bufferPtr();
-    msgHdr.msg_iov = iov;
-
-	warn("Allocating %d bytes", msgHdr.msg_iovlen * sizeof(BufferArg *));
+	BufferArg mmsgBuf(msgVec, sizeof(struct mmsghdr));
+	mmsgBuf.copyIn(proxy); // Copy data into simulator
+    struct mmsghdr mmsgHdr = *((struct mmsghdr *)mmsgBuf.bufferPtr());
 	
-    BufferArg **bufferArray = (BufferArg **)malloc(msgHdr.msg_iovlen
-                                                   * sizeof(BufferArg *));
-
-    for (int iovIndex = 0 ; iovIndex < msgHdr.msg_iovlen; iovIndex++) {
-        Addr basePtr = (Addr) iov[iovIndex].iov_base;
-        bufferArray[iovIndex] = new BufferArg(basePtr, iov[iovIndex].iov_len);
-        bufferArray[iovIndex]->copyIn(proxy);
-        iov[iovIndex].iov_base = bufferArray[iovIndex]->bufferPtr();
-    }
-
-    ssize_t sent_size = sendmsg(sim_fd, &msgHdr, flags);
-    int local_errno = errno;
-
-    for (int iovIndex = 0 ; iovIndex < msgHdr.msg_iovlen; iovIndex++) {
-        BufferArg *baseBuf = ( BufferArg *)bufferArray[iovIndex];
-        delete(baseBuf);
-    }
-
-    free(bufferArray);
-	
-	warn("Allocating %d bytes", msgHdr.msg_iovlen * sizeof(BufferArg *));
-	
-	BufferArg msgBuf2(msgVec + sizeof(struct msghdr), sizeof(struct msghdr));
-    msgBuf2.copyIn(proxy);
-    struct msghdr msgHdr2 = *((struct msghdr *)msgBuf2.bufferPtr());
-
-    struct iovec *iovPtr2 = msgHdr2.msg_iov;
-    BufferArg iovBuf2((Addr)iovPtr2, sizeof(struct iovec) * msgHdr2.msg_iovlen);
-    iovBuf2.copyIn(proxy);
-    struct iovec *iov2 = (struct iovec *)iovBuf2.bufferPtr();
-    msgHdr2.msg_iov = iov2;
-
-    BufferArg **bufferArray2 = (BufferArg **)malloc(msgHdr2.msg_iovlen
-                                                   * sizeof(BufferArg *));
-
-    for (int iovIndex = 0 ; iovIndex < msgHdr2.msg_iovlen; iovIndex++) {
-        Addr basePtr = (Addr) iov2[iovIndex].iov_base;
-        bufferArray2[iovIndex] = new BufferArg(basePtr, iov2[iovIndex].iov_len);
-        bufferArray2[iovIndex]->copyIn(proxy);
-        iov2[iovIndex].iov_base = bufferArray2[iovIndex]->bufferPtr();
-    }
-
-    sent_size += sendmsg(sim_fd, &msgHdr2, flags);
-    local_errno = errno;
-
-    for (int iovIndex = 0 ; iovIndex < msgHdr2.msg_iovlen; iovIndex++) {
-        BufferArg *baseBuf = ( BufferArg *)bufferArray2[iovIndex];
-        delete(baseBuf);
-    }
-
-    free(bufferArray2);
-
-    return (sent_size < 0) ? -local_errno : sent_size;
+	return sendmmsg(sim_fd, &mmsgHdr, vlen, flags);
 }
 
 SyscallReturn

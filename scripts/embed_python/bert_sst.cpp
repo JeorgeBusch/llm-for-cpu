@@ -46,8 +46,20 @@ int main() {
 	
 	// Retrieve DistilBert tokenizer
 	cout << endl << "Retrieving Tokenizer: distilbert-base-uncased-finetuned-sst-2-english" << endl; 
-	auto tokenizer = DistilBertTokenizer.attr("from_pretrained")("distilbert-base-uncased-finetuned-sst-2-english");
+	auto tokenizer = DistilBertTokenizer.attr("from_pretrained")("/mnt/c/Users/aej45/Desktop/llm-for-cpu/scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
+	//auto tokenizer = DistilBertTokenizer.attr("from_pretrained")(py::arg("tokenizer_file")="/mnt/c/Users/aej45/Desktop/llm-for-cpu/scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
 	cout << "Tokenizer Retrieved SUccessfully!" << endl << endl;
+	
+	// Import DistilBert model
+	cout << endl << "Importing DistilBertForSequenceClassification..." << endl;
+	auto DistilBertForSequenceClassification =  transformers.attr("DistilBertForSequenceClassification");
+	cout << "Loaded DistilBertForSequenceClassification from Transformers Successfully!" << endl << endl;
+	
+	// Retrieve DistilBert model
+	cout << endl << "Retrieving Model: distilbert-base-uncased-finetuned-sst-2-english" << endl;
+	auto model = DistilBertForSequenceClassification.attr("from_pretrained")("/mnt/c/Users/aej45/Desktop/llm-for-cpu/scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
+	//auto model = DistilBertTokenizer.attr("from_pretrained")(py::arg("tokenizer_file")="/mnt/c/Users/aej45/Desktop/llm-for-cpu/scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
+	cout << "Model Retrieved Successfully!" << endl << endl;
 	
 	cout << endl << "Importing Numpy" << endl;
 	auto np = py::module::import("numpy");
@@ -70,9 +82,7 @@ int main() {
 	// Import DistilBert tokenizer
 	
 	// Import DistilBert model
-	cout << endl << "Importing DistilBertForSequenceClassification..." << endl;
-	auto DistilBertForSequenceClassification =  transformers.attr("DistilBertForSequenceClassification");
-	cout << "Loaded DistilBertForSequenceClassification from Transformers Successfully!" << endl << endl;
+
 	
 	cout << "All Modules Loaded Successfully!" << endl << endl;
 	
@@ -80,9 +90,7 @@ int main() {
 	// Retrieve DistilBert tokenizer
 	
 	// Retrieve DistilBert model
-	cout << endl << "Retrieving Model: distilbert-base-uncased-finetuned-sst-2-english" << endl;
-	auto model = DistilBertForSequenceClassification.attr("from_pretrained")("distilbert-base-uncased-finetuned-sst-2-english");
-	cout << "Model Retrieved Successfully!" << endl << endl;
+
 	
 	// Reading tsv file as
 	auto df = pd.attr("read_csv")("/mnt/c/Users/aej45/Desktop/gem5/gem5-21.2.1.1/scripts/embed_python/build/dev.tsv", py::arg("sep")="\t");
