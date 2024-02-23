@@ -1,0 +1,5 @@
+Because of a file conflict between tau and libgoogle-perftools [1]
+the binary pprof is renamed as google-pprof,
+its manpage in Debian is /usr/share/man/man1/google-pprof.1.gz.
+
+[1] http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=404001.

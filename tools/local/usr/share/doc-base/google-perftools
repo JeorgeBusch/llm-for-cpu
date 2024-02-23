@@ -1,0 +1,11 @@
+Document: google-perftools
+Title: Google Performance Tools
+Author: Google Inc.
+Abstract: gperftools is a collection of a high-performance multi-threaded
+ malloc() implementation, plus some pretty nifty performance analysis
+ tools.
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/gperftools//index.html
+Files: /usr/share/doc/gperftools/[a-z]*
