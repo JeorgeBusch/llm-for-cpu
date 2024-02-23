@@ -1,5 +1,7 @@
 # llm-for-cpu
-
+## Setting Up Enviornment
+* Run `source setup_env` in the `llm-for-cpu` directory
+* **THIS NEEDS TO BE DONE EVERY TIME YOU OPEN A NEW TERMINAL**
 ## Building Gem5 Binary
 * Run `scons build/X86/gem5.opt -j <num_cores> CC=<GCC_dir> CXX=<G++_dir> --ignore-style` in the `llm-for-cpu` directory
 * You can exclude the CC= and CXX= arguments if you want to build with the default C and C++ on linux
