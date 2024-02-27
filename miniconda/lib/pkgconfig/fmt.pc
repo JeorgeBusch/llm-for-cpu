@@ -1,0 +1,11 @@
+prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda
+exec_prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: fmt
+Description: A modern formatting library
+Version: 9.1.0
+Libs: -L${libdir} -lfmt
+Cflags: -I${includedir}
+

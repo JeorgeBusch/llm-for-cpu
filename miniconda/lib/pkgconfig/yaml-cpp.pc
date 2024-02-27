@@ -1,0 +1,11 @@
+prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda
+exec_prefix=${prefix}
+includedir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda/include
+libdir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda/lib
+
+Name: Yaml-cpp
+Description: A YAML parser and emitter for C++
+Version: 0.8.0
+Requires:
+Libs: -L${libdir} -lyaml-cpp
+Cflags: -I${includedir}

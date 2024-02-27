@@ -1,0 +1,20 @@
+#
+# Author: Lasse Collin
+#
+# This file has been put into the public domain.
+# You can do whatever you want with this file.
+#
+
+prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda
+exec_prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda
+libdir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda/lib
+includedir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda/include
+
+Name: liblzma
+Description: General purpose data compression library
+URL: https://tukaani.org/xz/
+Version: 5.4.5
+Cflags: -I${includedir}
+Cflags.private: -DLZMA_API_STATIC
+Libs: -L${libdir} -llzma
+Libs.private: -pthread -lpthread

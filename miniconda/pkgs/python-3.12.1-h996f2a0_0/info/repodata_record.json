@@ -1,0 +1,33 @@
+{
+  "build": "h996f2a0_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/linux-64",
+  "constrains": [],
+  "depends": [
+    "bzip2 >=1.0.8,<2.0a0",
+    "expat >=2.5.0,<3.0a0",
+    "ld_impl_linux-64 >=2.35.1",
+    "libffi >=3.4,<4.0a0",
+    "libgcc-ng >=11.2.0",
+    "libuuid >=1.41.5,<2.0a0",
+    "ncurses >=6.4,<7.0a0",
+    "openssl >=3.0.12,<4.0a0",
+    "readline >=8.0,<9.0a0",
+    "sqlite >=3.41.2,<4.0a0",
+    "tk >=8.6.12,<8.7.0a0",
+    "tzdata",
+    "xz >=5.4.5,<6.0a0",
+    "zlib >=1.2.13,<1.3.0a0",
+    "pip"
+  ],
+  "fn": "python-3.12.1-h996f2a0_0.conda",
+  "license": "PSF-2.0",
+  "md5": "5455a3a81e47bad947aa99db795d241a",
+  "name": "python",
+  "sha256": "12c0f6df5fef16764f4de9092ae02e8336c6d26709711ea081aad1218916debc",
+  "size": 36865137,
+  "subdir": "linux-64",
+  "timestamp": 1705680415000,
+  "url": "https://repo.anaconda.com/pkgs/main/linux-64/python-3.12.1-h996f2a0_0.conda",
+  "version": "3.12.1"
+}

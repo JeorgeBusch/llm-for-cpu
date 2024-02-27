@@ -1,0 +1,11 @@
+prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda
+exec_prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda
+libdir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda/lib
+includedir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda/include
+
+Name: uuid
+Description: Universally unique id library
+Version: 2.32.1
+Requires:
+Cflags: -I${includedir}/uuid
+Libs: -L${libdir} -luuid

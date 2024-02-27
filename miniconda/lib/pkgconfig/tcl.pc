@@ -1,0 +1,15 @@
+# tcl pkg-config source file
+
+prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda
+exec_prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda
+libdir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda/lib
+includedir=${prefix}/include
+
+Name: Tool Command Language
+Description: Tcl is a powerful, easy-to-learn dynamic programming language, suitable for a wide range of uses.
+URL: https://www.tcl-tk.org/
+Version: 8.6.12
+Requires.private: zlib >= 1.2.3
+Libs: -L${libdir} -ltcl8.6 -ltclstub8.6
+Libs.private: -ldl -lz  -lpthread -lm
+Cflags: -I${includedir}

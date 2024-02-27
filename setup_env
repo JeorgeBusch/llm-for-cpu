@@ -1,6 +1,6 @@
 # PATH for scons and h5
-export PATH=${PWD}/local/bin:$PATH
+export PATH=${PWD}/tools/local/bin:$PATH
 
 # Libconfig, set your libconfig path
-export LIBCONFIGPATH=${PWD}/local
+export LIBCONFIGPATH=${PWD}/tools/local
 

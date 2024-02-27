@@ -1,0 +1,7 @@
+{
+  "rust_compiler": "rust",
+  "target_platform": "linux-64",
+  "channel_targets": "defaults",
+  "rust_compiler_version": "1.71.1",
+  "openssl": "3.0"
+}
