@@ -1,8 +1,0 @@
-libdir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda/lib
-includedir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/miniconda/include
-
-Name: libsolv
-Description: Library for solving packages
-Version: 0.7.24
-Libs: -L${libdir} -lsolv
-Cflags: -I${includedir}
