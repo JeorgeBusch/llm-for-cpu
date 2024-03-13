@@ -2,5 +2,8 @@
 export PATH=${PWD}/tools/local/usr/bin:$PATH
 
 # Libconfig, set your libconfig path
-export LIBCONFIGPATH=${PWD}/tools/local
+export LIBCONFIGPATH=${PWD}/tools/
+
+# Set GCC
+alias gcc="${PWD}/tools/local/usr/bin/gcc-10"
 

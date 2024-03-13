@@ -261,7 +261,7 @@ class TimingSimpleCPU : public BaseSimpleCPU
     PacketPtr ifetch_pkt;
     PacketPtr dcache_pkt;
 
-    Cycles previousCycle;
+    //Cycles previousCycle;
 
   protected:
 
@@ -272,7 +272,9 @@ class TimingSimpleCPU : public BaseSimpleCPU
     Port &getInstPort() override { return icachePort; }
 
   public:
-
+	
+	Cycles previousCycle; // Moved here
+	
     DrainState drain() override;
     void drainResume() override;
 
