@@ -1,5 +1,6 @@
 import m5
 from m5.objects import *
+import pandas as pd
 
 #scons build/X86/gem5.opt -j <num_cores> CC=<GCC_dir> CXX=<G++_dir> --ignore-style
 #build/X86/gem5.opt --outdir=<output_dir> scripts/simple.py
@@ -51,10 +52,10 @@ system.mem_ctrl.port = system.membus.mem_side_ports
 #obj.cpu.mem_ctrl.dram.range = obj.cpu.mem_ranges[0]
 #obj.cpu.mem_ctrl.port = obj.cpu.membus.mem_side_ports
 
-binary = 'tests/test-progs/hello/bin/x86/linux/hello'
+#binary = 'tests/test-progs/hello/bin/x86/linux/hello'
 #binary = 'scripts/dist/hello/hello'
 #binary = 'scripts/a.out'
-#binary = 'scripts/embed_python/build/bert_sst'
+binary = 'scripts/embed_python/build/bert_sst'
 
 # for gem5 V21 and beyond
 system.workload = SEWorkload.init_compatible(binary)
@@ -70,7 +71,7 @@ system.cpu.createThreads()
 root = Root(full_system = False, system = system)
 #root = Root(full_system = False, system = obj.cpu)
 
-root.obj = CheckObject(cpu = system.cpu)
+#root.obj = CheckObject(cpu = system.cpu)
 
 m5.instantiate()
 
@@ -78,11 +79,49 @@ m5.instantiate()
 
 print("Beginning simulation!")
 exit_event = None
+stat_labels = {"simInsts":"", "system.cpu.mmu.dtb.rdAccesses":"", "system.cpu.mmu.dtb.wrAccesses":"", 
+                    "system.cpu.mmu.dtb.rdMisses":"", "system.cpu.mmu.dtb.wrMisses":"", "system.cpu.mmu.itb.rdAccesses":"", 
+                    "system.cpu.mmu.itb.wrAccesses":"","system.cpu.mmu.itb.rdMisses":"", "system.cpu.mmu.itb.wrMisses":"" }
+num_ticks = 0
+stat_interval = 50000000000000
 while exit_event is None:
-    exit_event = m5.simulate(1000000000000)
+    exit_event = m5.simulate(stat_interval)
+    num_ticks += stat_interval
     m5.stats.dump()
-    
+    #stats = pd.read_csv('/mnt/c/Users/aej45/Desktop/llm-for-cpu/output/test_embedding/stats.txt', delim_whitespace=True)
+    file = open('/mnt/c/Users/aej45/Desktop/llm-for-cpu/output/test_embedding/stats.txt', 'r')
+    stats = file.readlines()
+    file.close()
+    m5.stats.reset()
     if exit_event.getCause() == "simulate() limit reached":
+        print("\nTick", num_ticks, "Stats:")
+        for stat in stats:
+            stat = stat.strip()
+            '''
+            if "simInsts" in stat:
+                insts = stat[len("simInsts"):stat.find("#")].strip()
+            '''
+            if any(label in stat for label in stat_labels.keys()):
+                label = list(stat_labels.keys() & stat.split(" "))[0]
+                stat_labels[label] = stat[len(label):stat.find("#")].strip()
+        print("Simulated Instructions:", stat_labels["simInsts"])
+        
+        num_d_access = int(stat_labels["system.cpu.mmu.dtb.rdAccesses"]) + int(stat_labels["system.cpu.mmu.dtb.wrAccesses"])
+        if num_d_access != 0:
+            d_miss_rate = (int(stat_labels["system.cpu.mmu.dtb.rdMisses"]) + int(stat_labels["system.cpu.mmu.dtb.wrMisses"])) / num_d_access
+        else:
+            d_miss_rate = 0
+        print("Data Accesses:", num_d_access)
+        print("Data Miss Rate:", d_miss_rate)
+        
+        num_i_access = int(stat_labels["system.cpu.mmu.itb.rdAccesses"]) + int(stat_labels["system.cpu.mmu.itb.wrAccesses"])
+        if num_i_access != 0:
+            i_miss_rate = (int(stat_labels["system.cpu.mmu.itb.rdMisses"]) + int(stat_labels["system.cpu.mmu.itb.wrMisses"])) / num_i_access
+        else:
+            i_miss_rate = 0
+        print("Instruction Accesses:", num_i_access)
+        print("Instruction Miss Rate:", i_miss_rate, "\n")
+                
         exit_event = None
 
 print('Exiting @ tick {} because {}'

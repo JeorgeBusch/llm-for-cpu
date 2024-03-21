@@ -9,14 +9,6 @@
     "time_sync_enable": false,
     "time_sync_period": 100000000000,
     "time_sync_spin_threshold": 100000000,
-    "obj": {
-        "type": "CheckObject",
-        "cxx_class": "gem5::CheckObject",
-        "name": "obj",
-        "path": "obj",
-        "cpu": "system.cpu",
-        "eventq_index": 0
-    },
     "system": {
         "type": "System",
         "cxx_class": "gem5::System",

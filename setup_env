@@ -1,9 +1,10 @@
 # PATH for scons and h5
-export PATH=${PWD}/tools/local/usr/bin:$PATH
+export PATH=${PATH}:${PWD}/tools/local/usr/bin
+#export PATH=${PATH}:${PWD}/tools/local/usr/lib/gcc/x86_64-linux-gnu/10
 
 # Libconfig, set your libconfig path
 export LIBCONFIGPATH=${PWD}/tools/
 
 # Set GCC
-alias gcc="${PWD}/tools/local/usr/bin/gcc-10"
+#alias gcc="${PWD}/tools/local/usr/bin/gcc-10"
 
