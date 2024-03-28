@@ -8,7 +8,7 @@ conda install -y scons
 wait
 conda install -y pytorch
 wait
-conda install -y transformer
+conda install -y transformers
 wait
 conda install -y pandas
 wait
