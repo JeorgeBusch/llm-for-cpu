@@ -1,8 +1,0 @@
-libdir=/scratch/user/averyjohnson/clone/llm-for-cpu/tools/miniconda/lib
-includedir=/scratch/user/averyjohnson/clone/llm-for-cpu/tools/miniconda/include
-
-Name: libsolv
-Description: Library for solving packages
-Version: 0.7.24
-Libs: -L${libdir} -lsolv
-Cflags: -I${includedir}
