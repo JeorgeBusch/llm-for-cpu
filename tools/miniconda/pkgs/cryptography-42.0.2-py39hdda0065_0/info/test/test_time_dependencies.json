@@ -1,1 +1,0 @@
-["pytest >=6.2.0", "cryptography-vectors 42.0.2.*", "pytest-cov", "pytest-xdist", "pretend", "certifi", "pytest-benchmark", "pip"]
