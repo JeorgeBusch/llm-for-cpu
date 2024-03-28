@@ -16,6 +16,8 @@ conda install -y cmake
 wait
 conda install -y pybind11
 wait
+conda uninstall -y libprotobuf
+wait
 cd ..
 chmod -R 777 llm-for-cpu
 cd llm-for-cpu
