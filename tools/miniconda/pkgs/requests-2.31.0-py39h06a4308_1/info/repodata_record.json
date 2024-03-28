@@ -1,0 +1,26 @@
+{
+  "build": "py39h06a4308_1",
+  "build_number": 1,
+  "channel": "https://repo.anaconda.com/pkgs/main/linux-64",
+  "constrains": [
+    "pysocks >=1.5.6,!=1.5.7",
+    "chardet >=3.0.2,<6"
+  ],
+  "depends": [
+    "certifi >=2017.4.17",
+    "charset-normalizer >=2,<4",
+    "idna >=2.5,<4",
+    "python >=3.9,<3.10.0a0",
+    "urllib3 >=1.21.1,<3"
+  ],
+  "fn": "requests-2.31.0-py39h06a4308_1.conda",
+  "license": "Apache-2.0",
+  "md5": "8b5c66b61c5732dbafd7f282328b1c2d",
+  "name": "requests",
+  "sha256": "8707ba093b7584f52d507f9b1001eb6e70c61f45afeae2e457a993fef3330f14",
+  "size": 98226,
+  "subdir": "linux-64",
+  "timestamp": 1707355791000,
+  "url": "https://repo.anaconda.com/pkgs/main/linux-64/requests-2.31.0-py39h06a4308_1.conda",
+  "version": "2.31.0"
+}
