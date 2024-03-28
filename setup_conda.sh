@@ -6,13 +6,13 @@ conda install -y gxx_linux-64==11.2.0
 wait
 conda install -y scons
 wait
-conda install pytorch
+conda install -y pytorch
 wait
-conda install transformer
+conda install -y transformer
 wait
-conda install pandas
+conda install -y pandas
 wait
-conda install cmake
+conda install -y cmake
 wait
 cd ..
 chmod -R 777 llm-for-cpu
