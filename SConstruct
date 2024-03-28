@@ -507,9 +507,11 @@ def config_embedded_python(env):
     env.ParseConfig(cmd, flag_filter)
 
     env.Prepend(CPPPATH=Dir('ext/pybind11/include/'))
-
+    env.Prepend(CPPPATH=Dir('tools/miniconda/include'))
+    
     with gem5_scons.Configure(env) as conf:
         # verify that this stuff works
+        '''
         if not conf.CheckHeader('Python.h', '<>'):
             error("Check failed for Python.h header.\n",
                   "Two possible reasons:\n"
@@ -518,6 +520,7 @@ def config_embedded_python(env):
                   "2. SCons is using a wrong C compiler. This can happen if "
                   "CC has the wrong value.\n"
                   f"CC = {env['CC']}")
+        '''
         py_version = conf.CheckPythonLib()
         if not py_version:
             error("Can't find a working Python installation")

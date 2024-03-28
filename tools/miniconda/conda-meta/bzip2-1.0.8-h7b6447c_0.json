@@ -6,7 +6,7 @@
   "depends": [
     "libgcc-ng >=7.3.0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/bzip2-1.0.8-h7b6447c_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/bzip2-1.0.8-h7b6447c_0",
   "features": "",
   "files": [
     "bin/bunzip2",
@@ -37,12 +37,12 @@
   "fn": "bzip2-1.0.8-h7b6447c_0.conda",
   "license": "bzip2",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/bzip2-1.0.8-h7b6447c_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/bzip2-1.0.8-h7b6447c_0",
     "type": 1
   },
   "md5": "9303f4af7c004e069bae22bde8d800ee",
   "name": "bzip2",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/bzip2-1.0.8-h7b6447c_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/bzip2-1.0.8-h7b6447c_0.conda",
   "paths_data": {
     "paths": [],
     "paths_version": 1

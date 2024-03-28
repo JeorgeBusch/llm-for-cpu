@@ -6,7 +6,7 @@
   "depends": [
     "libgcc-ng >=7.5.0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/reproc-14.2.4-h295c915_1",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/reproc-14.2.4-h295c915_1",
   "features": "",
   "files": [
     "include/reproc/drain.h",
@@ -25,12 +25,12 @@
   "fn": "reproc-14.2.4-h295c915_1.conda",
   "license": "MIT",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/reproc-14.2.4-h295c915_1",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/reproc-14.2.4-h295c915_1",
     "type": 1
   },
   "md5": "d37ab699a3061cca9958f0a10399019f",
   "name": "reproc",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/reproc-14.2.4-h295c915_1.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/reproc-14.2.4-h295c915_1.conda",
   "paths_data": {
     "paths": [
       {
@@ -39,7 +39,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/tmp/build/80754af9/reproc_1647441763203/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho",
         "sha256": "a28ed5c296980cb1d5bf22d12913cbbc3c232512b18d7680115ee1206a93fa97",
-        "sha256_in_prefix": "fd94884a8c2d764732c8d8e68d3adb46dd5f8b9eef032ac0a120af863ef9ff9f",
+        "sha256_in_prefix": "166cde02e0526993c29eff826013dfa3aaff4ce0b762e99a2ac94e8b0f3ad947",
         "size_in_bytes": 545
       }
     ],

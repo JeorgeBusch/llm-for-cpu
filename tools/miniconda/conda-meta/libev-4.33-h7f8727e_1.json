@@ -6,7 +6,7 @@
   "depends": [
     "libgcc-ng >=7.5.0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libev-4.33-h7f8727e_1",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libev-4.33-h7f8727e_1",
   "features": "",
   "files": [
     "include/ev++.h",
@@ -19,12 +19,12 @@
   "fn": "libev-4.33-h7f8727e_1.conda",
   "license": "BSD-2-Clause",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libev-4.33-h7f8727e_1",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libev-4.33-h7f8727e_1",
     "type": 1
   },
   "md5": "5065620db4393fb549f30114a33897d1",
   "name": "libev",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libev-4.33-h7f8727e_1.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libev-4.33-h7f8727e_1.conda",
   "paths_data": {
     "paths": [],
     "paths_version": 1

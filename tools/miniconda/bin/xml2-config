@@ -1,6 +1,6 @@
 #! /bin/sh
 
-prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda
+prefix=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda
 exec_prefix=${prefix}
 includedir=${prefix}/include
 libdir=${exec_prefix}/lib
@@ -67,7 +67,7 @@ while test $# -gt 0; do
 	;;
 
     --cflags)
-        cflags="-I${includedir}/libxml2 -I/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/include "
+        cflags="-I${includedir}/libxml2 -I/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/include "
        	;;
 
     --libtool-libs)
@@ -86,7 +86,7 @@ while test $# -gt 0; do
             shift
             libs="-lxml2"
         else
-            libs="-lxml2 -L/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib -lz -L/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib -llzma  -L/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib -L/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib -licui18n -licuuc -licudata -lm  -ldl "
+            libs="-lxml2 -L/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib -lz -L/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib -llzma  -L/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib -L/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib -licui18n -licuuc -licudata -lm  -ldl "
         fi
 
         if [ "-L${libdir}" != "-L/usr/lib" -a "-L${libdir}" != "-L/usr/lib64" ]; then

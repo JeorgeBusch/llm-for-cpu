@@ -6,7 +6,7 @@
   "depends": [
     "libgcc-ng >=11.2.0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/c-ares-1.19.1-h5eee18b_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/c-ares-1.19.1-h5eee18b_0",
   "features": "",
   "files": [
     "bin/acountry",
@@ -92,12 +92,12 @@
   "fn": "c-ares-1.19.1-h5eee18b_0.conda",
   "license": "MIT",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/c-ares-1.19.1-h5eee18b_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/c-ares-1.19.1-h5eee18b_0",
     "type": 1
   },
   "md5": "6cfbce52273a1cb888821f18ceaa83c4",
   "name": "c-ares",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/c-ares-1.19.1-h5eee18b_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/c-ares-1.19.1-h5eee18b_0.conda",
   "paths_data": {
     "paths": [
       {
@@ -106,7 +106,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/c-ares-split_1693901972995/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
         "sha256": "497393c8439b66f07175744d52323288c4f54d0bbe4ae6e44c42f16cc9359d85",
-        "sha256_in_prefix": "02a019c77223d90e96a824dab4dccd42ed890fb8110a819fda0bacf968f3e36a",
+        "sha256_in_prefix": "4667d3807d3a51e654254536e1e14ffc31c995a68f3bbb61519780b0ac80e231",
         "size_in_bytes": 1277
       }
     ],

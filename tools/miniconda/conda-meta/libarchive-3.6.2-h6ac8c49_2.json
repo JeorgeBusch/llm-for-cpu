@@ -14,7 +14,7 @@
     "zlib >=1.2.13,<1.3.0a0",
     "zstd >=1.5.2,<1.6.0a0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libarchive-3.6.2-h6ac8c49_2",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libarchive-3.6.2-h6ac8c49_2",
   "features": "",
   "files": [
     "bin/bsdcat",
@@ -74,12 +74,12 @@
   "fn": "libarchive-3.6.2-h6ac8c49_2.conda",
   "license": "BSD-2-Clause",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libarchive-3.6.2-h6ac8c49_2",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libarchive-3.6.2-h6ac8c49_2",
     "type": 1
   },
   "md5": "90d278b0df3a5aaf4d6db6e232d9f041",
   "name": "libarchive",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libarchive-3.6.2-h6ac8c49_2.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libarchive-3.6.2-h6ac8c49_2.conda",
   "paths_data": {
     "paths": [
       {
@@ -88,7 +88,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/libarchive_1685747610780/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
         "sha256": "0e9921fc6e9710c0bc5a5daddc35fac3a140e29954c6ec16710cbbfeda4be76e",
-        "sha256_in_prefix": "0c9759e76bc4f8b85667c52398efcb56ca1d53ac9cdffeb310c8ebb79436f2cd",
+        "sha256_in_prefix": "95612039fe958b500b9e2e9a3e64d75480f62d44065e1a44d8e055b581ec6a8d",
         "size_in_bytes": 939
       }
     ],

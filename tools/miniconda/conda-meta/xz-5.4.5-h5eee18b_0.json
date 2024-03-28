@@ -6,7 +6,7 @@
   "depends": [
     "libgcc-ng >=11.2.0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/xz-5.4.5-h5eee18b_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/xz-5.4.5-h5eee18b_0",
   "features": "",
   "files": [
     "bin/lzcat",
@@ -315,12 +315,12 @@
   "fn": "xz-5.4.5-h5eee18b_0.conda",
   "license": "LGPL-2.1-or-later and GPL-2.0-or-later",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/xz-5.4.5-h5eee18b_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/xz-5.4.5-h5eee18b_0",
     "type": 1
   },
   "md5": "fb0f709ab3eb6ad3538677c327646581",
   "name": "xz",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/xz-5.4.5-h5eee18b_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/xz-5.4.5-h5eee18b_0.conda",
   "paths_data": {
     "paths": [
       {
@@ -329,7 +329,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/xz_1701723911925/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
         "sha256": "c54378bbf7638240bef893f3e17547f3b066b0cbee9f92dd58717322402a71c8",
-        "sha256_in_prefix": "03639e0fa35b336e52ed0dc03272033a8e39439771bbc3d4768cbeae3bafb360",
+        "sha256_in_prefix": "53fcbf458e0ba076355c333eb01e0452101dd83f058adb8bc21553908b9e83d1",
         "size_in_bytes": 17016
       },
       {
@@ -338,7 +338,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/xz_1701723911925/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
         "sha256": "6e8ffc9f7104aaccf2fa5f5f1c4e5e0c2d8502b2a173badacebcc148b67cecb9",
-        "sha256_in_prefix": "39f05876203a26771022e9030489277040f57b5ccd06942d28cee6687f723011",
+        "sha256_in_prefix": "66bb3ec84f1caa9232b57d0ecbd03a727719fc5204a8249d466e03a2c1b0fc1b",
         "size_in_bytes": 103816
       },
       {
@@ -347,7 +347,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/xz_1701723911925/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
         "sha256": "80ca370699ef914ea7dbf50c78172db3a2933e8fbcdc42d8971d38260b0c80f9",
-        "sha256_in_prefix": "3c86f6ace2f5e1993f475d4d6422ce7164dc9d69766587a796dadd037f21e4d0",
+        "sha256_in_prefix": "2ae17d45bdd5b16158a33bbbf6c630e9bcbdd2552fe02b49550cb1540c8a6ef2",
         "size_in_bytes": 1428
       }
     ],

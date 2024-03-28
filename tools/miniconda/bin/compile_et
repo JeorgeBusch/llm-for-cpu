@@ -2,7 +2,7 @@
 #
 #
 AWK=gawk
-DIR=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/share/et
+DIR=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/share/et
 
 usage="usage: $0 [ -d scriptDir ] [ --textdomain domain [ --localedir dir ] ]"
 usage="$usage inputfile.et"

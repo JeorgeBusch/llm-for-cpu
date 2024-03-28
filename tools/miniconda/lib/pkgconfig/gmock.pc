@@ -1,5 +1,5 @@
-libdir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib
-includedir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/include
+libdir=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib
+includedir=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/include
 
 Name: gmock
 Description: GoogleMock (without main() function)

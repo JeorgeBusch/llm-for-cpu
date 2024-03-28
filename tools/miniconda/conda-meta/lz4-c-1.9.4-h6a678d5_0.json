@@ -7,7 +7,7 @@
     "libgcc-ng >=11.2.0",
     "libstdcxx-ng >=11.2.0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/lz4-c-1.9.4-h6a678d5_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/lz4-c-1.9.4-h6a678d5_0",
   "features": "",
   "files": [
     "bin/lz4",
@@ -30,12 +30,12 @@
   "fn": "lz4-c-1.9.4-h6a678d5_0.conda",
   "license": "BSD-2-Clause",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/lz4-c-1.9.4-h6a678d5_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/lz4-c-1.9.4-h6a678d5_0",
     "type": 1
   },
   "md5": "53915e9402180a7f22ea619c41089520",
   "name": "lz4-c",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/lz4-c-1.9.4-h6a678d5_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/lz4-c-1.9.4-h6a678d5_0.conda",
   "paths_data": {
     "paths": [
       {
@@ -44,7 +44,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/lz4-c_1670944666727/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p",
         "sha256": "fc857dbda87f7bcd4fccfd379357f468e4cebca4f1b6a254f8bd6ee505c4ef54",
-        "sha256_in_prefix": "1ae651b157201443063a48691704447e06064028e6771650868efb9ef53503a9",
+        "sha256_in_prefix": "99eb85882130b16db38fef22a7f80dff97788bb4d9afba9deedb995b2da79759",
         "size_in_bytes": 640
       }
     ],

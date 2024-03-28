@@ -7,33 +7,33 @@
     "jsonpointer >=1.9",
     "python"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/jsonpatch-1.32-pyhd3eb1b0_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/jsonpatch-1.32-pyhd3eb1b0_0",
   "features": "",
   "files": [
     "bin/jsondiff",
     "bin/jsonpatch",
-    "lib/python3.12/site-packages/jsonpatch-1.32.dist-info/AUTHORS",
-    "lib/python3.12/site-packages/jsonpatch-1.32.dist-info/COPYING",
-    "lib/python3.12/site-packages/jsonpatch-1.32.dist-info/INSTALLER",
-    "lib/python3.12/site-packages/jsonpatch-1.32.dist-info/METADATA",
-    "lib/python3.12/site-packages/jsonpatch-1.32.dist-info/RECORD",
-    "lib/python3.12/site-packages/jsonpatch-1.32.dist-info/REQUESTED",
-    "lib/python3.12/site-packages/jsonpatch-1.32.dist-info/WHEEL",
-    "lib/python3.12/site-packages/jsonpatch-1.32.dist-info/direct_url.json",
-    "lib/python3.12/site-packages/jsonpatch-1.32.dist-info/top_level.txt",
-    "lib/python3.12/site-packages/jsonpatch.py",
-    "lib/python3.12/site-packages/__pycache__/jsonpatch.cpython-312.pyc"
+    "lib/python3.9/site-packages/jsonpatch-1.32.dist-info/AUTHORS",
+    "lib/python3.9/site-packages/jsonpatch-1.32.dist-info/COPYING",
+    "lib/python3.9/site-packages/jsonpatch-1.32.dist-info/INSTALLER",
+    "lib/python3.9/site-packages/jsonpatch-1.32.dist-info/METADATA",
+    "lib/python3.9/site-packages/jsonpatch-1.32.dist-info/RECORD",
+    "lib/python3.9/site-packages/jsonpatch-1.32.dist-info/REQUESTED",
+    "lib/python3.9/site-packages/jsonpatch-1.32.dist-info/WHEEL",
+    "lib/python3.9/site-packages/jsonpatch-1.32.dist-info/direct_url.json",
+    "lib/python3.9/site-packages/jsonpatch-1.32.dist-info/top_level.txt",
+    "lib/python3.9/site-packages/jsonpatch.py",
+    "lib/python3.9/site-packages/__pycache__/jsonpatch.cpython-39.pyc"
   ],
   "fn": "jsonpatch-1.32-pyhd3eb1b0_0.conda",
   "license": "BSD 3-Clause",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/jsonpatch-1.32-pyhd3eb1b0_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/jsonpatch-1.32-pyhd3eb1b0_0",
     "type": 1
   },
   "md5": "ce3c2233a0823c4c25aba6843b05d19d",
   "name": "jsonpatch",
   "noarch": "python",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/jsonpatch-1.32-pyhd3eb1b0_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/jsonpatch-1.32-pyhd3eb1b0_0.conda",
   "package_type": "noarch_python",
   "paths_data": {
     "paths": [
@@ -43,7 +43,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/tmp/build/80754af9/jsonpatch_1615747632069/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
         "sha256": "883d7139a73a32e004b43806f2153a2d53931581ac0f92d05bb0a7ee4bd83427",
-        "sha256_in_prefix": "9864521e0a9dcfb8aee69cc36c466cbe8dd5d89c7e7b8acb57a36dd88bee357e",
+        "sha256_in_prefix": "b856b09f37676bba6f7018d42d5b50d2a64df8e2ed98fb1afdb3a9bcb5f06865",
         "size_in_bytes": 1253
       },
       {
@@ -52,11 +52,11 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/tmp/build/80754af9/jsonpatch_1615747632069/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
         "sha256": "dd7012b024151fb3546100934f0385892b5352bfc276e84b81180ad51c797f74",
-        "sha256_in_prefix": "e9644232d11f9740a0809c8372e182479e6c6c66b75c75400c045e4d41338380",
+        "sha256_in_prefix": "af536eabecfb25730d002018e1c5d0d569ea4dcfb228e44f99067eaae6a81ef0",
         "size_in_bytes": 4108
       },
       {
-        "_path": "lib/python3.12/site-packages/__pycache__/jsonpatch.cpython-312.pyc",
+        "_path": "lib/python3.9/site-packages/__pycache__/jsonpatch.cpython-39.pyc",
         "path_type": "pyc_file"
       }
     ],

@@ -4,7 +4,7 @@
   "channel": "https://repo.anaconda.com/pkgs/main/noarch",
   "constrains": [],
   "depends": [],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/tzdata-2023d-h04d1e81_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/tzdata-2023d-h04d1e81_0",
   "features": "",
   "files": [
     "share/zoneinfo/Africa/Abidjan",
@@ -615,13 +615,13 @@
   "fn": "tzdata-2023d-h04d1e81_0.conda",
   "license": "CC-PDDC OR BSD-3-Clause",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/tzdata-2023d-h04d1e81_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/tzdata-2023d-h04d1e81_0",
     "type": 1
   },
   "md5": "fdb319536f351b2b828a350ffd1a35a1",
   "name": "tzdata",
   "noarch": "generic",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/tzdata-2023d-h04d1e81_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/tzdata-2023d-h04d1e81_0.conda",
   "package_type": "noarch_generic",
   "paths_data": {
     "paths": [],

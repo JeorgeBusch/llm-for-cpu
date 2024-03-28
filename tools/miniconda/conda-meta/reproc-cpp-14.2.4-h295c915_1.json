@@ -8,7 +8,7 @@
     "libstdcxx-ng >=7.5.0",
     "reproc 14.2.4 h295c915_1"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/reproc-cpp-14.2.4-h295c915_1",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/reproc-cpp-14.2.4-h295c915_1",
   "features": "",
   "files": [
     "include/reproc++/arguments.hpp",
@@ -32,12 +32,12 @@
   "fn": "reproc-cpp-14.2.4-h295c915_1.conda",
   "license": "MIT",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/reproc-cpp-14.2.4-h295c915_1",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/reproc-cpp-14.2.4-h295c915_1",
     "type": 1
   },
   "md5": "740e5ba0474526bb866d44b66bb9243b",
   "name": "reproc-cpp",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/reproc-cpp-14.2.4-h295c915_1.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/reproc-cpp-14.2.4-h295c915_1.conda",
   "paths_data": {
     "paths": [
       {
@@ -46,7 +46,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/tmp/build/80754af9/reproc_1647441763203/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho",
         "sha256": "813139f5029db13067fd043ec6b565607f0bd1e3bfe6a83788f1747bd7e968fe",
-        "sha256_in_prefix": "b6aa06e486c56e421638ef34f3847a60c0b7751fcc59f3a766a7ed8502bb0e52",
+        "sha256_in_prefix": "884b1013077890975f22939e77d16cd635689c71cb4c550efac50212131ea71b",
         "size_in_bytes": 579
       }
     ],

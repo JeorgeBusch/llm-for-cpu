@@ -1,0 +1,24 @@
+{
+  "build": "py39hdda0065_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/linux-64",
+  "constrains": [
+    "pyopenssl >=23.0.0"
+  ],
+  "depends": [
+    "cffi >=1.12",
+    "libgcc-ng",
+    "openssl >=3.0.13,<4.0a0",
+    "python >=3.9,<3.10.0a0"
+  ],
+  "fn": "cryptography-42.0.2-py39hdda0065_0.conda",
+  "license": "Apache-2.0 OR BSD-3-Clause",
+  "md5": "3103fe941cfc60d725a907f680328cc9",
+  "name": "cryptography",
+  "sha256": "892c196c7da7732409723d4dd213dfa8d64038f0cd9918c65311b5288ec30457",
+  "size": 2186785,
+  "subdir": "linux-64",
+  "timestamp": 1707524083000,
+  "url": "https://repo.anaconda.com/pkgs/main/linux-64/cryptography-42.0.2-py39hdda0065_0.conda",
+  "version": "42.0.2"
+}

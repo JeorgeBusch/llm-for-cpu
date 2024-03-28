@@ -1,4 +1,4 @@
-prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda
+prefix=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
@@ -9,5 +9,5 @@ Version: 3.6.2
 Cflags: -I${includedir}
 Cflags.private: -DLIBARCHIVE_STATIC
 Libs: -L${libdir} -larchive
-Libs.private:  -lz -lbz2 -llzma -llz4 -lzstd -lcrypto -lxml2 -lssl -L/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib -lxml2 -lz -llzma -licui18n -licuuc -licudata -lm
+Libs.private:  -lz -lbz2 -llzma -llz4 -lzstd -lcrypto -lxml2 -lssl -L/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib -lxml2 -lz -llzma -licui18n -licuuc -licudata -lm
 Requires.private: 

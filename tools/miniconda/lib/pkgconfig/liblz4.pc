@@ -2,7 +2,7 @@
 #   Copyright (C) 2011-2020, Yann Collet.
 #   BSD 2-Clause License (http://www.opensource.org/licenses/bsd-license.php)
 
-prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda
+prefix=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda
 libdir=${prefix}/lib
 includedir=${prefix}/include
 

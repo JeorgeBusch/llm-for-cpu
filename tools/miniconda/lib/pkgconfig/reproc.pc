@@ -1,4 +1,4 @@
-prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda
+prefix=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda
 exec_prefix=${prefix}
 includedir=${prefix}/include
 libdir=${exec_prefix}/lib

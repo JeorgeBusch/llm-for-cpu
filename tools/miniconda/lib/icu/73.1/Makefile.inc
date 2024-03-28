@@ -27,7 +27,7 @@
 # etc.  If ICU is not installed in this directory, you must change the
 # following line.  There should exist $(prefix)/include/unicode/utypes.h
 # for example.
-prefix = /mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda
+prefix = /scratch/user/averyjohnson/llm-for-cpu/tools/miniconda
 exec_prefix = ${prefix}
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec

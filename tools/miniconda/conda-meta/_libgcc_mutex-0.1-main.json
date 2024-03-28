@@ -4,18 +4,18 @@
   "channel": "https://repo.anaconda.com/pkgs/main/linux-64",
   "constrains": [],
   "depends": [],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/_libgcc_mutex-0.1-main",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/_libgcc_mutex-0.1-main",
   "features": "",
   "files": [],
   "fn": "_libgcc_mutex-0.1-main.conda",
   "license": "",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/_libgcc_mutex-0.1-main",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/_libgcc_mutex-0.1-main",
     "type": 1
   },
   "md5": "c3473ff8bdb3d124ed5ff11ec380d6f9",
   "name": "_libgcc_mutex",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/_libgcc_mutex-0.1-main.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/_libgcc_mutex-0.1-main.conda",
   "paths_data": {
     "paths": [],
     "paths_version": 1

@@ -4,7 +4,7 @@
   "channel": "https://repo.anaconda.com/pkgs/main/linux-64",
   "constrains": [],
   "depends": [],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/ca-certificates-2023.12.12-h06a4308_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/ca-certificates-2023.12.12-h06a4308_0",
   "features": "",
   "files": [
     "ssl/cacert.pem",
@@ -13,12 +13,12 @@
   "fn": "ca-certificates-2023.12.12-h06a4308_0.conda",
   "license": "MPL-2.0",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/ca-certificates-2023.12.12-h06a4308_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/ca-certificates-2023.12.12-h06a4308_0",
     "type": 1
   },
   "md5": "12bf7315c3f5ca50300e8b48d1b4ef2e",
   "name": "ca-certificates",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/ca-certificates-2023.12.12-h06a4308_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/ca-certificates-2023.12.12-h06a4308_0.conda",
   "paths_data": {
     "paths": [],
     "paths_version": 1

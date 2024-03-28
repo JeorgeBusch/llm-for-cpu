@@ -7,7 +7,7 @@
     "libgcc-ng >=11.2.0",
     "openssl >=3.0.8,<4.0a0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libssh2-1.10.0-hdbd6064_2",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libssh2-1.10.0-hdbd6064_2",
   "features": "",
   "files": [
     "include/libssh2.h",
@@ -202,12 +202,12 @@
   "fn": "libssh2-1.10.0-hdbd6064_2.conda",
   "license": "BSD-3-Clause",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libssh2-1.10.0-hdbd6064_2",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libssh2-1.10.0-hdbd6064_2",
     "type": 1
   },
   "md5": "8a427fcc8b7c76b3b31543ffa77eb3b7",
   "name": "libssh2",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libssh2-1.10.0-hdbd6064_2.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libssh2-1.10.0-hdbd6064_2.conda",
   "paths_data": {
     "paths": [
       {
@@ -216,7 +216,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/libssh2_1686931147499/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold",
         "sha256": "cdca04a28c7289251fe6f51ab6f9ef59c3d65808213accbb0ed2dfcd2796ad64",
-        "sha256_in_prefix": "29c6c4f683f9584c5dbea4dd6041ba0a72eb78bb26acc39af33ef1395ee822c7",
+        "sha256_in_prefix": "94a2c8ec8f84ab33b48a404b18861e34f0856d727fca4b41b4bdf21d4b3972ba",
         "size_in_bytes": 709
       }
     ],

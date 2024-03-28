@@ -6,7 +6,7 @@
   "depends": [
     "libgcc-ng >=11.2.0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/zlib-1.2.13-h5eee18b_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/zlib-1.2.13-h5eee18b_0",
   "features": "",
   "files": [
     "include/zconf.h",
@@ -20,12 +20,12 @@
   "fn": "zlib-1.2.13-h5eee18b_0.conda",
   "license": "Zlib",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/zlib-1.2.13-h5eee18b_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/zlib-1.2.13-h5eee18b_0",
     "type": 1
   },
   "md5": "333e31fbfbb5057c92fa845ad6adef93",
   "name": "zlib",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/zlib-1.2.13-h5eee18b_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/zlib-1.2.13-h5eee18b_0.conda",
   "paths_data": {
     "paths": [
       {
@@ -34,7 +34,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/zlib_1666594980945/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl",
         "sha256": "11202b5c550c2d9b391a82e4c02e1f4a5647684b657d35d0422a179a668f1cce",
-        "sha256_in_prefix": "f4d840e39bef0515266662f9aa8df0dcea16bf4a9919557a81408f72dc7f834e",
+        "sha256_in_prefix": "783a037504b5b7bf47ef147b38bd32a0c06f775147c447b52708ddb45004d0e6",
         "size_in_bytes": 1487
       }
     ],

@@ -1,8 +1,8 @@
 # tk pkg-config source file
 
-prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda
-exec_prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda
-libdir=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib
+prefix=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda
+exec_prefix=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda
+libdir=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib
 includedir=${prefix}/include
 
 Name: The Tk Toolkit

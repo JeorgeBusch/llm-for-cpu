@@ -7,7 +7,7 @@
     "libgcc-ng >=7.5.0",
     "zlib >=1.2.12,<1.3.0a0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/tk-8.6.12-h1ccaba5_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/tk-8.6.12-h1ccaba5_0",
   "features": "",
   "files": [
     "bin/sqlite3_analyzer",
@@ -529,12 +529,12 @@
   "fn": "tk-8.6.12-h1ccaba5_0.conda",
   "license": "TCL",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/tk-8.6.12-h1ccaba5_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/tk-8.6.12-h1ccaba5_0",
     "type": 1
   },
   "md5": "fa10ff4aa631fa4aa090a6234d7770b9",
   "name": "tk",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/tk-8.6.12-h1ccaba5_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/tk-8.6.12-h1ccaba5_0.conda",
   "paths_data": {
     "paths": [
       {
@@ -543,7 +543,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/opt/conda/conda-bld/tk_1654088763175/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
         "sha256": "79c4d9c48e4e977658cf5919e25a4579e868d36e9379e7c2ad71cd056f97b6d7",
-        "sha256_in_prefix": "58a217522e02bcddccc229ac63f5e5d91a828b06d0eb4ade421bbe59b7df8109",
+        "sha256_in_prefix": "0954cbef37b7434119651a2379cb604527ad311b8de58e442a1c62844a5cd8f8",
         "size_in_bytes": 4758
       },
       {
@@ -552,7 +552,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/opt/conda/conda-bld/tk_1654088763175/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
         "sha256": "b8453a928a6439f2a1e490e0169f7a4706b35fc86597a0f9da3fe953385f9a29",
-        "sha256_in_prefix": "74927bcb464640aa10949684cca7e36efdd56e3dc9ebdf1222e17e5cbfe8f72d",
+        "sha256_in_prefix": "eb2fa97865a805a9a38a3d393623bbee0a2ca5296790cc47f65657a32e0f5b72",
         "size_in_bytes": 1969168
       },
       {
@@ -561,7 +561,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/opt/conda/conda-bld/tk_1654088763175/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
         "sha256": "4dcf3d4fb6f754779324bc5fcf4cd57b95dd6743fe1818915d5f815d15e5e625",
-        "sha256_in_prefix": "62f3a94f3cd9cb1a0ea78fdad6e0f08d330c68ee447b794057e6fbfef21273f7",
+        "sha256_in_prefix": "8bc3d5915e3e7639e94efda98b5f1a814b623d464dfcb6978f9a45be22d0be0e",
         "size_in_bytes": 1176
       },
       {
@@ -570,7 +570,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/opt/conda/conda-bld/tk_1654088763175/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
         "sha256": "03edaee8eab4c91778209b89c10f6bdb9509590b50bd0e2f5cee6163cb2d1f48",
-        "sha256_in_prefix": "d63e72aaa539cc77ec967c1371d171f81690015a508f0053d861f759cf8691e6",
+        "sha256_in_prefix": "86c086e3d19be7f7cefdb7b12ef781b79e1c6c3094f5c9fe54e02d3c378296a7",
         "size_in_bytes": 1180
       },
       {
@@ -579,7 +579,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/opt/conda/conda-bld/tk_1654088763175/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
         "sha256": "78427430c5541c64293de11721ea8cbb6a03140161088987dc3c221e2c4fe8d4",
-        "sha256_in_prefix": "779a28606152e9de3fbddecd177f739bb78a57301012ac2eada3cd2d80d68d8d",
+        "sha256_in_prefix": "48fbe8eb09ef41891ccb3f7bcbfd5be8bc8116f7ebdd807d95f8baf6aebaa808",
         "size_in_bytes": 11761
       },
       {
@@ -588,7 +588,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/opt/conda/conda-bld/tk_1654088763175/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
         "sha256": "9470fecaa4b67d47e7bb7b9a6e3c8d55f7b7685e483898281d64f62c22ed8b44",
-        "sha256_in_prefix": "8084f053dfcd3249ebcfec8b154b5ef918aec02e84277dadcff28dda196130a1",
+        "sha256_in_prefix": "d1d4c5e233de96686697d302897b309dd40636245ad55b7f9550ded22a894089",
         "size_in_bytes": 6235
       },
       {
@@ -597,7 +597,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/opt/conda/conda-bld/tk_1654088763175/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
         "sha256": "a38cccff535c18ca163618af11ae241b4db39d5ab4a8e7e2ce4812d7c2fd58a2",
-        "sha256_in_prefix": "f89a4773a5b28efb45683119fdc832b15e8ce017ee955f15230ca005717591b9",
+        "sha256_in_prefix": "9fc73b1d6a21699b194fe4a91f93bb9174b8a25397b171ad389b3e50ccbed6ce",
         "size_in_bytes": 5742
       }
     ],

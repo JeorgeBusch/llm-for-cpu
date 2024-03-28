@@ -1,4 +1,4 @@
-#!/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/bin/python3.12
+#!/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/bin/python3.9
 # -*- coding: utf-8 -*-
 import re
 import sys

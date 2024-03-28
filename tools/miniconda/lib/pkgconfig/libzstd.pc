@@ -2,7 +2,7 @@
 #   Copyright (c) Meta Platforms, Inc. and affiliates.
 #   BSD 2-Clause License (https://opensource.org/licenses/bsd-license.php)
 
-prefix=/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda
+prefix=/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda
 exec_prefix=${prefix}
 includedir=${prefix}/include
 libdir=${exec_prefix}/lib

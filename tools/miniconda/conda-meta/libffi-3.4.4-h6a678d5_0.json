@@ -7,7 +7,7 @@
     "libgcc-ng >=11.2.0",
     "libstdcxx-ng >=11.2.0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libffi-3.4.4-h6a678d5_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libffi-3.4.4-h6a678d5_0",
   "features": "",
   "files": [
     "include/ffi.h",
@@ -29,12 +29,12 @@
   "fn": "libffi-3.4.4-h6a678d5_0.conda",
   "license": "MIT",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libffi-3.4.4-h6a678d5_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libffi-3.4.4-h6a678d5_0",
     "type": 1
   },
   "md5": "06e288f9250abef59b9a367d151fc339",
   "name": "libffi",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libffi-3.4.4-h6a678d5_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libffi-3.4.4-h6a678d5_0.conda",
   "paths_data": {
     "paths": [
       {
@@ -43,7 +43,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/libffi_1683716521602/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
         "sha256": "bc8f6d0a3b7c5e97f4c3c10186712896a4bfa7a971e4f53632ecec9fb52fc9fa",
-        "sha256_in_prefix": "3b127336ad258c225d798ab8aec870f72f5cf7e337ef3643c66a0f701511d4c2",
+        "sha256_in_prefix": "3907e8140abf67a838a794c4b998b00401e1a0c3becf72a3892ec9daad413e3a",
         "size_in_bytes": 756
       }
     ],

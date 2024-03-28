@@ -61,7 +61,7 @@ add_library(libmamba SHARED IMPORTED)
 set_target_properties(libmamba PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_17"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "tl::expected;nlohmann_json::nlohmann_json;/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib/libsolv.so;/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib/libsolvext.so;/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib/libarchive.so;zstd::libzstd_shared;/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib/libcurl.so;/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib/libssl.so;/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/lib/libcrypto.so;zstd::libzstd_shared;BZip2::BZip2;yaml-cpp::yaml-cpp;reproc++;reproc;fmt::fmt;spdlog::spdlog_header_only"
+  INTERFACE_LINK_LIBRARIES "tl::expected;nlohmann_json::nlohmann_json;/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib/libsolv.so;/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib/libsolvext.so;/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib/libarchive.so;zstd::libzstd_shared;/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib/libcurl.so;/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib/libssl.so;/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/lib/libcrypto.so;zstd::libzstd_shared;BZip2::BZip2;yaml-cpp::yaml-cpp;reproc++;reproc;fmt::fmt;spdlog::spdlog_header_only"
 )
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)

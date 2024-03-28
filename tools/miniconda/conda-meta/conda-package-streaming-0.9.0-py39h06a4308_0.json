@@ -1,0 +1,58 @@
+{
+  "build": "py39h06a4308_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/linux-64",
+  "constrains": [],
+  "depends": [
+    "python >=3.9,<3.10.0a0",
+    "zstandard >=0.15"
+  ],
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/conda-package-streaming-0.9.0-py39h06a4308_0",
+  "features": "",
+  "files": [
+    "lib/python3.9/site-packages/conda_package_streaming-0.9.0.dist-info/INSTALLER",
+    "lib/python3.9/site-packages/conda_package_streaming-0.9.0.dist-info/LICENSE",
+    "lib/python3.9/site-packages/conda_package_streaming-0.9.0.dist-info/METADATA",
+    "lib/python3.9/site-packages/conda_package_streaming-0.9.0.dist-info/RECORD",
+    "lib/python3.9/site-packages/conda_package_streaming-0.9.0.dist-info/REQUESTED",
+    "lib/python3.9/site-packages/conda_package_streaming-0.9.0.dist-info/WHEEL",
+    "lib/python3.9/site-packages/conda_package_streaming-0.9.0.dist-info/direct_url.json",
+    "lib/python3.9/site-packages/conda_package_streaming/__init__.py",
+    "lib/python3.9/site-packages/conda_package_streaming/__pycache__/__init__.cpython-39.pyc",
+    "lib/python3.9/site-packages/conda_package_streaming/__pycache__/exceptions.cpython-39.pyc",
+    "lib/python3.9/site-packages/conda_package_streaming/__pycache__/extract.cpython-39.pyc",
+    "lib/python3.9/site-packages/conda_package_streaming/__pycache__/lazy_wheel.cpython-39.pyc",
+    "lib/python3.9/site-packages/conda_package_streaming/__pycache__/package_streaming.cpython-39.pyc",
+    "lib/python3.9/site-packages/conda_package_streaming/__pycache__/s3.cpython-39.pyc",
+    "lib/python3.9/site-packages/conda_package_streaming/__pycache__/transmute.cpython-39.pyc",
+    "lib/python3.9/site-packages/conda_package_streaming/__pycache__/url.cpython-39.pyc",
+    "lib/python3.9/site-packages/conda_package_streaming/exceptions.py",
+    "lib/python3.9/site-packages/conda_package_streaming/extract.py",
+    "lib/python3.9/site-packages/conda_package_streaming/lazy_wheel.py",
+    "lib/python3.9/site-packages/conda_package_streaming/package_streaming.py",
+    "lib/python3.9/site-packages/conda_package_streaming/s3.py",
+    "lib/python3.9/site-packages/conda_package_streaming/transmute.py",
+    "lib/python3.9/site-packages/conda_package_streaming/url.py"
+  ],
+  "fn": "conda-package-streaming-0.9.0-py39h06a4308_0.conda",
+  "license": "BSD-3-Clause",
+  "link": {
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/conda-package-streaming-0.9.0-py39h06a4308_0",
+    "type": 1
+  },
+  "md5": "228ee2418e314728ebabde11cf5f62c2",
+  "name": "conda-package-streaming",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/conda-package-streaming-0.9.0-py39h06a4308_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "defaults/linux-64::conda-package-streaming==0.9.0=py39h06a4308_0[md5=228ee2418e314728ebabde11cf5f62c2]",
+  "sha256": "ca5f3c56bcc223ef049124a4945c438875d012bb6d77d3bcbb787866d9153bf1",
+  "size": 27762,
+  "subdir": "linux-64",
+  "timestamp": 1690987999000,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/linux-64/conda-package-streaming-0.9.0-py39h06a4308_0.conda",
+  "version": "0.9.0"
+}

@@ -13,7 +13,7 @@
     "_libgcc_mutex * main",
     "__glibc >=2.17"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libgcc-ng-11.2.0-h1234567_1",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libgcc-ng-11.2.0-h1234567_1",
   "features": "",
   "files": [
     "lib/libasan.so",
@@ -46,12 +46,12 @@
   "fn": "libgcc-ng-11.2.0-h1234567_1.conda",
   "license": "GPL-3.0-only WITH GCC-exception-3.1",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libgcc-ng-11.2.0-h1234567_1",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libgcc-ng-11.2.0-h1234567_1",
     "type": 1
   },
   "md5": "a87728dabf3151fb9cfa990bd2eb0464",
   "name": "libgcc-ng",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/libgcc-ng-11.2.0-h1234567_1.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/libgcc-ng-11.2.0-h1234567_1.conda",
   "paths_data": {
     "paths": [],
     "paths_version": 1

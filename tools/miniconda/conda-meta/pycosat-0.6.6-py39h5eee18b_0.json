@@ -1,0 +1,48 @@
+{
+  "build": "py39h5eee18b_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/linux-64",
+  "constrains": [],
+  "depends": [
+    "libgcc-ng >=11.2.0",
+    "python >=3.9,<3.10.0a0"
+  ],
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/pycosat-0.6.6-py39h5eee18b_0",
+  "features": "",
+  "files": [
+    "lib/python3.9/site-packages/__pycache__/test_pycosat.cpython-311.pyc",
+    "lib/python3.9/site-packages/__pycache__/test_pycosat.cpython-39.pyc",
+    "lib/python3.9/site-packages/pycosat-0.6.6.dist-info/AUTHORS.md",
+    "lib/python3.9/site-packages/pycosat-0.6.6.dist-info/INSTALLER",
+    "lib/python3.9/site-packages/pycosat-0.6.6.dist-info/LICENSE",
+    "lib/python3.9/site-packages/pycosat-0.6.6.dist-info/METADATA",
+    "lib/python3.9/site-packages/pycosat-0.6.6.dist-info/RECORD",
+    "lib/python3.9/site-packages/pycosat-0.6.6.dist-info/REQUESTED",
+    "lib/python3.9/site-packages/pycosat-0.6.6.dist-info/WHEEL",
+    "lib/python3.9/site-packages/pycosat-0.6.6.dist-info/direct_url.json",
+    "lib/python3.9/site-packages/pycosat-0.6.6.dist-info/top_level.txt",
+    "lib/python3.9/site-packages/pycosat.cpython-39-x86_64-linux-gnu.so",
+    "lib/python3.9/site-packages/test_pycosat.py"
+  ],
+  "fn": "pycosat-0.6.6-py39h5eee18b_0.conda",
+  "license": "MIT",
+  "link": {
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/pycosat-0.6.6-py39h5eee18b_0",
+    "type": 1
+  },
+  "md5": "5967e711f394d8b7783b1a601c5ff04c",
+  "name": "pycosat",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/pycosat-0.6.6-py39h5eee18b_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "defaults/linux-64::pycosat==0.6.6=py39h5eee18b_0[md5=5967e711f394d8b7783b1a601c5ff04c]",
+  "sha256": "06d89171031f24012fa0e6677252b8564859904d7044acd505e84545051e13e3",
+  "size": 95862,
+  "subdir": "linux-64",
+  "timestamp": 1696536554000,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/linux-64/pycosat-0.6.6-py39h5eee18b_0.conda",
+  "version": "0.6.6"
+}

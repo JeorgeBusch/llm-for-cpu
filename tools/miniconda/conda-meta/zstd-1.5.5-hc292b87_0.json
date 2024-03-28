@@ -10,7 +10,7 @@
     "xz >=5.2.10,<6.0a0",
     "zlib >=1.2.13,<1.3.0a0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/zstd-1.5.5-hc292b87_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/zstd-1.5.5-hc292b87_0",
   "features": "",
   "files": [
     "bin/unzstd",
@@ -40,12 +40,12 @@
   "fn": "zstd-1.5.5-hc292b87_0.conda",
   "license": "BSD-3-Clause AND GPL-2.0-or-later",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/zstd-1.5.5-hc292b87_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/zstd-1.5.5-hc292b87_0",
     "type": 1
   },
   "md5": "0f59d57dc21f585f4c282d60dfb46505",
   "name": "zstd",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/zstd-1.5.5-hc292b87_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/zstd-1.5.5-hc292b87_0.conda",
   "paths_data": {
     "paths": [
       {
@@ -54,7 +54,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/zstd_1681304519399/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl",
         "sha256": "20cb1ab43deb89741a5acf600ab2e297a116d65c600a05473e44f72db83dd642",
-        "sha256_in_prefix": "b13ecd9f243094ea8c217942798baf15d46155f5e70cffeadf0b2026cca7dded",
+        "sha256_in_prefix": "e280c302b1d3a4c60ab550787a95a89284565de308852dfaaadb97383c92612e",
         "size_in_bytes": 707
       }
     ],

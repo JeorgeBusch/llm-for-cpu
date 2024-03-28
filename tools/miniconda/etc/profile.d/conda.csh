@@ -1,7 +1,7 @@
-setenv CONDA_EXE "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/bin/conda"
-setenv _CONDA_ROOT "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda"
-setenv _CONDA_EXE "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/bin/conda"
-setenv CONDA_PYTHON_EXE "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/bin/python"
+setenv CONDA_EXE "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/bin/conda"
+setenv _CONDA_ROOT "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda"
+setenv _CONDA_EXE "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/bin/conda"
+setenv CONDA_PYTHON_EXE "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/bin/python"
 # Copyright (C) 2012 Anaconda, Inc
 # SPDX-License-Identifier: BSD-3-Clause
 if (! $?_CONDA_EXE) then

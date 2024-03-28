@@ -1,7 +1,7 @@
-set -gx CONDA_EXE "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/bin/conda"
-set _CONDA_ROOT "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda"
-set _CONDA_EXE "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/bin/conda"
-set -gx CONDA_PYTHON_EXE "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/bin/python"
+set -gx CONDA_EXE "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/bin/conda"
+set _CONDA_ROOT "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda"
+set _CONDA_EXE "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/bin/conda"
+set -gx CONDA_PYTHON_EXE "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/bin/python"
 # Copyright (C) 2012 Anaconda, Inc
 # SPDX-License-Identifier: BSD-3-Clause
 #

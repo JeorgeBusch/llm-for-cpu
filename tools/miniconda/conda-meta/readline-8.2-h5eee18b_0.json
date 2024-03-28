@@ -7,7 +7,7 @@
     "libgcc-ng >=11.2.0",
     "ncurses >=6.3,<7.0a0"
   ],
-  "extracted_package_dir": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/readline-8.2-h5eee18b_0",
+  "extracted_package_dir": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/readline-8.2-h5eee18b_0",
   "features": "",
   "files": [
     "include/readline/chardefs.h",
@@ -40,12 +40,12 @@
   "fn": "readline-8.2-h5eee18b_0.conda",
   "license": "GPL-3.0-only",
   "link": {
-    "source": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/readline-8.2-h5eee18b_0",
+    "source": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/readline-8.2-h5eee18b_0",
     "type": 1
   },
   "md5": "be42180685cce6e6b0329201d9f48efb",
   "name": "readline",
-  "package_tarball_full_path": "/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/miniconda/pkgs/readline-8.2-h5eee18b_0.conda",
+  "package_tarball_full_path": "/scratch/user/averyjohnson/llm-for-cpu/tools/miniconda/pkgs/readline-8.2-h5eee18b_0.conda",
   "paths_data": {
     "paths": [
       {
@@ -54,7 +54,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/readline_1666648016169/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol",
         "sha256": "450ab807f966299a9f71160deed14aa40e56a56de9595f11db4e640557a57a9b",
-        "sha256_in_prefix": "0b623a2a49add50297fee36447866cf15f4cdce125cd871874bc80ce425bf962",
+        "sha256_in_prefix": "0ddd22fa35e1452b81a72a37d4ed4ad1d96b0a52947060dc7e94f5b7dd9c7737",
         "size_in_bytes": 548
       },
       {
@@ -63,7 +63,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "/croot/readline_1666648016169/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol",
         "sha256": "72a89f8c5c4eca0ee90e99bd903a4e967b599ced760e528ec8beeacd226f8517",
-        "sha256_in_prefix": "5825a9de881983f565da11edec07a67e5b6144392d09ad0f61d60cc2246d5428",
+        "sha256_in_prefix": "2809775d6857e3d7579e5cf8225e1c2bc889872a24d0c40499dd028ecd523933",
         "size_in_bytes": 562
       }
     ],

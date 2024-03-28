@@ -1,0 +1,95 @@
+{
+  "paths": [
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy-1.5.6.dist-info/INSTALLER",
+      "path_type": "hardlink",
+      "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+      "size_in_bytes": 5
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy-1.5.6.dist-info/LICENSE",
+      "path_type": "hardlink",
+      "sha256": "41fd98a468e39d319911bd94f4e65d6ad6a7ea66559dd5aa4112f138ff9b629a",
+      "size_in_bytes": 1483
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy-1.5.6.dist-info/METADATA",
+      "path_type": "hardlink",
+      "sha256": "3b03dbbe292c758f14499404102bf2110a6122d8d85c1acc330e0ba20b741326",
+      "size_in_bytes": 419
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy-1.5.6.dist-info/RECORD",
+      "path_type": "hardlink",
+      "sha256": "97a39186795662c760891137b9d6184a46da695b74d31221af33a70342fffa79",
+      "size_in_bytes": 1052
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy-1.5.6.dist-info/REQUESTED",
+      "path_type": "hardlink",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_in_bytes": 0
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy-1.5.6.dist-info/WHEEL",
+      "path_type": "hardlink",
+      "sha256": "c903798389a0e00c9b4639208bef72cb889010589b1909a5cfbf0f8a4e4eafe0",
+      "size_in_bytes": 92
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy-1.5.6.dist-info/direct_url.json",
+      "path_type": "hardlink",
+      "sha256": "70479d407f913cba30ed52cbf0c16f578c590e32a4735dba102860ff0604552d",
+      "size_in_bytes": 82
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy-1.5.6.dist-info/top_level.txt",
+      "path_type": "hardlink",
+      "sha256": "202e1066f85f57db49bd0e9d830f0061b57e67aa4cebc25ba5565612d3398a35",
+      "size_in_bytes": 11
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy/__init__.py",
+      "path_type": "hardlink",
+      "sha256": "293ff782e1d7eac5611b67b5233de6196e0e33bae2072df9e63ed898828c2d0a",
+      "size_in_bytes": 258
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy/__pycache__/__init__.cpython-312.pyc",
+      "path_type": "hardlink",
+      "sha256": "175c27478859c851b33b69a82c9c3256fda4980726dbad025406238c5cef5344",
+      "size_in_bytes": 517
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy/__pycache__/__init__.cpython-39.pyc",
+      "path_type": "hardlink",
+      "sha256": "f89949f95947f934bcc9320f7e232868047721d5a50906949d8a3fed99882698",
+      "size_in_bytes": 654
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy/__pycache__/_version.cpython-312.pyc",
+      "path_type": "hardlink",
+      "sha256": "738dd3012df1abbee840f38ac5df953241bd31d97e81faa6278a4ea6acdf3bda",
+      "size_in_bytes": 285
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy/__pycache__/_version.cpython-39.pyc",
+      "path_type": "hardlink",
+      "sha256": "e8d9c137925fe6c57dcf39a9c19f07c3a70e2f1ab8589ecac8f0721053737f33",
+      "size_in_bytes": 482
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy/_version.py",
+      "path_type": "hardlink",
+      "sha256": "d08e151c2acd159914060338b4f05b0a5e837b4da6c68950574175c2da949f23",
+      "size_in_bytes": 72
+    },
+    {
+      "_path": "lib/python3.9/site-packages/libmambapy/bindings.cpython-39-x86_64-linux-gnu.so",
+      "path_type": "hardlink",
+      "sha256": "e43d3ba2bb7faa8553bcb90837744f6889f3fb130e2c4904313b3e6d4768ed91",
+      "size_in_bytes": 919720
+    }
+  ],
+  "paths_version": 1
+}
