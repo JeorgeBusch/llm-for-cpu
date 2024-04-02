@@ -15,7 +15,7 @@
 ## Setting Up Enviornment
 * This only needs to be done once
 * Run `./setup_conda.sh` in the `llm-for-cpu` directory
-* Next, run `cd tools/miniconda/bin` and execute the following commands
+* Next, run the following commands in the `llm-for-cpu/tools/miniconda/bin` directory
 * `ln -s x86_64-conda-linux-gnu-c++ c++`
 * `ln -s x86_64-conda-linux-gnu-cc cc`
 * `ln -s x86_64-conda-linux-gnu-g++ g++`
