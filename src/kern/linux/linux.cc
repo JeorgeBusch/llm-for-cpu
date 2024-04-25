@@ -128,8 +128,9 @@ Linux::devRandom(Process *process, ThreadContext *tc)
     std::stringstream line;
     int max = 1E5;
     for (int i = 0; i < max; i++) {
-        uint8_t rand_uint = random.random<uint8_t>(0, 255);
-
+        //uint8_t rand_uint = random.random<uint8_t>(0, 255);
+		uint8_t rand_uint = random_mt.random<uint8_t>(0, 255);
+		
         line << rand_uint;
     }
     return line.str();

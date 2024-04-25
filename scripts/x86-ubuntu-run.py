@@ -81,8 +81,7 @@ command = "m5 exit;" \
 '''
 
 command = "echo 'This is running on Timing CPU cores.';" \
-        + "cd home;" \
-        + "python3 bert_sst.py;" \
+        + "sleep 1;" \
         + "m5 exit;"
 
 # Here we set the Full System workload.
@@ -96,8 +95,9 @@ command = "echo 'This is running on Timing CPU cores.';" \
 
 board.set_kernel_disk_workload(
     kernel=Resource("x86-linux-kernel-5.4.49",),
-    #disk_image=Resource("x86-ubuntu-18.04-img"),
-    disk_image=CustomDiskImageResource("images/x86-ubuntu-18-mod.04-img"),
+    disk_image=Resource("x86-ubuntu-18.04-img"),
+    #disk_image=CustomDiskImageResource("images/x86-ubuntu-18.04-img"),
+    #disk_image=CustomDiskImageResource("images/x86-ubuntu-18-mod.04-img"),
     readfile_contents=command,
 )
 

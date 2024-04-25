@@ -55,8 +55,9 @@
 //For Implemented syscalls
 #include <time.h>
 #include <sched.h>
-#include <sys/random.h>
+//#include <sys/random.h>
 #include <sys/socket.h>
+#include "base/random.hh"
 
 namespace gem5
 {
@@ -113,9 +114,14 @@ getrandomFunc(SyscallDesc *desc, ThreadContext *tc, VPtr<> buff_ptr, size_t buff
 {	
 	BufferArg result_buff(buff_ptr, bufflen);
 	
-    uint64_t result = getrandom((char *)result_buff.bufferPtr(), bufflen, flags);
-	result = htog(result, tc->getSystemPtr()->getGuestByteOrder());
-
+    //uint64_t result = getrandom((char *)result_buff.bufferPtr(), bufflen, flags);
+	//result = htog(result, tc->getSystemPtr()->getGuestByteOrder());
+	
+	srand(time(NULL));
+	off_t result = random_mt.random<off_t>(0, ULLONG_MAX);
+    std::memcpy(result_buff.bufferPtr(), &result, bufflen); //Checkout std copy
+    result = htog(result, tc->getSystemPtr()->getGuestByteOrder());
+	
     if (result == (off_t)-1)
         return -errno;
     else

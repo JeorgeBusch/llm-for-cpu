@@ -26,7 +26,9 @@ for i in range(len(features)):
     #print("Completed: " + str((num / len(features)) * 100))
     inputs = tokenizer(features[i], return_tensors="pt")
     with torch.no_grad():
-        logits = model(**inputs).logits
+        logits = model(**inputs)
+    print("output: ", logits)
+    print("Logits: ", logits.logits)
     pred = logits.argmax().item()
     if label[i] == 0 and pred == 0:
         tn += 1
