@@ -2,7 +2,7 @@
 ## Building Miniconda
 * Download the file here https://drive.google.com/file/d/1dscF494qws0R5bMBqsBkIA1vrcUk-eZc/view?usp=sharing
 * Drop the file in `llm-for-cpu/tools` and CD into it
-* Run `Chmod 777 Miniconda3-py39_24.1.2-0-Linux-x86_64.sh`
+* Run `chmod 777 Miniconda3-py39_24.1.2-0-Linux-x86_64.sh`
 * Run `./Miniconda3-py39_24.1.2-0-Linux-x86_64.sh`
 * Go through license agreement and enter `yes`
 * When it prompts you for a directory name, enter `miniconda`
