@@ -1,0 +1,5 @@
+#!/bin/bash
+
+eval "$(tools/miniconda/bin/conda shell.bash hook)"
+wait
+conda activate base

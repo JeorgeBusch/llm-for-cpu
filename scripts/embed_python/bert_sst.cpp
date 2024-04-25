@@ -46,8 +46,8 @@ int main() {
 	
 	// Retrieve DistilBert tokenizer
 	cout << endl << "Retrieving Tokenizer: distilbert-base-uncased-finetuned-sst-2-english" << endl; 
-	auto tokenizer = DistilBertTokenizer.attr("from_pretrained")("/mnt/c/Users/aej45/Desktop/llm-for-cpu/scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
-	//auto tokenizer = DistilBertTokenizer.attr("from_pretrained")(py::arg("tokenizer_file")="/mnt/c/Users/aej45/Desktop/llm-for-cpu/scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
+	auto tokenizer = DistilBertTokenizer.attr("from_pretrained")("scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
+	//auto tokenizer = DistilBertTokenizer.attr("from_pretrained")(py::arg("tokenizer_file")="scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
 	cout << "Tokenizer Retrieved SUccessfully!" << endl << endl;
 	
 	// Import DistilBert model
@@ -57,8 +57,8 @@ int main() {
 	
 	// Retrieve DistilBert model
 	cout << endl << "Retrieving Model: distilbert-base-uncased-finetuned-sst-2-english" << endl;
-	auto model = DistilBertForSequenceClassification.attr("from_pretrained")("/mnt/c/Users/aej45/Desktop/llm-for-cpu/scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
-	//auto model = DistilBertTokenizer.attr("from_pretrained")(py::arg("tokenizer_file")="/mnt/c/Users/aej45/Desktop/llm-for-cpu/scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
+	auto model = DistilBertForSequenceClassification.attr("from_pretrained")("scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
+	//auto model = DistilBertTokenizer.attr("from_pretrained")(py::arg("tokenizer_file")="scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english");
 	cout << "Model Retrieved Successfully!" << endl << endl;
 	
 	cout << endl << "Importing Numpy" << endl;
@@ -93,7 +93,7 @@ int main() {
 
 	
 	// Reading tsv file as
-	auto df = pd.attr("read_csv")("/mnt/c/Users/aej45/Desktop/gem5/gem5-21.2.1.1/scripts/embed_python/build/dev.tsv", py::arg("sep")="\t");
+	auto df = pd.attr("read_csv")("scripts/embed_python/build/dev.tsv", py::arg("sep")="\t");
 	auto features = df["sentence"];
 	auto labels = df["label"];
 	
