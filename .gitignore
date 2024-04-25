@@ -37,3 +37,4 @@ ssh_key.pub
 outputs
 images
 scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english
+tools/miniconda
