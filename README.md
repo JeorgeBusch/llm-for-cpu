@@ -29,7 +29,7 @@
 
 ## Converting Models to GGML
 * Download `distilbert-base-uncased-finetuned-sst-2-english` from https://drive.google.com/drive/u/0/folders/1n7I9ZCZIvQgpahyC4BpLMcjw6jmVq4fX and place it in `llm-for-cpu/tools/bert.cpp/models`
-* Run `./run_conversion.sh distilbert-base-uncased-finetuned-sst-2-english` in the `llm-for-cpu/tools/bert.cpp/models` directory
+* Run `./run_conversions.sh distilbert-base-uncased-finetuned-sst-2-english` in the `llm-for-cpu/tools/bert.cpp/models` directory
 * NOTE: This can be used to convert a wide range of language models to GGML, but you'll likely have to tweak `convert-to-ggml.py` to do so
 
 ## Running Bert SST in C++
