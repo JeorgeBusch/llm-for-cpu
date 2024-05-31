@@ -16,6 +16,8 @@ conda install -y cmake
 wait
 conda install -y pybind11
 wait
+conda install -y fastai::accelerate
+wait
 conda uninstall -y libprotobuf
 wait
 cd ..

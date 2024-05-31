@@ -2,7 +2,7 @@
 ## Building Miniconda
 * Download the file here https://drive.google.com/file/d/1dscF494qws0R5bMBqsBkIA1vrcUk-eZc/view?usp=sharing
 * Drop the file in `llm-for-cpu/tools` and CD into it
-* Run `Chmod 777 Miniconda3-py39_24.1.2-0-Linux-x86_64.sh`
+* Run `chmod 777 Miniconda3-py39_24.1.2-0-Linux-x86_64.sh`
 * Run `./Miniconda3-py39_24.1.2-0-Linux-x86_64.sh`
 * Go through license agreement and enter `yes`
 * When it prompts you for a directory name, enter `miniconda`
@@ -28,9 +28,8 @@
 * If you want to build the simulator with a different instruction set architecture, run `scons build/<arm/mips/riscv/etc.>/gem5.opt -j <num_cores> CC=tools/miniconda/bin/gcc CXX=tools/miniconda/bin/g++ --ignore-style` 
 
 ## Converting Models to GGML
-* Run `python3 bert_sst.py` in `llm-for-cpu/scripts`
 * Download `distilbert-base-uncased-finetuned-sst-2-english` from https://drive.google.com/drive/u/0/folders/1n7I9ZCZIvQgpahyC4BpLMcjw6jmVq4fX and place it in `llm-for-cpu/tools/bert.cpp/models`
-* Run `./run_conversion.sh distilbert-base-uncased-finetuned-sst-2-english` in the `llm-for-cpu/tools/bert.cpp/models` directory
+* Run `./run_conversions.sh distilbert-base-uncased-finetuned-sst-2-english` in the `llm-for-cpu/tools/bert.cpp/models` directory
 * NOTE: This can be used to convert a wide range of language models to GGML, but you'll likely have to tweak `convert-to-ggml.py` to do so
 
 ## Running Bert SST in C++
