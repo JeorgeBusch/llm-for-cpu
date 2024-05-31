@@ -22,5 +22,9 @@ endif()
 add_executable(main main.cpp)
 target_link_libraries(main PRIVATE bert ggml)
 
+add_executable(fp16_dot fp16_dot.cpp)
+target_link_libraries(fp16_dot PRIVATE bert ggml)
+
+
 add_executable(test_tokenizer test_tokenizer.cpp)
 target_link_libraries(test_tokenizer PRIVATE bert ggml)

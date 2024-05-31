@@ -1975,7 +1975,7 @@ extern "C" {
     } ggml_type_traits_t;
 
     ggml_type_traits_t ggml_internal_get_type_traits(enum ggml_type type);
-
+	
 #ifdef  __cplusplus
 }
 #endif

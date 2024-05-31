@@ -2396,7 +2396,25 @@ static void ggml_vec_dot_f32(const int n, float * restrict s, const float * rest
 }
 
 static void ggml_vec_dot_f16(const int n, float * restrict s, ggml_fp16_t * restrict x, ggml_fp16_t * restrict y) {
-    ggml_float sumf = 0.0;
+	/*
+	FILE *f = fopen("/mnt/c/users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/input_params/params", "a");
+	fprintf(f, "%d\t", n);
+	for(int i = 0; i < (sizeof(s) / sizeof(s[0])); i++){
+		fprintf(f, "%.9g ", s[i]);
+	}
+	fprintf(f, "\t");
+	for(int i = 0; i < (sizeof(x) / sizeof(x[0])); i++){
+		fprintf(f, "%d ", x[i]);
+	}
+	fprintf(f, "\t");
+	for(int i = 0; i < (sizeof(y) / sizeof(y[0])); i++){
+		fprintf(f, "%d ", y[i]);
+	}
+	fprintf(f, "\n");
+	fclose(f);
+    */
+	
+	ggml_float sumf = 0.0;
 
 #if defined(GGML_SIMD)
     const int np = (n & ~(GGML_F16_STEP - 1));
