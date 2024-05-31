@@ -36,6 +36,7 @@
 * Run `cmake .. -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release` in the `llm-for-cpu/tools/bert.cpp/build` directory
 * Run `make` in the `llm-for-cpu/tools/bert.cpp/build` directory
 * Run `./main` in the `llm-for-cpu/tools/bert.cpp/build/bin` directory
+* This will also create `fp16_dot` in `llm-for-cpu/tools/bert.cpp/build/bin` which will only run the dot product trace
 
 ## Running Bert SST in Gem5
 * Run `build/X86/gem5.opt --outdir=<output_dir> scripts/simple.py` to see how far you can get into execution
