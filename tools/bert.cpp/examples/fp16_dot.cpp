@@ -1,0 +1,148 @@
+#include "bert.h"
+#include "ggml.h"
+
+#include <unistd.h>
+#include <stdio.h>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iterator>
+#include <sstream>
+#include <algorithm>
+
+#define GGML_FP16_TO_FP32(x) ((float) (x))
+
+using namespace std;
+
+typedef double ggml_float;
+
+extern "C" {
+	static void ggml_vec_dot_f16(const int n, float *  s, ggml_fp16_t *  x, ggml_fp16_t *  y) {
+		/*
+		FILE *f = fopen("/mnt/c/users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/input_params/params", "a");
+		fprintf(f, "%d\t", n);
+		for(int i = 0; i < (sizeof(s) / sizeof(s[0])); i++){
+			fprintf(f, "%.9g ", s[i]);
+		}
+		fprintf(f, "\t");
+		for(int i = 0; i < (sizeof(x) / sizeof(x[0])); i++){
+			fprintf(f, "%d ", x[i]);
+		}
+		fprintf(f, "\t");
+		for(int i = 0; i < (sizeof(y) / sizeof(y[0])); i++){
+			fprintf(f, "%d ", y[i]);
+		}
+		fprintf(f, "\n");
+		fclose(f);
+		*/
+		
+		ggml_float sumf = 0.0;
+	
+	#if defined(GGML_SIMD)
+		const int np = (n & ~(GGML_F16_STEP - 1));
+	
+		GGML_F16_VEC sum[GGML_F16_ARR] = { GGML_F16_VEC_ZERO };
+	
+		GGML_F16_VEC ax[GGML_F16_ARR];
+		GGML_F16_VEC ay[GGML_F16_ARR];
+	
+		for (int i = 0; i < np; i += GGML_F16_STEP) {
+			for (int j = 0; j < GGML_F16_ARR; j++) {
+				ax[j] = GGML_F16_VEC_LOAD(x + i + j*GGML_F16_EPR, j);
+				ay[j] = GGML_F16_VEC_LOAD(y + i + j*GGML_F16_EPR, j);
+	
+				sum[j] = GGML_F16_VEC_FMA(sum[j], ax[j], ay[j]);
+			}
+		}
+	
+		// reduce sum0..sum3 to sum0
+		GGML_F16_VEC_REDUCE(sumf, sum);
+	
+		// leftovers
+		for (int i = np; i < n; ++i) {
+			sumf += (ggml_float)(GGML_FP16_TO_FP32(x[i])*GGML_FP16_TO_FP32(y[i]));
+		}
+	#else
+		for (int i = 0; i < n; ++i) {
+			sumf += (ggml_float)(GGML_FP16_TO_FP32(x[i])*GGML_FP16_TO_FP32(y[i]));
+		}
+	#endif
+	
+		*s = sumf;
+	}
+};
+
+int main(int argc, char ** argv) {	
+	ifstream file("/mnt/c/users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/input_params/params_10k"); 
+    string line; 
+	string delimiter = "\t";
+	
+	int n;
+	float s[2];
+	ggml_fp16_t x[4];
+	ggml_fp16_t y[4];
+	
+    while (getline(file, line)) { 
+        //cout << line << endl; 
+		size_t pos = 0;
+		std::string token;
+		int count = 0;
+		while ((pos = line.find(delimiter)) != std::string::npos) {
+			token = line.substr(0, pos);
+			//std::cout << token << std::endl;
+			line.erase(0, pos + delimiter.length());
+			if (count == 0)
+				n = stoi(token);
+
+			else if (count == 1){
+				istringstream ss( token );
+				copy(
+					istream_iterator <float> ( ss ),
+					istream_iterator <float> (),
+					s
+					);
+				/*
+				cout << "output = {";
+				for (size_t i = 0; i < 2; i++)
+					cout << s[ i ] << ",";
+				cout << "\b};\n";
+				*/
+			}
+			else if (count == 2){
+				istringstream ss( token );
+				copy(
+					istream_iterator <float> ( ss ),
+					istream_iterator <float> (),
+					x
+					);
+				/*
+				cout << "output = {";
+				for (size_t i = 0; i < 4; i++)
+					cout << x[ i ] << ",";
+				cout << "\b};\n";
+				*/
+			}
+			count += 1;
+		}
+		//std::cout << line << std::endl;
+		istringstream ss( line );
+		copy(
+			istream_iterator <float> ( ss ),
+			istream_iterator <float> (),
+			y
+			);
+		
+		/*
+		cout << "output = {";
+		for (size_t i = 0; i < 4; i++)
+			cout << y[ i ] << ",";
+		cout << "\b};\n";
+		*/
+		
+		ggml_vec_dot_f16(n, s, x, y);
+    } 
+    file.close(); 
+
+    return 0;
+}
