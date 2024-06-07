@@ -31,8 +31,8 @@
 * Run `./run_conversions.sh distilbert-base-uncased-finetuned-sst-2-english` in the `llm-for-cpu/tools/bert.cpp/models` directory
 * NOTE: This can be used to convert a wide range of language models to GGML, but you'll have to modify `convert-to-ggml.py` and `bert.cpp` to properly convert and read-in the model
  * Both `convert-to-ggml.py` and `bert.cpp` contain a commented out example of how to convert and run MiniLM
-  * https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
-  * https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-cos-v1
+ * https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+ * https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-cos-v1
 
 ## Running Bert SST in C++
 * Run `cmake .. -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release` in the `llm-for-cpu/tools/bert.cpp/build` directory
