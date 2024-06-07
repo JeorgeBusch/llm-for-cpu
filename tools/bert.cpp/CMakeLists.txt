@@ -15,6 +15,7 @@ add_compile_options(-mno-sse4)
 add_compile_options(-O3)
 add_compile_options(-mno-mmx)
 add_compile_options(-fno-tree-vectorize)
+add_compile_options(-pg)
 #
 # Option list
 #
