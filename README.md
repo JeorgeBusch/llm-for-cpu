@@ -27,7 +27,7 @@
 * If you want to build the simulator with a different instruction set architecture, run `scons build/<arm/mips/riscv/etc.>/gem5.opt -j <num_cores> CC=tools/miniconda/bin/gcc CXX=tools/miniconda/bin/g++ --ignore-style` 
 
 ## Converting Models to GGML
-* For the pre-converted model, download `distilbert-base-uncased-finetuned-sst-2-english` from https://drive.google.com/file/d/18AMelftxunpJeBbbfbJq2O5E_OoZMNV-/view?usp=sharing and place it in `llm-for-cpu/tools/bert.cpp/models`
+* For the pre-converted model, download the file here https://drive.google.com/file/d/18AMelftxunpJeBbbfbJq2O5E_OoZMNV-/view?usp=sharing and place it in `llm-for-cpu/tools/bert.cpp/models`
 * Otherwise, run `git clone https://huggingface.co/google-bert/bert-base-uncased` in the `llm-for-cpu/tools/bert.cpp/models` directory
 * Run `./run_conversions.sh distilbert-base-uncased-finetuned-sst-2-english` in the `llm-for-cpu/tools/bert.cpp/models` directory
 * NOTE: This can be used to convert a wide range of language models to GGML, but you'll have to modify `convert-to-ggml.py` and `bert.cpp` to properly convert and read-in the model
