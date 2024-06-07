@@ -40,3 +40,7 @@
 
 ## Running Bert SST in Gem5
 * Run `build/X86/gem5.opt --outdir=<output_dir> scripts/simple.py` to see how far you can get into execution
+
+## Generating Input Parameter Batches
+* Run `python sample_params.py <num_batches> <num_samples_per_batch>` in the `llm-for-cpu/tools/bert.cpp/input_params` directory
+** The batches will be created in `llm-for-cpu/tools/bert.cpp/input_params/batches`
