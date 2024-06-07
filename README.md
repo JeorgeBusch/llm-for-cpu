@@ -28,7 +28,7 @@
 * If you want to build the simulator with a different instruction set architecture, run `scons build/<arm/mips/riscv/etc.>/gem5.opt -j <num_cores> CC=tools/miniconda/bin/gcc CXX=tools/miniconda/bin/g++ --ignore-style` 
 
 ## Converting Models to GGML
-* Download `distilbert-base-uncased-finetuned-sst-2-english` from https://drive.google.com/drive/u/0/folders/1n7I9ZCZIvQgpahyC4BpLMcjw6jmVq4fX and place it in `llm-for-cpu/tools/bert.cpp/models`
+* Download `distilbert-base-uncased-finetuned-sst-2-english` from https://drive.google.com/file/d/18AMelftxunpJeBbbfbJq2O5E_OoZMNV-/view?usp=sharing and place it in `llm-for-cpu/tools/bert.cpp/models`
 * Run `./run_conversions.sh distilbert-base-uncased-finetuned-sst-2-english` in the `llm-for-cpu/tools/bert.cpp/models` directory
 * NOTE: This can be used to convert a wide range of language models to GGML, but you'll likely have to tweak `convert-to-ggml.py` to do so
 
@@ -40,3 +40,7 @@
 
 ## Running Bert SST in Gem5
 * Run `build/X86/gem5.opt --outdir=<output_dir> scripts/simple.py` to see how far you can get into execution
+
+## Generating Input Parameter Batches
+* Run `python sample_params.py <num_batches> <num_samples_per_batch>` in the `llm-for-cpu/tools/bert.cpp/input_params` directory
+** The batches will be created in `llm-for-cpu/tools/bert.cpp/input_params/batches`
