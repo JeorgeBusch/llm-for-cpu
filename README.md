@@ -23,7 +23,6 @@
 
 ## Building Gem5 Binary
 * Run `scons build/X86/gem5.opt -j <num_cores> CC=tools/miniconda/bin/gcc CXX=tools/miniconda/bin/g++ --ignore-style` in the `llm-for-cpu` directory
-* I recommend just doing 1 core for testing purposes since it compiles faster
 * If the compilation finishes without errors, you'll use `llm-for-cpu/build/X86/gem5.out` to run the simulator
 * If you want to build the simulator with a different instruction set architecture, run `scons build/<arm/mips/riscv/etc.>/gem5.opt -j <num_cores> CC=tools/miniconda/bin/gcc CXX=tools/miniconda/bin/g++ --ignore-style` 
 
