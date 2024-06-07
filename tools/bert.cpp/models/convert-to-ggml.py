@@ -65,6 +65,7 @@ fout = open(fname_out, "wb")
 
 print(hparams)
 
+'''
 fout.write(struct.pack("i", 0x67676d6c)) # magic: ggml in hex
 fout.write(struct.pack("i", hparams["vocab_size"]))
 fout.write(struct.pack("i", hparams["max_position_embeddings"]))
@@ -72,6 +73,15 @@ fout.write(struct.pack("i", hparams["hidden_size"]))
 fout.write(struct.pack("i", hparams["intermediate_size"]))
 fout.write(struct.pack("i", hparams["num_attention_heads"]))
 fout.write(struct.pack("i", hparams["num_hidden_layers"]))
+fout.write(struct.pack("i", ftype))
+'''
+fout.write(struct.pack("i", 0x67676d6c)) # magic: ggml in hex
+fout.write(struct.pack("i", hparams["vocab_size"]))
+fout.write(struct.pack("i", hparams["max_position_embeddings"]))
+fout.write(struct.pack("i", hparams["dim"]))
+fout.write(struct.pack("i", hparams["hidden_dim"]))
+fout.write(struct.pack("i", hparams["n_heads"]))
+fout.write(struct.pack("i", hparams["n_layers"]))
 fout.write(struct.pack("i", ftype))
 
 for i in range(hparams["vocab_size"]):
