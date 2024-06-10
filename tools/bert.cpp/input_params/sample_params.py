@@ -3,7 +3,7 @@ import time
 import sys
 import os
 
-random.seed(time.clock())
+random.seed(time.time)
 
 try:
     os.makedirs("batches")
