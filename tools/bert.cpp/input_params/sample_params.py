@@ -10,10 +10,13 @@ try:
 except OSError as exception:
     pass
 
+num_batches = int(sys.argv[1])
+batch_size = int(sys.argv[2])
+
 with open("params", 'r') as f:
     lines = f.readlines()
-    for i in range(int(sys.argv[1])):
-        rand_lines = random.sample(lines, int(sys.argv[2]))
-        with open("batches/params_" + str(int(sys.argv[2])%10)+"K" + "_" + str(i), "w") as out:
+    for i in range(num_batches):
+        rand_lines = random.sample(lines, batch_size)
+        with open("batches/params_" + str(batch_size//1000)+"K" + "_" + str(i), "w") as out:
             out.write("".join(line for line in rand_lines))
     
