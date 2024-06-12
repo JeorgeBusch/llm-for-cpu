@@ -47,3 +47,7 @@
 ## Generating Input Parameter Batches
 * Run `python sample_params.py <num_batches> <num_samples_per_batch>` in the `llm-for-cpu/tools/bert.cpp/input_params` directory
   * The batches will be created in `llm-for-cpu/tools/bert.cpp/input_params/batches`
+
+## Simulating with Input Parameter Batches
+* Run `./run_batches <num_batches> <batch_size>`
+ * This will by default read from `tools/bert.cpp/input_params/batches`, so either make sure the files are located there or modify `run_batches` to point to your input data directory
