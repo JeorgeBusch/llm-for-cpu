@@ -19,23 +19,6 @@ typedef double ggml_float;
 
 extern "C" {
 	static void ggml_vec_dot_f16(const int n, float *  s, ggml_fp16_t *  x, ggml_fp16_t *  y) {
-		/*
-		FILE *f = fopen("/mnt/c/users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/input_params/params", "a");
-		fprintf(f, "%d\t", n);
-		for(int i = 0; i < (sizeof(s) / sizeof(s[0])); i++){
-			fprintf(f, "%.9g ", s[i]);
-		}
-		fprintf(f, "\t");
-		for(int i = 0; i < (sizeof(x) / sizeof(x[0])); i++){
-			fprintf(f, "%d ", x[i]);
-		}
-		fprintf(f, "\t");
-		for(int i = 0; i < (sizeof(y) / sizeof(y[0])); i++){
-			fprintf(f, "%d ", y[i]);
-		}
-		fprintf(f, "\n");
-		fclose(f);
-		*/
 		
 		ggml_float sumf = 0.0;
 	
@@ -74,7 +57,16 @@ extern "C" {
 };
 
 int main(int argc, char ** argv) {	
-	ifstream file("/mnt/c/users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/input_params/params_10k"); 
+	if (argc == 1){
+		cout << "Not enough arguments: Include path to parameter list." << endl;
+		return 0;
+	}
+	ifstream file(argv[1]);
+	if (file.fail()){
+		cout << "Failed to open file: Check file name." << endl;
+		return 0;
+	}
+	
     string line; 
 	string delimiter = "\t";
 	
