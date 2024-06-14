@@ -39,8 +39,8 @@ system.mem_ctrl.dram = DDR3_1600_8x8()
 system.mem_ctrl.dram.range = system.mem_ranges[0]
 system.mem_ctrl.port = system.membus.mem_side_ports
 
-SimpleOpts.add_option("binary", nargs='?', default="tools/bert.cpp/build/bin/fp16_dot")
-SimpleOpts.add_option("batch_path", nargs='?', default="tools/bert.cpp/input_params/params")
+SimpleOpts.add_option("binary", nargs='?', default="/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/build/bin/fp16_dot")
+SimpleOpts.add_option("batch_path", nargs='?', default="/mnt/c/Users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/input_params/params")
 
 args = SimpleOpts.parse_args()
 
