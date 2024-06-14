@@ -1,8 +1,0 @@
-binary_dir="tools/bert.cpp/build/bin/fp16_dot"
-params_dir="tools/bert.cpp/input_params/params"
-
-for ((i=0; i<$1; i=i+1))
-do
-	echo build/X86/gem5.opt --outdir=output/params_$2"K_"$i scripts/run_params_se.py $binary_dir $params_dir
-	build/X86/gem5.opt --outdir=output/params_$2"K_"$i scripts/run_params_se.py $binary_dir $params_dir
-done
