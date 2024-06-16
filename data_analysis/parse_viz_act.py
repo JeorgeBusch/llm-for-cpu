@@ -10,21 +10,23 @@ def count_files_in_directory(directory_path):
     try:
         # List all the files and directories in the given directory
         items = os.listdir(directory_path)
-        
+
         # Filter out directories, keeping only files
-        files = [item for item in items if os.path.isfile(os.path.join(directory_path, item))]
+        folders = [item for item in items if os.path.isdir(os.path.join(directory_path, item))]
         
         # Return the number of files
-        return len(files)
+        return len(folders)
     
     except FileNotFoundError:
-        return "Directory not found"
+        return 0
     except Exception as e:
-        return f"An error occurred: {e}"
+        return 0
 
 # using the function
-directory_path = 'C:/stats_research/data_llm-for-cpu/stats'
+directory_path = 'C:\stats_research\llm-for-cpu\data_analysis\params'
 file_count = count_files_in_directory(directory_path)
+
+print(f"The file count is {file_count}")
 
 #-----------------------------------------------------------
 
@@ -32,8 +34,8 @@ file_count = count_files_in_directory(directory_path)
 data = {}
 
 
-for i in range(1, file_count + 1):
-    file_path = f'C:/stats_research/data_llm-for-cpu/stats/stats_00{i}.txt'
+for i in range(0, file_count):
+    file_path = f'C:\stats_research\llm-for-cpu\data_analysis\params/params_100k_{i}/stats.txt'
     try:
         with open(file_path, 'r') as file:
             lines = file.readlines()
