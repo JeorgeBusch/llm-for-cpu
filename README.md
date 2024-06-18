@@ -50,4 +50,5 @@
 
 ## Simulating with Input Parameter Batches
 * Run `./run_batches <num_batches> <batch_size>`
+ * NOTE: `batch_size` is formatted as multiples of 1000
  * This will by default read from `tools/bert.cpp/input_params/batches`, so either make sure the files are located there or modify `run_batches` to point to your input data directory
