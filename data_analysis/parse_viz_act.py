@@ -190,14 +190,14 @@ for column in columns:
 
 # %% 
 
-# more zoomed in plots to each of them 
+# Zoomed in plots like last time.
 
 fig, axes = plt.subplots(nrows = 1, ncols = 3, figsize = (18,5))
 
 # ------------- data_mpki -------------
 
-sns.barplot(ax=axes[0], x = df.index, y = df['data_mpki'], color = 'blue', label = 'Barplot', alpha = 0.2)
-sns.lineplot(ax = axes[0], x=df.index, y = df['data_mpki'], marker = 'o', color = 'purple', label = 'Line')
+# sns.barplot(ax=axes[0], x = df.index, y = df['data_mpki'], color = 'blue', label = 'Barplot', alpha = 0.2)
+sns.scatterplot(ax = axes[0], x=df.index, y = df['data_mpki'], marker = 'o', color = 'purple', label = 'Line')
 axes[0].set_ylim(1.6398e6, 1.645e6)
 axes[0].set_title('data_mpki')
 axes[0].set_xlabel('Index')
@@ -206,8 +206,8 @@ axes[0].set_ylabel('Values')
 # ------------- inst_mpki -------------
 
 plt.figure()
-sns.barplot(ax=axes[1], x = df.index, y = df['inst_mpki'], color = 'blue', label = 'Barplot', alpha = 0.2)
-sns.lineplot(ax = axes[1], x=df.index, y = df['inst_mpki'], marker = 'o', color = 'purple', label = 'Line')
+# sns.barplot(ax=axes[1], x = df.index, y = df['inst_mpki'], color = 'blue', label = 'Barplot', alpha = 0.2)
+sns.scatterplot(ax = axes[1], x=df.index, y = df['inst_mpki'], marker = 'o', color = 'purple', label = 'Line')
 axes[1].set_ylim(0.0013050, 0.00132)
 axes[1].set_title('inst_mpki')
 axes[1].set_xlabel('Index')
@@ -216,8 +216,8 @@ axes[1].set_ylabel('Values')
 # ------------- IPC -------------
 
 plt.figure()
-sns.barplot(ax=axes[2], x = df.index, y = df['IPC'], color = 'blue', label = 'Barplot', alpha = 0.2)
-sns.lineplot(ax=axes[2], x=df.index, y = df['IPC'], marker = 'o', color = 'purple', label = 'Line')
+# sns.barplot(ax=axes[2], x = df.index, y = df['IPC'], color = 'blue', label = 'Barplot', alpha = 0.2)
+sns.scatterplot(ax=axes[2], x=df.index, y = df['IPC'], marker = 'o', color = 'purple', label = 'Line')
 axes[2].set_ylim(0.01200, 0.01204)
 axes[2].set_title('IPC')
 axes[2].set_xlabel('Index')
@@ -364,6 +364,14 @@ plt.tight_layout()
 
 # Show the figure
 plt.show()
+
+
+
+# %%
+
+# looking into more data viz 
+
+
 
 
 
