@@ -8,6 +8,10 @@ import seaborn as sns
 import re
 import os
 
+# different dependencies for kmeans stuff 
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import MinMaxScaler
+
 # Function to get all subdirectories in a given directory
 def get_subdirectories(directory_path):
     try:
@@ -228,18 +232,127 @@ plt.tight_layout()
 plt.show()
 
 '''
+
+# %%
+
+# next couple blocks of code are for clustering the entire dataframe for some reason :) 
+
+# df_copy = df[['data_mpki', 'IPC']]
+# df_copy2 = df[['inst_mpki', 'IPC']]
+
+
+# fix scaler stuff later 
+
+# scaler = MinMaxScaler()
+# scaler.fit(df_copy)
+# df_copy['data_mpki'] = scaler.transform(df_copy['data_mpki'])
+
+# scaler.fit(df_copy.IPC)
+# df_copy.IPC = scaler.transform(df_copy.IPC)
+
+# -------------
+
+scaler = MinMaxScaler()
+df_scaled1 = scaler.fit_transform(df[['data_mpki', 'IPC']])
+
+scaler = MinMaxScaler()
+df_scaled2 = scaler.fit_transform(df[['inst_mpki', 'IPC']])
+
+# %%
+
+k_rng = range(1,10)
+sse = []
+sse2 = []
+
+# for some reason Integrating them into the same loop results in them being the exact same.  
+
+for k in k_rng:
+    km = KMeans(n_clusters=k)
+    km.fit(df_scaled1)
+    sse.append(km.inertia_)
+
+for k in k_rng:
+    km = KMeans(n_clusters=k)
+    km.fit(df_scaled2)
+    sse2.append(km.inertia_)
+
+# %%
+print(sse)
+print(sse2)
+
+# %%
+
+plt.figure()
+plt.xlabel('K')
+plt.ylabel('Sum of squared error 1')
+plt.plot(k_rng,sse)
+
+
+plt.figure()
+plt.xlabel('K')
+plt.ylabel('Sum of squared error 2')
+plt.plot(k_rng,sse2)
+
+# %%
+
+km = KMeans(n_clusters=3)
+y_predicted = km.fit_predict(df_scaled1)
+df['cluster1'] = y_predicted
+
+km = KMeans(n_clusters=3)
+y_predicted = km.fit_predict(df_scaled2)
+df['cluster2'] = y_predicted
+
+
+fig, axes = plt.subplots(nrows = 1, ncols = 2, figsize = (18,5))
+
+# ------------- data_mpki, CLUSTERED WITH IPC -------------
+
+# sns.barplot(ax=axes[0], x = df.index, y = df['data_mpki'], color = 'blue', label = 'Barplot', alpha = 0.2)
+
+sns.scatterplot(ax = axes[0], x=df['IPC'], y = df['data_mpki'], hue=df['cluster1'], marker = 'o', color = 'purple')
+# axes[0].set_ylim(1.6398e6, 1.645e6)
+
+axes[0].set_title('Clustered graph, IPC vs data_mpki')
+axes[0].set_xlabel('IPC')
+axes[0].set_ylabel('data_mpki')
+
+# ------------- data_mpki, CLUSTERED WITH IPC -------------
+
+sns.scatterplot(ax = axes[1], x=df['IPC'], y = df['inst_mpki'], hue=df['cluster2'], marker = 'o', color = 'purple')
+# axes[0].set_ylim(1.6398e6, 1.645e6)
+
+axes[1].set_title('Clustered graph, IPC vs data_mpki')
+axes[1].set_xlabel('IPC')
+axes[1].set_ylabel('inst_mpki')
+
+
+
+
+
 # %%
 
 
-# orignial metrics
+# original metrics
+
+km = KMeans(n_clusters=3)
+y_predicted = km.fit_predict(df[['data_mpki', 'IPC']])
+df['cluster1'] = y_predicted
+
+# km = KMeans(n_clusters=3)
+# y_predicted3 = km.fit_predict(df[['data_mpki']])
+# df['cluster3'] = y_predicted
+
 
 fig, axes = plt.subplots(nrows = 1, ncols = 3, figsize = (18,5))
 
 # ------------- data_mpki -------------
 
 # sns.barplot(ax=axes[0], x = df.index, y = df['data_mpki'], color = 'blue', label = 'Barplot', alpha = 0.2)
-sns.scatterplot(ax = axes[0], x=df.index, y = df['data_mpki'], marker = 'o', color = 'purple', label = 'Line')
+
+sns.scatterplot(ax = axes[0], x=df.index, y = df['data_mpki'], hue=df['cluster1'], marker = 'o', color = 'purple')
 # axes[0].set_ylim(1.6398e6, 1.645e6)
+
 axes[0].set_title('data_mpki')
 axes[0].set_xlabel('Index')
 axes[0].set_ylabel('Values')
@@ -248,7 +361,7 @@ axes[0].set_ylabel('Values')
 
 plt.figure()
 # sns.barplot(ax=axes[1], x = df.index, y = df['inst_mpki'], color = 'blue', label = 'Barplot', alpha = 0.2)
-sns.scatterplot(ax = axes[1], x=df.index, y = df['inst_mpki'], marker = 'o', color = 'purple', label = 'Line')
+sns.scatterplot(ax = axes[1], x=df.index, y = df['inst_mpki'], marker = 'o', color = 'purple')
 # axes[1].set_ylim(0.0013050, 0.00132)
 axes[1].set_title('inst_mpki')
 axes[1].set_xlabel('Index')
@@ -258,7 +371,7 @@ axes[1].set_ylabel('Values')
 
 plt.figure()
 # sns.barplot(ax=axes[2], x = df.index, y = df['IPC'], color = 'blue', label = 'Barplot', alpha = 0.2)
-sns.scatterplot(ax=axes[2], x=df.index, y = df['IPC'], marker = 'o', color = 'purple', label = 'Line')
+sns.scatterplot(ax=axes[2], x=df.index, y = df['IPC'], marker = 'o', color = 'purple')
 # axes[2].set_ylim(0.01200, 0.01204)
 axes[2].set_title('IPC')
 axes[2].set_xlabel('Index')
