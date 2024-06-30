@@ -11,6 +11,12 @@ import os
 # different dependencies for kmeans stuff 
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
+import streamlit as stl 
+
+# more dependencies 
+import plotly.graph_objects as go
+import streamlit as st
+import plotly.express as px
 
 # Function to get all subdirectories in a given directory
 def get_subdirectories(directory_path):
@@ -303,46 +309,32 @@ km = KMeans(n_clusters=3)
 y_predicted = km.fit_predict(df_scaled2)
 df['cluster2'] = y_predicted
 
-
-fig, axes = plt.subplots(nrows = 1, ncols = 2, figsize = (18,5))
-
 # ------------- data_mpki, CLUSTERED WITH IPC -------------
 
-# sns.barplot(ax=axes[0], x = df.index, y = df['data_mpki'], color = 'blue', label = 'Barplot', alpha = 0.2)
+fig1 = go.Figure()
+fig1.add_trace(go.Scatter(x=df['IPC'], y=df['data_mpki'], mode='markers', marker=dict(color=df['cluster1'], colorscale='Viridis', showscale=True)))
+fig1.update_layout(title='Clustered graph, IPC vs data_mpki', xaxis_title='IPC', yaxis_title='data_mpki')
 
-sns.scatterplot(ax = axes[0], x=df['IPC'], y = df['data_mpki'], hue=df['cluster1'], marker = 'o', color = 'purple')
-# axes[0].set_ylim(1.6398e6, 1.645e6)
-
-axes[0].set_title('Clustered graph, IPC vs data_mpki')
-axes[0].set_xlabel('IPC')
-axes[0].set_ylabel('data_mpki')
-
-# ------------- data_mpki, CLUSTERED WITH IPC -------------
-
-sns.scatterplot(ax = axes[1], x=df['IPC'], y = df['inst_mpki'], hue=df['cluster2'], marker = 'o', color = 'purple')
-# axes[0].set_ylim(1.6398e6, 1.645e6)
-
-axes[1].set_title('Clustered graph, IPC vs data_mpki')
-axes[1].set_xlabel('IPC')
-axes[1].set_ylabel('inst_mpki')
+# ------------- inst_mpki, CLUSTERED WITH IPC -------------
 
 
+fig2 = go.Figure()
+fig2.add_trace(go.Scatter(x=df['IPC'], y=df['inst_mpki'], mode='markers', marker=dict(color=df['cluster2'], colorscale='Viridis', showscale=True)))
+fig2.update_layout(title='Clustered graph, IPC vs inst_mpki', xaxis_title='IPC', yaxis_title='inst_mpki')
 
+# Streamlit app
+st.title('Interactive Clustering Visualization')
 
+fig1.show()
+fig2.show()
+
+# for streamlit: 
+st.plotly_chart(fig1)
+st.plotly_chart(fig2)
 
 # %%
 
-
-# original metrics
-
-km = KMeans(n_clusters=3)
-y_predicted = km.fit_predict(df[['data_mpki', 'IPC']])
-df['cluster1'] = y_predicted
-
-# km = KMeans(n_clusters=3)
-# y_predicted3 = km.fit_predict(df[['data_mpki']])
-# df['cluster3'] = y_predicted
-
+# actually plotting data_mpki, inst_mpki and IPC 
 
 fig, axes = plt.subplots(nrows = 1, ncols = 3, figsize = (18,5))
 
@@ -350,7 +342,7 @@ fig, axes = plt.subplots(nrows = 1, ncols = 3, figsize = (18,5))
 
 # sns.barplot(ax=axes[0], x = df.index, y = df['data_mpki'], color = 'blue', label = 'Barplot', alpha = 0.2)
 
-sns.scatterplot(ax = axes[0], x=df.index, y = df['data_mpki'], hue=df['cluster1'], marker = 'o', color = 'purple')
+sns.scatterplot(ax = axes[0], x=df.index, y = df['data_mpki'], marker = 'o', color = 'purple')
 # axes[0].set_ylim(1.6398e6, 1.645e6)
 
 axes[0].set_title('data_mpki')
@@ -381,6 +373,21 @@ axes[2].set_ylabel('Values')
 plt.tight_layout()
 plt.show()
 
+# PLOTLY VERSIONS
+
+# Create Plotly scatter plots
+fig_data_mpki = px.scatter(df, x=df.index, y='data_mpki', title='data_mpki', labels={'x': 'Index', 'data_mpki': 'Values'}, color_discrete_sequence=['purple'])
+fig_inst_mpki = px.scatter(df, x=df.index, y='inst_mpki', title='inst_mpki', labels={'x': 'Index', 'inst_mpki': 'Values'}, color_discrete_sequence=['purple'])
+fig_IPC = px.scatter(df, x=df.index, y='IPC', title='IPC', labels={'x': 'Index', 'IPC': 'Values'}, color_discrete_sequence=['purple'])
+
+fig_data_mpki.show()
+fig_inst_mpki.show()
+fig_IPC.show()
+
+# for streamlit: 
+st.plotly_chart(fig_data_mpki)
+st.plotly_chart(fig_inst_mpki)
+st.plotly_chart(fig_IPC)
 
 # %% 
 
@@ -388,7 +395,7 @@ fig, axes = plt.subplots(nrows = 1, ncols = 3, figsize = (18,5))
 
 # ------------- data_mpki -------------
 
-sns.kdeplot(ax = axes[0], x=df.index, y = df['data_mpki'], color = 'purple', shade = True, label = 'Line')
+sns.kdeplot(ax = axes[0], x=df.index, y = df['data_mpki'], color = 'purple', fill = True)
 # axes[0].set_ylim(1.6398e6, 1.645e6)
 axes[0].set_title('data_mpki')
 axes[0].set_xlabel('Index')
@@ -397,7 +404,7 @@ axes[0].set_ylabel('Values')
 # ------------- inst_mpki -------------
 
 plt.figure()
-sns.kdeplot(ax = axes[1], x=df.index, y = df['inst_mpki'],color = 'purple', shade = True, label = 'Line')
+sns.kdeplot(ax = axes[1], x=df.index, y = df['inst_mpki'],color = 'purple', fill = True)
 # axes[1].set_ylim(0.0013050, 0.00132)
 axes[1].set_title('inst_mpki')
 axes[1].set_xlabel('Index')
@@ -406,7 +413,7 @@ axes[1].set_ylabel('Values')
 # ------------- IPC -------------
 
 plt.figure()
-sns.kdeplot(ax=axes[2], x=df.index, y = df['IPC'], color = 'purple', shade = True, label = 'Line')
+sns.kdeplot(ax=axes[2], x=df.index, y = df['IPC'], color = 'purple', fill = True)
 # axes[2].set_ylim(0.01200, 0.01204)
 axes[2].set_title('IPC')
 axes[2].set_xlabel('Index')
@@ -417,17 +424,26 @@ plt.tight_layout()
 plt.show()
 
 
+# plotly versions
 
+fig_data_mpki = px.density_heatmap(df, x=df.index, y='data_mpki', title='data_mpki', labels={'x': 'Index', 'data_mpki': 'Values'}, color_continuous_scale='Viridis')
+fig_inst_mpki = px.density_heatmap(df, x=df.index, y='inst_mpki', title='inst_mpki', labels={'x': 'Index', 'inst_mpki': 'Values'}, color_continuous_scale='Viridis')
+fig_IPC = px.density_heatmap(df, x=df.index, y='IPC', title='IPC', labels={'x': 'Index', 'IPC': 'Values'}, color_continuous_scale='Viridis')
 
-# %%
+# Adjusting the layout
+fig_data_mpki.update_layout(width=600, height=400)
+fig_inst_mpki.update_layout(width=600, height=400)
+fig_IPC.update_layout(width=600, height=400)
 
+# Display the figures
+fig_data_mpki.show()
+fig_inst_mpki.show()
+fig_IPC.show()
 
-
-
-
-
-
-
+# for streamlit: 
+st.plotly_chart(fig_data_mpki)
+st.plotly_chart(fig_inst_mpki)
+st.plotly_chart(fig_IPC)
 
 #%%
 # before looking at the graph for each simulation, average each of the instructions 
@@ -529,27 +545,18 @@ plt.tight_layout()
 plt.show()
 
 
-
-# %%
-
-# looking into more data viz 
-
-
-
-
-
 #%%
 
 # make tighter layout to avoid having super long page
 
 # these are the remaining columns just to have them laid out.  
 
-for column in df.columns:
-    plt.figure()  
-    sns.barplot(x=df.index, y=df[column], color='blue', label = 'Barplot', alpha=0.2)
-    sns.lineplot(x=df.index, y=df[column], marker='o', color = 'purple', label = 'Line')
-    plt.title(column)  
-    plt.xlabel('Index')  
-    plt.ylabel('Values')  
-    plt.tight_layout()
-    plt.show()  
+# for column in df.columns:
+#     plt.figure()  
+#     sns.barplot(x=df.index, y=df[column], color='blue', label = 'Barplot', alpha=0.2)
+#     sns.lineplot(x=df.index, y=df[column], marker='o', color = 'purple', label = 'Line')
+#     plt.title(column)  
+#     plt.xlabel('Index')  
+#     plt.ylabel('Values')  
+#     plt.tight_layout()
+#     plt.show()  
