@@ -89,6 +89,8 @@ simd_floating_ops={"system.cpu.exec_context.thread_0.statExecutedInstType::SimdF
 num_ticks = 0
 stat_interval = 50000000000000
 
+exit_event = m5.simulate()
+'''
 while exit_event is None:
     exit_event = m5.simulate(stat_interval)
     num_ticks += stat_interval
@@ -140,6 +142,6 @@ while exit_event is None:
         print("Floating Point SIMD Ops:", num_floating_ops, "\n")
                 
         exit_event = None
-
+'''
 print('Exiting @ tick {} because {}'
       .format(m5.curTick(), exit_event.getCause()))
