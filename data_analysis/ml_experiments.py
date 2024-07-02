@@ -1,6 +1,8 @@
 # basics 
 import pandas as pd
 import numpy as np 
+import missingno 
+
 
 # plotting and regular expressions (if we need for some reason)
 import matplotlib.pyplot as plt

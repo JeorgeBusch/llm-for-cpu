@@ -7,16 +7,21 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re
 import os
+import missingno as msno
 
 # different dependencies for kmeans stuff 
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
-import streamlit as stl 
 
 # more dependencies 
 import plotly.graph_objects as go
 import streamlit as st
 import plotly.express as px
+
+
+# knee finder 
+from kneefinder import KneeFinder
+
 
 # Function to get all subdirectories in a given directory
 def get_subdirectories(directory_path):
@@ -81,6 +86,9 @@ df.head(100000)
 # # because there is no need for more padding (seems like every value is covered), check for missing values and remove/fill them?
 # df.fillna(0, inplace=True)
 # # df = df.drop(df.columns[0], axis=1)
+
+msno.matrix(df) 
+
 missing_values = df.isnull().sum()
 print(missing_values)
 
@@ -97,29 +105,9 @@ df['inst_mpki'] = 1000 * (df['system.cpu.mmu.itb.rdMisses'] + df['system.cpu.mmu
 df['IPC'] = df['simInsts'] / df['system.cpu.numCycles']
 
 
-#%%
-
-df.to_csv("review.csv", sep=',', index=False)
-df.head()
-
 # %%
 
-# next couple blocks of code are for clustering the entire dataframe for some reason :) 
-
-# df_copy = df[['data_mpki', 'IPC']]
-# df_copy2 = df[['inst_mpki', 'IPC']]
-
-
-# fix scaler stuff later 
-
-# scaler = MinMaxScaler()
-# scaler.fit(df_copy)
-# df_copy['data_mpki'] = scaler.transform(df_copy['data_mpki'])
-
-# scaler.fit(df_copy.IPC)
-# df_copy.IPC = scaler.transform(df_copy.IPC)
-
-# -------------
+# Creating clustering features -> using the scaler
 
 scaler = MinMaxScaler()
 df_scaled1 = scaler.fit_transform(df[['data_mpki', 'IPC']])
@@ -162,27 +150,39 @@ plt.xlabel('K')
 plt.ylabel('Sum of squared error 2')
 plt.plot(k_rng,sse2)
 
+# %% 
+# Using the kneefinder library 
+
+kf = KneeFinder(k_rng, sse)
+knee_x, knee_y = kf.find_knee()
+kf.plot()
+
+kf2 = KneeFinder(k_rng, sse2)
+knee_x2, knee_y2 = kf.find_knee()
+kf2.plot()
+
+
 # %%
 
-km = KMeans(n_clusters=3)
+km = KMeans(n_clusters=4)
 y_predicted = km.fit_predict(df_scaled1)
-df['cluster1'] = y_predicted
+df['cluster_data_IPC'] = y_predicted
 
-km = KMeans(n_clusters=3)
-y_predicted = km.fit_predict(df_scaled2)
-df['cluster2'] = y_predicted
+
+km2 = KMeans(n_clusters=3)
+y_predicted = km2.fit_predict(df_scaled2)
+df['cluster_inst_IPC'] = y_predicted
 
 # ------------- data_mpki, CLUSTERED WITH IPC -------------
 
 fig1 = go.Figure()
-fig1.add_trace(go.Scatter(x=df['IPC'], y=df['data_mpki'], mode='markers', marker=dict(color=df['cluster1'], colorscale='Viridis', showscale=True)))
+fig1.add_trace(go.Scatter(x=df['IPC'], y=df['data_mpki'], mode='markers', marker=dict(color=df['cluster_data_IPC'], colorscale='Viridis', showscale=True)))
 fig1.update_layout(title='Clustered graph, IPC vs data_mpki', xaxis_title='IPC', yaxis_title='data_mpki')
 
 # ------------- inst_mpki, CLUSTERED WITH IPC -------------
 
-
 fig2 = go.Figure()
-fig2.add_trace(go.Scatter(x=df['IPC'], y=df['inst_mpki'], mode='markers', marker=dict(color=df['cluster2'], colorscale='Viridis', showscale=True)))
+fig2.add_trace(go.Scatter(x=df['IPC'], y=df['inst_mpki'], mode='markers', marker=dict(color=df['cluster_inst_IPC'], colorscale='Viridis', showscale=True)))
 fig2.update_layout(title='Clustered graph, IPC vs inst_mpki', xaxis_title='IPC', yaxis_title='inst_mpki')
 
 # Streamlit app
@@ -194,6 +194,40 @@ fig2.show()
 # for streamlit: 
 # st.plotly_chart(fig1)
 # st.plotly_chart(fig2)
+
+
+# %%
+
+print(km2.cluster_centers_)
+# testing out the x 
+print(km2.cluster_centers_[:,0])
+
+# testing out the y 
+print(km2.cluster_centers_[:,1])
+
+# %%
+
+# filtering cluster 1 for data IPC 
+
+df['filtered_cluster1_dataIPC'] = df.loc[(df['cluster_data_IPC'] == 1), ['data_mpki']]
+df['filtered_cluster2_dataIPC'] = df.loc[(df['cluster_data_IPC'] == 2), ['data_mpki']]
+df['filtered_cluster3_dataIPC'] = df.loc[(df['cluster_data_IPC'] == 3), ['data_mpki']]
+
+# ---- create the separate set 
+
+df['filtered_cluster1_instIPC'] = df.loc[(df['cluster_data_IPC'] == 1), ['data_mpki']]
+df['filtered_cluster2_instIPC'] = df.loc[(df['cluster_data_IPC'] == 2), ['data_mpki']]
+df['filtered_cluster3_instIPC'] = df.loc[(df['cluster_data_IPC'] == 3), ['data_mpki']]
+
+df.head()
+
+
+
+# %%
+# Make the actual dataframe 
+
+# review for debugging purposes 
+
 
 # %%
 
@@ -344,17 +378,6 @@ sns.barplot(x=mean_values.index, y=mean_values.values, alpha=0.2, label='Bar plo
 sns.lineplot(x=mean_values.index, y=mean_values.values, marker='o', color='purple', label='Mean line')
 plt.ylim(ylim)
 _ = plt.xticks(rotation=90)
-
-
-#%%
-
-# just a quick and dirty pie chart to get an idea of the highest values right now 
-
-mean_values = df.mean()
-
-plt.figure(figsize=(10,6))
-
-plt.pie(mean_values, labels=mean_values.index, autopct='%1.1f%%', startangle=140);
 
 
 #%%
