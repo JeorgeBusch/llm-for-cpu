@@ -19,6 +19,7 @@ m5out
 /util/tap/*.o
 /util/tap/m5tap
 /util/term/m5term
+/util/m5/build
 /system/arm/dt/*.dtb
 /system/arm/dt/.gen
 /system/arm/bootloader/arm/*.o
