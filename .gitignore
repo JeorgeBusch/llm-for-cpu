@@ -42,3 +42,4 @@ scripts/embed_python/distilbert-base-uncased-finetuned-sst-2-english
 tools/miniconda
 gmon.out
 tools/bert.cpp/input_params/batches
+data_analysis/params
