@@ -52,3 +52,8 @@
 * Run `./run_batches <num_batches> <batch_size>` in the `llm-for-cpu` directory
  * NOTE: `batch_size` is formatted as multiples of 1000
  * This will by default read from `tools/bert.cpp/input_params/batches`, so either make sure the files are located there or modify `run_batches` to point to your input data directory
+
+## Enabling Simulation Warmup
+* Run `scons build/x86/out/m5` in `llm-for-cpu/util/m5`
+* Change the absolute path on line 28 in `llm-for-cpu/tools/bert.cpp/examples/CMakeLists.txt` to your own path
+* Re-build the `fp16_dot` binary
