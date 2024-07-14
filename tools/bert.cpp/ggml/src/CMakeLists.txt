@@ -1,3 +1,5 @@
+set(CMAKE_C_FLAGS "-I../../../../../include")
+
 if (GGML_ALL_WARNINGS)
     if (CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
         #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
@@ -272,9 +274,9 @@ target_include_directories(${TARGET} PUBLIC
     )
 
 if (MSVC)
-    target_link_libraries(${TARGET} PUBLIC ${GGML_EXTRA_LIBS} ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(${TARGET} PUBLIC ${GGML_EXTRA_LIBS} ${CMAKE_THREAD_LIBS_INIT} /mnt/c/Users/aej45/Desktop/llm-for-cpu/util/m5/build/x86/out/libm5.a)
 else()
-    target_link_libraries(${TARGET} PUBLIC m ${GGML_EXTRA_LIBS} ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(${TARGET} PUBLIC m ${GGML_EXTRA_LIBS} ${CMAKE_THREAD_LIBS_INIT} /mnt/c/Users/aej45/Desktop/llm-for-cpu/util/m5/build/x86/out/libm5.a)
 endif()
 
 if (BUILD_SHARED_LIBS)
@@ -282,6 +284,7 @@ if (BUILD_SHARED_LIBS)
 
     target_link_libraries(${TARGET} PUBLIC
         ${CMAKE_DL_LIBS}
+		/mnt/c/Users/aej45/Desktop/llm-for-cpu/util/m5/build/x86/out/libm5.a
         )
 
     target_compile_definitions(${TARGET} PUBLIC
@@ -304,6 +307,7 @@ target_compile_definitions(${TARGET} PUBLIC
 if (MINGW)
     target_link_libraries(${TARGET} PUBLIC
         stdc++
+		/mnt/c/Users/aej45/Desktop/llm-for-cpu/util/m5/build/x86/out/libm5.a
         )
 endif()
 
@@ -312,7 +316,7 @@ if (GGML_CUDA_SOURCES)
     set_property(TARGET ggml  PROPERTY CUDA_ARCHITECTURES "52;61")
     set_property(TARGET ggml  PROPERTY CUDA_SELECT_NVCC_ARCH_FLAGS "Auto")
     if (NOT MSVC)
-        target_link_libraries(ggml PUBLIC stdc++)
+        target_link_libraries(ggml PUBLIC stdc++ /mnt/c/Users/aej45/Desktop/llm-for-cpu/util/m5/build/x86/out/libm5.a)
     endif()
 endif()
 

@@ -5,6 +5,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+set(CMAKE_CXX_FLAGS "-I../../../include")
+
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
 endif()
@@ -203,7 +205,7 @@ add_library(bert
 
 target_include_directories(bert PUBLIC .)
 target_compile_features(bert PUBLIC cxx_std_20)
-target_link_libraries(bert PRIVATE ggml ${BERT_EXTRA_LIBS})
+target_link_libraries(bert PRIVATE ggml ${BERT_EXTRA_LIBS} /mnt/c/Users/aej45/Desktop/llm-for-cpu/util/m5/build/x86/out/libm5.a)
 
 if(WIN32)
 include_directories(${CMAKE_SOURCE_DIR}/include_win)

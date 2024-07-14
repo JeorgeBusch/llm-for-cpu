@@ -14,6 +14,36 @@
 #include <thread>
 #include <algorithm>
 
+#include <stdint.h>
+#include <inttypes.h>
+
+#include <gem5/m5ops.h>
+
+extern "C" {
+	#define MAX(a, b) ((a) > (b) ? (a) : (b))
+	
+	void traverse_and_write(const struct ggml_cgraph * cgraph, const char * fname) {
+		FILE * fout = fopen(fname, "w");
+		if (!fout) {
+			fprintf(stderr, "%s: failed to open %s\n", __func__, fname);
+			return;
+		}
+	
+		for (int i = 0; i < cgraph->n_nodes; ++i) {
+			struct ggml_tensor * node = cgraph->nodes[i];
+			fprintf(fout, "Node: %s\n", node->name);
+	
+			for (int j = 0; j < GGML_MAX_SRC; ++j) {
+				if (node->src[j]) {
+					fprintf(fout, "  Edge from %s to %s\n", node->src[j]->name, node->name);
+				}
+			}
+		}
+	
+		fclose(fout);
+	}
+}
+
 // default hparams (all-MiniLM-L6-v2)
 struct bert_hparams
 {
@@ -540,24 +570,24 @@ struct bert_ctx * bert_load_from_file(const char *fname)
 
             // map by name
 			/*
-            model.tensors["encoder.layer." + std::to_string(i) + ".attention.self.query.weight"] = layer.q_w;
-            model.tensors["encoder.layer." + std::to_string(i) + ".attention.self.query.bias"] = layer.q_b;
-            model.tensors["encoder.layer." + std::to_string(i) + ".attention.self.key.weight"] = layer.k_w;
-            model.tensors["encoder.layer." + std::to_string(i) + ".attention.self.key.bias"] = layer.k_b;
-            model.tensors["encoder.layer." + std::to_string(i) + ".attention.self.value.weight"] = layer.v_w;
-            model.tensors["encoder.layer." + std::to_string(i) + ".attention.self.value.bias"] = layer.v_b;
-            model.tensors["encoder.layer." + std::to_string(i) + ".attention.output.LayerNorm.weight"] = layer.ln_att_w;
-            model.tensors["encoder.layer." + std::to_string(i) + ".attention.output.LayerNorm.bias"] = layer.ln_att_b;
-            model.tensors["encoder.layer." + std::to_string(i) + ".attention.output.dense.weight"] = layer.o_w;
-            model.tensors["encoder.layer." + std::to_string(i) + ".attention.output.dense.bias"] = layer.o_b;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.query.weight"] = layer.q_w;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.query.bias"] = layer.q_b;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.key.weight"] = layer.k_w;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.key.bias"] = layer.k_b;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.value.weight"] = layer.v_w;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.value.bias"] = layer.v_b;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.output.LayerNorm.weight"] = layer.ln_att_w;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.output.LayerNorm.bias"] = layer.ln_att_b;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.output.dense.weight"] = layer.o_w;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.output.dense.bias"] = layer.o_b;
 
-            model.tensors["encoder.layer." + std::to_string(i) + ".intermediate.dense.weight"] = layer.ff_i_w;
-            model.tensors["encoder.layer." + std::to_string(i) + ".intermediate.dense.bias"] = layer.ff_i_b;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".intermediate.dense.weight"] = layer.ff_i_w;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".intermediate.dense.bias"] = layer.ff_i_b;
 
-            model.tensors["encoder.layer." + std::to_string(i) + ".output.LayerNorm.weight"] = layer.ln_out_w;
-            model.tensors["encoder.layer." + std::to_string(i) + ".output.LayerNorm.bias"] = layer.ln_out_b;
-            model.tensors["encoder.layer." + std::to_string(i) + ".output.dense.weight"] = layer.ff_o_w;
-            model.tensors["encoder.layer." + std::to_string(i) + ".output.dense.bias"] = layer.ff_o_b;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.LayerNorm.weight"] = layer.ln_out_w;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.LayerNorm.bias"] = layer.ln_out_b;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.dense.weight"] = layer.ff_i_w;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.dense.bias"] = layer.ff_i_b;
 			*/
 			
 			model.tensors["transformer.layer." + std::to_string(i) + ".attention.q_lin.weight"] = layer.q_w;
@@ -578,6 +608,7 @@ struct bert_ctx * bert_load_from_file(const char *fname)
             model.tensors["transformer.layer." + std::to_string(i) + ".ffn.lin2.bias"] = layer.ff2_i_b;
             model.tensors["transformer.layer." + std::to_string(i) + ".output_layer_norm.weight"] = layer.ln_out_w;
             model.tensors["transformer.layer." + std::to_string(i) + ".output_layer_norm.bias"] = layer.ln_out_b;
+			
         }
     }
     // load weights
@@ -961,8 +992,21 @@ void bert_eval_batch(
 		//printf("Generating graph, iter %d / %d\n", ba, n_batch_size);
         ggml_build_forward_expand(&gf, output);
 		printf("Graph computation, iter %d / %d\n", ba, n_batch_size);
+		
+		//#ifdef GEM5
+			//m5_switch_cpu();
+			//m5_reset_stats(0,0);
+		//#endif
+		
         ggml_graph_compute_with_ctx(ctx0, &gf, n_threads);
-
+		
+		const char* File_Name_bin = "graph_visualizer_bin.txt";
+		const char* File_Name = "graph_visualizer.txt";
+		const char* File_Name_2 = "graph_visualizer_2.txt";
+		const char* File_Name_3 = "gtaph_visualizer_3.txt";
+		ggml_graph_export(&gf, File_Name_bin, File_Name);
+		traverse_and_write(&gf, File_Name_2);
+		ggml_graph_print_file(&gf, File_Name_3);
 
         // float *dat = ggml_get_data_f32(output);
         // pretty_print_tensor(dat, output->ne, output->nb, output->n_dims - 1, "");
