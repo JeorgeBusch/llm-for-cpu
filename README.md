@@ -41,9 +41,6 @@
 * Run `./main` in the `llm-for-cpu/tools/bert.cpp/build/bin` directory
 * This will also create `fp16_dot` in `llm-for-cpu/tools/bert.cpp/build/bin` which will only run the dot product trace
 
-## Running Bert SST in Gem5
-* Run `build/X86/gem5.opt --outdir=<output_dir> scripts/simple.py` to see how far you can get into execution
-
 ## Generating Input Parameter Batches
 * Run `python sample_params.py <num_batches> <num_samples_per_batch>` in the `llm-for-cpu/tools/bert.cpp/input_params` directory
   * The batches will be created in `llm-for-cpu/tools/bert.cpp/input_params/batches`
@@ -52,6 +49,9 @@
 * Run `./run_batches <num_batches> <batch_size>` in the `llm-for-cpu` directory
  * NOTE: `batch_size` is formatted as multiples of 1000
  * This will by default read from `tools/bert.cpp/input_params/batches`, so either make sure the files are located there or modify `run_batches` to point to your input data directory
+
+## Simulating Entire Inference Binary
+* Run `build/X86/gem5.opt --outdir=<output_dir> scripts/se_mode.py` to see how far you can get into execution
 
 ## Enabling Simulation Warmup
 * Run `scons build/x86/out/m5` in `llm-for-cpu/util/m5`
