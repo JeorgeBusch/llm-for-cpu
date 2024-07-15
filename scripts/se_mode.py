@@ -31,12 +31,6 @@ processor = SimpleSwitchableProcessor(
     num_cores=2,
 )
 
-
-processor = SimpleProcessor(
-    cpu_type=CPUTypes.ATOMIC,
-    num_cores=1,
-)
-
 board = SimpleBoard(
     clk_freq="3GHz",
     processor=processor,
