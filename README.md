@@ -57,7 +57,7 @@
  * `tools/bert.cpp/CMakeLists.txt` line 208
  * `tools/bert.cpp/example/CMakeLists.txt` lines 28, 31
  * `tools/bert.cpp/ggml/src/CMakeLists.txt` lines 277, 279, 287, 310, 319
-* Run `build/X86/gem5.opt --outdir=<output_dir> scripts/se_mode.py` to see how far you can get into execution
+* Run `build/X86/gem5.opt --outdir=<output/output_dir> scripts/se_mode.py` to see how far you can get into execution
 
 ## Enabling Simulation Warmup
 * Run `scons build/x86/out/m5` in `llm-for-cpu/util/m5`
