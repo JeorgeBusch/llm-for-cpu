@@ -51,7 +51,7 @@
  * This will by default read from `tools/bert.cpp/input_params/batches`, so either make sure the files are located there or modify `run_batches` to point to your input data directory
 
 ## Simulating Entire Inference Binary
-* Change the `model.params` variable to your local path to `distilbert-base-uncased-finetuned-sst-2-english/ggml-model-f16.bin`
+* Change the `params.model` variable to your local path to `distilbert-base-uncased-finetuned-sst-2-english/ggml-model-f16.bin`
  * Use `ggml-model-f32.bin` to run with 32-bit weights
 * Replace the paths in the following `target_link_libraries` with your local `libm5.a` path:
  * `tools/bert.cpp/CMakeLists.txt` line 208
