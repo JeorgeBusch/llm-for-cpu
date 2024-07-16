@@ -38,7 +38,7 @@ board = SimpleBoard(
     cache_hierarchy=cache_hierarchy,
 )
 
-binary = AbstractResource(local_path="tools/bert.cpp/build/bin/fp16_dot2")
+binary = AbstractResource(local_path="tools/bert.cpp/build/bin/main")
 board.set_se_binary_workload(binary)
 
 simulator = Simulator(
