@@ -55,7 +55,8 @@
  * Use `ggml-model-f32.bin` to run with 32-bit weights
 * Replace the paths in the following `target_link_libraries` with your local `libm5.a` path:
  * `tools/bert.cpp/CMakeLists.txt` line 208
- * `tools/bert.cpp/ggml/CMakeLists.txt` lines 277, 279, 287, 310, 319
+ * `tools/bert.cpp/example/CMakeLists.txt` lines 28, 31
+ * `tools/bert.cpp/ggml/src/CMakeLists.txt` lines 277, 279, 287, 310, 319
 * Run `build/X86/gem5.opt --outdir=<output_dir> scripts/se_mode.py` to see how far you can get into execution
 
 ## Enabling Simulation Warmup
