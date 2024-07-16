@@ -42,7 +42,7 @@ binary = AbstractResource(local_path="tools/bert.cpp/build/bin/main")
 board.set_se_binary_workload(binary)
 
 simulator = Simulator(
-    full_system=False
+    full_system=False,
     board=board,
 )
 
