@@ -46,16 +46,16 @@
 
 ## Simulating with Input Parameter Batches
 * Run `./run_batches <num_batches> <batch_size>` in the `llm-for-cpu` directory
- * NOTE: `batch_size` is formatted as multiples of 1000
- * This will by default read from `tools/bert.cpp/input_params/batches`, so either make sure the files are located there or modify `run_batches` to point to your input data directory
+  * NOTE: `batch_size` is formatted as multiples of 1000
+  * This will by default read from `tools/bert.cpp/input_params/batches`, so either make sure the files are located there or modify `run_batches` to point to your input data directory
 
 ## Simulating Entire Inference Binary
 * Change the `params.model` variable at the beginning of main in `tools/bert.cpp/examples/main.cpp` to your local path to `distilbert-base-uncased-finetuned-sst-2-english/ggml-model-f16.bin`
   * Use `ggml-model-f32.bin` to run with 32-bit weights
 * Replace the paths in the following `target_link_libraries` with your local `libm5.a` path:
- * `tools/bert.cpp/CMakeLists.txt` line 208
- * `tools/bert.cpp/example/CMakeLists.txt` lines 28, 31
- * `tools/bert.cpp/ggml/src/CMakeLists.txt` lines 277, 279, 287, 310, 319
+  * `tools/bert.cpp/CMakeLists.txt` line 208
+  * `tools/bert.cpp/example/CMakeLists.txt` lines 28, 31
+  * `tools/bert.cpp/ggml/src/CMakeLists.txt` lines 277, 279, 287, 310, 319
 * Run `build/X86/gem5.opt --outdir=<output/output_dir> scripts/simple.py` to see how far you can get into execution
 
 ## Running Bert SST in C++
