@@ -574,7 +574,7 @@ BaseCPU::takeOverFrom(BaseCPU *oldCPU)
         ThreadContext *oldTC = oldCPU->threadContexts[i];
 
         newTC->getIsaPtr()->setThreadContext(newTC);
-
+		
         newTC->takeOverFrom(oldTC);
 
         assert(newTC->contextId() == oldTC->contextId());
@@ -587,7 +587,8 @@ BaseCPU::takeOverFrom(BaseCPU *oldCPU)
            if (debug::Context)
             ThreadContext::compare(oldTC, newTC);
         */
-
+		
+		/*
         newTC->getMMUPtr()->takeOverFrom(oldTC->getMMUPtr());
 
         // Checker whether or not we have to transfer CheckerCPU
@@ -597,6 +598,7 @@ BaseCPU::takeOverFrom(BaseCPU *oldCPU)
         if (old_checker && new_checker) {
             new_checker->getMMUPtr()->takeOverFrom(old_checker->getMMUPtr());
         }
+		*/
     }
 
     interrupts = oldCPU->interrupts;

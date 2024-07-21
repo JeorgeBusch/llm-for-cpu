@@ -48,6 +48,9 @@ PySource('gem5.components.boards.experimental',
 PySource('gem5.components.boards', 'gem5/components/boards/simple_board.py')
 PySource('gem5.components.boards', 'gem5/components/boards/test_board.py')
 PySource('gem5.components.boards', 'gem5/components/boards/x86_board.py')
+
+PySource('gem5.components.boards', 'gem5/components/boards/x86_board_se.py')
+
 PySource('gem5.components.boards',
     "gem5/components/boards/kernel_disk_workload.py")
 PySource('gem5.components.boards',

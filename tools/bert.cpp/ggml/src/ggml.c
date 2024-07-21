@@ -15882,6 +15882,7 @@ static void ggml_compute_forward(struct ggml_compute_params * params, struct ggm
 	
 	#ifdef GEM5
 		m5_dump_reset_stats(0,0);
+		m5_switch_cpu();
 	#endif
 }
 
