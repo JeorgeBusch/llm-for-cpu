@@ -52,7 +52,7 @@
 ## Simulating Entire Inference Binary
 * Change the `params.model` variable at the beginning of main in `tools/bert.cpp/examples/main.cpp` to your local path to `distilbert-base-uncased-finetuned-sst-2-english/ggml-model-f16.bin`
   * Use `ggml-model-f32.bin` to run with 32-bit weights
-* Replace the paths in the following `target_link_libraries` with your local `libm5.a` path:
+* Replace the paths in the following `target_link_libraries` with your local `util/m5/build/x86/out/libm5.a` path:
   * `tools/bert.cpp/CMakeLists.txt` line 208
   * `tools/bert.cpp/example/CMakeLists.txt` lines 28, 31
   * `tools/bert.cpp/ggml/src/CMakeLists.txt` lines 277, 279, 287, 310, 319
