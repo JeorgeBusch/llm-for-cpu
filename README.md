@@ -35,15 +35,14 @@
     * https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
     * https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-cos-v1
 
-## Running Bert SST in C++
-* Run `cmake .. -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release` in the `llm-for-cpu/tools/bert.cpp/build` directory
-* Run `make` in the `llm-for-cpu/tools/bert.cpp/build` directory
-* Run `./main` in the `llm-for-cpu/tools/bert.cpp/build/bin` directory
-* This will also create `fp16_dot` in `llm-for-cpu/tools/bert.cpp/build/bin` which will only run the dot product trace
-
 ## Generating Input Parameter Batches
 * Run `python sample_params.py <num_batches> <num_samples_per_batch>` in the `llm-for-cpu/tools/bert.cpp/input_params` directory
   * The batches will be created in `llm-for-cpu/tools/bert.cpp/input_params/batches`
+
+## Enabling Simulation Warmup
+* Run `scons build/x86/out/m5` in `llm-for-cpu/util/m5`
+* Change the absolute path on line 28 in `llm-for-cpu/tools/bert.cpp/examples/CMakeLists.txt` to your own path
+* Re-build the `fp16_dot` binary
 
 ## Simulating with Input Parameter Batches
 * Run `./run_batches <num_batches> <batch_size>` in the `llm-for-cpu` directory
@@ -51,9 +50,16 @@
  * This will by default read from `tools/bert.cpp/input_params/batches`, so either make sure the files are located there or modify `run_batches` to point to your input data directory
 
 ## Simulating Entire Inference Binary
-* Run `build/X86/gem5.opt --outdir=<output_dir> scripts/se_mode.py` to see how far you can get into execution
+* Change the `params.model` variable to your local path to `distilbert-base-uncased-finetuned-sst-2-english/ggml-model-f16.bin`
+ * Use `ggml-model-f32.bin` to run with 32-bit weights
+* Replace the paths in the following `target_link_libraries` with your local `libm5.a` path:
+ * `tools/bert.cpp/CMakeLists.txt` line 208
+ * `tools/bert.cpp/example/CMakeLists.txt` lines 28, 31
+ * `tools/bert.cpp/ggml/src/CMakeLists.txt` lines 277, 279, 287, 310, 319
+* Run `build/X86/gem5.opt --outdir=<output/output_dir> scripts/se_mode.py` to see how far you can get into execution
 
-## Enabling Simulation Warmup
-* Run `scons build/x86/out/m5` in `llm-for-cpu/util/m5`
-* Change the absolute path on line 28 in `llm-for-cpu/tools/bert.cpp/examples/CMakeLists.txt` to your own path
-* Re-build the `fp16_dot` binary
+## Running Bert SST in C++
+* Run `cmake .. -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release` in the `llm-for-cpu/tools/bert.cpp/build` directory
+* Run `make` in the `llm-for-cpu/tools/bert.cpp/build` directory
+* Run `./main` in the `llm-for-cpu/tools/bert.cpp/build/bin` directory
+* This will also create `fp16_dot` in `llm-for-cpu/tools/bert.cpp/build/bin` which will only run the dot product trace
