@@ -15561,10 +15561,8 @@ static void ggml_compute_forward_cross_entropy_loss_back(
 static void ggml_compute_forward(struct ggml_compute_params * params, struct ggml_tensor * tensor) {
     GGML_ASSERT(params);
 	
-	#ifdef GEM5
-		m5_switch_cpu();
-		m5_reset_stats(0,0);
-	#endif
+	m5_switch_cpu();
+	m5_reset_stats(0,0);
 
 #ifdef GGML_USE_CUBLAS
     bool skip_cpu = ggml_cuda_compute_forward(params, tensor);
@@ -15880,10 +15878,8 @@ static void ggml_compute_forward(struct ggml_compute_params * params, struct ggm
             } break;
     }
 	
-	#ifdef GEM5
-		m5_dump_reset_stats(0,0);
-		m5_switch_cpu();
-	#endif
+	m5_dump_reset_stats(0,0);
+	m5_switch_cpu();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
