@@ -56,7 +56,7 @@
  * `tools/bert.cpp/CMakeLists.txt` line 208
  * `tools/bert.cpp/example/CMakeLists.txt` lines 28, 31
  * `tools/bert.cpp/ggml/src/CMakeLists.txt` lines 277, 279, 287, 310, 319
-* Run `build/X86/gem5.opt --outdir=<output/output_dir> scripts/se_mode.py` to see how far you can get into execution
+* Run `build/X86/gem5.opt --outdir=<output/output_dir> scripts/simple.py` to see how far you can get into execution
 
 ## Running Bert SST in C++
 * Run `cmake .. -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release` in the `llm-for-cpu/tools/bert.cpp/build` directory
