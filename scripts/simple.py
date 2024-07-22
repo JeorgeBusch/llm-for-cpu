@@ -63,6 +63,7 @@ system.switch_cpu = TimingSimpleCPU(switched_out=True, cpu_id=0)
 system.switch_cpu.workload = process
 system.switch_cpu.createThreads()
 switch_cpu_list = [(system.cpu, system.switch_cpu)]
+switch_cpu_list2 = [(system.switch_cpu, system.cpu)]
 
 root = Root(full_system = False, system = system)
 
@@ -72,13 +73,19 @@ m5.instantiate()
 
 print("Beginning simulation!")
 exit_event = None
+switched = False
 
 while exit_event is None:
     exit_event = m5.simulate()
     
     if exit_event.getCause() == "switchcpu":
         print("Switching CPU...")
-        m5.switchCpus(root.system, switch_cpu_list)
+        if not switched:
+            m5.switchCpus(root.system, switch_cpu_list)
+            switched = True
+        else:
+            m5.switchCpus(root.system, switch_cpu_list2)
+            switched = False
         exit_event = None
 
 #exit_event = m5.simulate()
