@@ -1,5 +1,6 @@
 from m5.objects import Cache
 from m5.objects.ReplacementPolicies import *
+from m5.objects.Prefetcher import *
 
 # Check out src/mem/cache/Cache.py for the Cache class.
 # Most of the functionality is in BaseCache found above the Cache class.
@@ -45,6 +46,53 @@ def replParser(replName):
         return WeightedLRURP()
     return LRURP()
     
+def prefetchParser(prefetchName):
+    if prefetchName == "BasePrefetcher":
+        return BasePrefetcher()
+    elif prefetchName == "MultiPrefetcher":
+        return MultiPrefetcher()
+    elif prefetchName == "QueuedPrefetcher":
+        return QueuedPrefetcher()
+    elif prefetchName == "StridePrefetcherHashedSetAssociative":
+        return StridePrefetcherHashedSetAssociative()
+    elif prefetchName == "StridePrefetcher":
+        return StridePrefetcher()
+    elif prefetchName == "TaggedPrefetcher":
+        return TaggedPrefetcher()
+    elif prefetchName == "IndirectMemoryPrefetcher":
+        return IndirectMemoryPrefetcher()
+    elif prefetchName == "SignaturePathPrefetcher":
+        return SignaturePathPrefetcher()
+    elif prefetchName == "SignaturePathPrefetcherV2":
+        return SignaturePathPrefetcherV2()
+    elif prefetchName == "AccessMapPatternMatching":
+        return AccessMapPatternMatching()
+    elif prefetchName == "AMPMPrefetcher":
+        return AMPMPrefetcher()
+    elif prefetchName == "DeltaCorrelatingPredictionTables":
+        return DeltaCorrelatingPredictionTables()
+    elif prefetchName == "DCPTPrefetcher":
+        return DCPTPrefetcher()
+    elif prefetchName == "IrregularStreamBufferPrefetcher":
+        return IrregularStreamBufferPrefetcher()
+    elif prefetchName == "SlimAccessMapPatternMatching":
+        return SlimAccessMapPatternMatching()
+    elif prefetchName == "SlimDeltaCorrelatingPredictionTables":
+        return SlimDeltaCorrelatingPredictionTables()
+    elif prefetchName == "SlimAMPMPrefetcher":
+        return SlimAMPMPrefetcher()
+    elif prefetchName == "BOPPrefetcher":
+        return BOPPrefetcher()
+    elif prefetchName == "SBOOEPrefetcher":
+        return SBOOEPrefetcher()
+    elif prefetchName == "STeMSPrefetcher":
+        return STeMSPrefetcher()
+    elif prefetchName == "HWPProbeEventRetiredInsts":
+        return HWPProbeEventRetiredInsts()
+    elif prefetchName == "PIFPrefetcher":
+        return PIFPrefetcher()
+    return BasePrefetcher()
+    
 class L1Cache(Cache):
     assoc = 2
     tag_latency = 2
@@ -76,6 +124,8 @@ class L1ICache(L1Cache):
             self.size = options.l1i_size
         if options.l1i_replpolicy:
             self.replacement_policy = replParser(options.l1i_replpolicy)
+        if options.l1i_prefetcher:
+            self.prefetcher = prefetchParser(options.l1i_prefetcher)
     
     def connectCPU(self, cpu):
         self.cpu_side = cpu.icache_port
@@ -91,6 +141,8 @@ class L1DCache(L1Cache):
             self.size = options.l1d_size
         if options.l1d_replpolicy:
             self.replacement_policy = replParser(options.l1d_replpolicy)
+        if options.l1d_prefetcher:
+            self.prefetcher = prefetchParser(options.l1d_prefetcher)
     
     def connectCPU(self, cpu):
         self.cpu_side = cpu.dcache_port
@@ -112,6 +164,8 @@ class L2Cache(Cache):
             self.size = options.l2_size
         if options.l2_replpolicy:
             self.replacement_policy = replParser(options.l2_replpolicy)
+        if options.l2_prefetcher:
+            self.prefetcher = prefetchParser(options.l2_prefetcher)
     
     def connectCPUSideBus(self, bus):
         self.cpu_side = bus.mem_side_ports

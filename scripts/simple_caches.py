@@ -13,6 +13,9 @@ parser.add_argument("--mem_type", help=f"Memory type, refer to memory.py. Defaul
 parser.add_argument("--l1i_size", help=f"L1 instruction cache size. Default: 16kB.")
 parser.add_argument("--l1d_size", help=f"L1 data cache size. Default: 64kB.")
 parser.add_argument("--l2_size", help=f"L2 cache size. Default: 256kB.")
+parser.add_argument("--l1i_prefetcher", help=f"L1 instruction prefetcher. Default: BasePrefetcher.")
+parser.add_argument("--l1d_prefetcher", help=f"L1 data prefetcher. Default: BasePrefetcher.")
+parser.add_argument("--l2_prefetcher", help=f"L2 prefetcher. Default: BasePrefetcher.")
 parser.add_argument("--l1i_replpolicy", help=f"L1 instruction replacement policy. Default: LRURP")
 parser.add_argument("--l1d_replpolicy", help=f"L1 data replacement policy. Default: LRURP")
 parser.add_argument("--l2_replpolicy", help=f"L2 replacement policy. Default: LRURP")
@@ -47,7 +50,6 @@ system.cpu.dcache.connectBus(system.l2bus)
 
 system.l2cache.connectCPUSideBus(system.l2bus)
 system.l2cache.connectMemSideBus(system.membus)
-
 
 system.cpu.createInterruptController()
 system.cpu.interrupts[0].pio = system.membus.mem_side_ports
