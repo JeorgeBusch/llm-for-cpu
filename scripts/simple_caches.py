@@ -1,6 +1,7 @@
 import m5
 from m5.objects import *
 from caches import *
+from memory import *
 import argparse
 import pandas as pd
 from gem5.components.processors.simple_switchable_processor import SimpleSwitchableProcessor
@@ -8,6 +9,7 @@ from gem5.components.processors.cpu_types import CPUTypes
 
 parser = argparse.ArgumentParser(description="Simple 2-level cache system.", epilog="Cache options may be found in src/mem/cache/Cache.py.\nReplacement options may be found in src/mem/cache/ReplacementPolicies.py")
 parser.add_argument("--mem_size", help=f"Memory size. Default: 512MB.")
+parser.add_argument("--mem_type", help=f"Memory type, refer to memory.py. Default: DDR3_1600_8x8.")
 parser.add_argument("--l1i_size", help=f"L1 instruction cache size. Default: 16kB.")
 parser.add_argument("--l1d_size", help=f"L1 data cache size. Default: 64kB.")
 parser.add_argument("--l2_size", help=f"L2 cache size. Default: 256kB.")
@@ -54,7 +56,11 @@ system.cpu.interrupts[0].int_responder = system.membus.mem_side_ports
 system.system_port = system.membus.cpu_side_ports
 
 system.mem_ctrl = MemCtrl()
-system.mem_ctrl.dram = DDR3_1600_8x8()
+
+memType = DDR3_1600_8x8()
+if options.mem_type:
+    memType = configMemory(options.mem_type)
+system.mem_ctrl.dram = memType
 system.mem_ctrl.dram.range = system.mem_ranges[0]
 system.mem_ctrl.port = system.membus.mem_side_ports
 
