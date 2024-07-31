@@ -15557,7 +15557,7 @@ static void ggml_compute_forward_cross_entropy_loss_back(
 
 
 /////////////////////////////////
-
+int count = 0;
 static void ggml_compute_forward(struct ggml_compute_params * params, struct ggml_tensor * tensor) {
     GGML_ASSERT(params);
 	
@@ -15880,6 +15880,12 @@ static void ggml_compute_forward(struct ggml_compute_params * params, struct ggm
 	
 	m5_dump_reset_stats(0,0);
 	m5_switch_cpu();
+	
+	if (count == 100){
+		m5_exit(0);
+	}
+	
+	count += 1;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

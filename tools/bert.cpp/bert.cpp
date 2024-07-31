@@ -82,8 +82,8 @@ struct bert_layer
 	struct ggml_tensor *ff2_i_w;
     struct ggml_tensor *ff2_i_b;
 
-    //struct ggml_tensor *ff_o_w;
-    //struct ggml_tensor *ff_o_b;
+    struct ggml_tensor *ff_o_w;
+    struct ggml_tensor *ff_o_b;
 };
 
 struct bert_vocab
@@ -486,7 +486,7 @@ struct bert_ctx * bert_load_from_file(const char *fname)
         model_mem_req += 4 * n_layer * (n_embd * n_embd * ggml_type_sizef(wtype)); // kqvo weights
         model_mem_req += 4 * n_layer * (n_embd * ggml_type_sizef(GGML_TYPE_F32)); // kqvo bias
 
-        model_mem_req += 2 * n_layer * (n_embd * n_intermediate * ggml_type_sizef(wtype)); // ff_*_w
+        model_mem_req += 3 * n_layer * (n_embd * n_intermediate * ggml_type_sizef(wtype)); // ff_*_w
         model_mem_req += n_layer * (n_intermediate * ggml_type_sizef(GGML_TYPE_F32)); // ff_i_b
         model_mem_req += n_layer * (n_embd * ggml_type_sizef(GGML_TYPE_F32)); // ff_o_b
 		model_mem_req += n_layer * (n_intermediate * ggml_type_sizef(GGML_TYPE_F32)); // ff2_i_b
@@ -565,11 +565,11 @@ struct bert_ctx * bert_load_from_file(const char *fname)
 			layer.ff2_i_w = ggml_new_tensor_2d(ctx, wtype, n_intermediate, n_embd);
             layer.ff2_i_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
 
-            //layer.ff_o_w = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
-            //layer.ff_o_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
+            layer.ff_o_w = ggml_new_tensor_2d(ctx, wtype, n_intermediate, n_embd);
+            layer.ff_o_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
 
             // map by name
-			/*
+			
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.query.weight"] = layer.q_w;
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.query.bias"] = layer.q_b;
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.key.weight"] = layer.k_w;
@@ -586,10 +586,10 @@ struct bert_ctx * bert_load_from_file(const char *fname)
 
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.LayerNorm.weight"] = layer.ln_out_w;
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.LayerNorm.bias"] = layer.ln_out_b;
-            model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.dense.weight"] = layer.ff_i_w;
-            model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.dense.bias"] = layer.ff_i_b;
-			*/
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.dense.weight"] = layer.ff_o_w;
+            model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.dense.bias"] = layer.ff_o_b;
 			
+			/*
 			model.tensors["transformer.layer." + std::to_string(i) + ".attention.q_lin.weight"] = layer.q_w;
             model.tensors["transformer.layer." + std::to_string(i) + ".attention.q_lin.bias"] = layer.q_b;
             model.tensors["transformer.layer." + std::to_string(i) + ".attention.k_lin.weight"] = layer.k_w;
@@ -608,7 +608,7 @@ struct bert_ctx * bert_load_from_file(const char *fname)
             model.tensors["transformer.layer." + std::to_string(i) + ".ffn.lin2.bias"] = layer.ff2_i_b;
             model.tensors["transformer.layer." + std::to_string(i) + ".output_layer_norm.weight"] = layer.ln_out_w;
             model.tensors["transformer.layer." + std::to_string(i) + ".output_layer_norm.bias"] = layer.ln_out_b;
-			
+			*/
         }
     }
     // load weights
@@ -1000,6 +1000,7 @@ void bert_eval_batch(
 		
         ggml_graph_compute_with_ctx(ctx0, &gf, n_threads);
 		
+		/*
 		const char* File_Name_bin = "graph_visualizer_bin.txt";
 		const char* File_Name = "graph_visualizer.txt";
 		const char* File_Name_2 = "graph_visualizer_2.txt";
@@ -1007,7 +1008,7 @@ void bert_eval_batch(
 		ggml_graph_export(&gf, File_Name_bin, File_Name);
 		traverse_and_write(&gf, File_Name_2);
 		ggml_graph_print_file(&gf, File_Name_3);
-
+		*/
         // float *dat = ggml_get_data_f32(output);
         // pretty_print_tensor(dat, output->ne, output->nb, output->n_dims - 1, "");
 
