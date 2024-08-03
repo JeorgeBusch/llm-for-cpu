@@ -151,7 +151,6 @@ while exit_event is None:
         print("Integer SIMD Ops:", num_integer_ops)
         print("Floating Point SIMD Ops:", num_floating_ops, "\n")
                 
-        exit_event = None
     if exit_event.getCause() == "switchcpu":
         print("Switching CPU...")
         if not switched:
