@@ -34,8 +34,6 @@ def replParser(replName):
         return DRRIPRP()
     elif replName == "NRURP":
         return NRURP()
-    elif replName == "SHiPRP":
-        return SHiPRP()
     elif replName == "SHiPMemRP":
         return SHiPMemRP()
     elif replName == "SHiPPCRP":
@@ -47,12 +45,8 @@ def replParser(replName):
     return LRURP()
     
 def prefetchParser(prefetchName):
-    if prefetchName == "BasePrefetcher":
-        return BasePrefetcher()
-    elif prefetchName == "MultiPrefetcher":
+    if prefetchName == "MultiPrefetcher":
         return MultiPrefetcher()
-    elif prefetchName == "QueuedPrefetcher":
-        return QueuedPrefetcher()
     elif prefetchName == "StridePrefetcherHashedSetAssociative":
         return StridePrefetcherHashedSetAssociative()
     elif prefetchName == "StridePrefetcher":
@@ -172,3 +166,6 @@ class L2Cache(Cache):
         
     def connectMemSideBus(self, bus):
         self.mem_side = bus.cpu_side_ports
+        
+class L3Cache(Cache):
+    size = '32MB'
