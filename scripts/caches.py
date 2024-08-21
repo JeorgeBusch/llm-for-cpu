@@ -85,14 +85,17 @@ def prefetchParser(prefetchName):
         return HWPProbeEventRetiredInsts()
     elif prefetchName == "PIFPrefetcher":
         return PIFPrefetcher()
-    return BasePrefetcher()
+    return NULL
+    
+# Numbers for caches referenced from
+# Customizing Cache Indexing through Entropy Estimation
     
 class L1Cache(Cache):
     assoc = 2
     tag_latency = 2
     data_latency = 2
     response_latency = 2
-    mshrs = 4
+    mshrs = 16
     tgts_per_mshr = 20
     
     def __init__(self, options=None):
@@ -103,69 +106,147 @@ class L1Cache(Cache):
         # define this in base class
         raise NotImplementedError
         
+    def preset_config(self, preset):
+        raise NotImplementedError
+        
     def connectBus(self, bus):
         self.mem_side = bus.cpu_side_ports
     
     
 class L1ICache(L1Cache):
-    size = '16kB'
+    size = '32kB'
+    
+    def preset_config(self, preset):
+        if(preset == "medium"):
+            self.size = '32kB'
+            self.assoc = 2
+            self.tag_latency = 2
+            self.data_latency = 2
+            self.response_latency = 2
+            self.mshrs = 8
+            self.tgts_per_mshr = 20
+        if(preset == "embedded"):
+            pass
+        if(preset == "high"):
+            pass
     
     def __init__(self, options=None):
         super(L1ICache, self).__init__(options)
         if not options:
             return
-        if options.l1i_size:
-            self.size = options.l1i_size
-        if options.l1i_replpolicy:
-            self.replacement_policy = replParser(options.l1i_replpolicy)
-        if options.l1i_prefetcher:
-            self.prefetcher = prefetchParser(options.l1i_prefetcher)
-    
+        if options.preset:
+            self.preset_config(options.preset)
+        if options.l1_replpolicy:
+            self.replacement_policy = replParser(options.l1_replpolicy)
+            
     def connectCPU(self, cpu):
         self.cpu_side = cpu.icache_port
 
 class L1DCache(L1Cache):
-    size = '64kB'
+    size = '32kB'
+    
+    def preset_config(self, preset):
+        if(preset == "medium"):
+            self.size = '32kB'
+            self.assoc = 2
+            self.tag_latency = 2
+            self.data_latency = 2
+            self.response_latency = 2
+            self.mshrs = 16
+            self.tgts_per_mshr = 20
+        if(preset == "embedded"):
+            pass
+        if(preset == "high"):
+            pass
     
     def __init__(self, options=None):
         super(L1DCache, self).__init__(options)
         if not options:
             return
-        if options.l1d_size:
-            self.size = options.l1d_size
-        if options.l1d_replpolicy:
-            self.replacement_policy = replParser(options.l1d_replpolicy)
+        if options.preset:
+            self.preset_config(options.preset)
         if options.l1d_prefetcher:
             self.prefetcher = prefetchParser(options.l1d_prefetcher)
-    
+        if options.l1_replpolicy:
+            self.replacement_policy = replParser(options.l1_replpolicy)
+            
     def connectCPU(self, cpu):
         self.cpu_side = cpu.dcache_port
     
 class L2Cache(Cache):
-    size = '256kB'
-    assoc = 8
-    tag_latency = 20
-    data_latency = 20
-    response_latency = 20
-    mshrs = 20
+    size = '128kB'
+    assoc = 4
+    tag_latency = 8
+    data_latency = 8
+    response_latency = 8
+    mshrs = 32
     tgts_per_mshr = 12
+    
+    def preset_config(self, preset):
+        if(preset == "medium"):
+            self.size = '128kB'
+            self.assoc = 4
+            self.tag_latency = 8
+            self.data_latency = 8
+            self.response_latency = 8
+            self.mshrs = 32
+            self.tgts_per_mshr = 12
+        if(preset == "embedded"):
+            pass
+        if(preset == "high"):
+            pass
     
     def __init__(self, options=None):
         super(L2Cache, self).__init__()
         if not options:
             return
-        if options.l2_size:
-            self.size = options.l2_size
-        if options.l2_replpolicy:
-            self.replacement_policy = replParser(options.l2_replpolicy)
+        if options.preset:
+            self.preset_config(options.preset)
         if options.l2_prefetcher:
             self.prefetcher = prefetchParser(options.l2_prefetcher)
+        if options.l2_replpolicy:
+            self.replacement_policy = replParser(options.l2_replpolicy)
     
     def connectCPUSideBus(self, bus):
         self.cpu_side = bus.mem_side_ports
         
-    def connectMemSideBus(self, bus):
-        self.mem_side = bus.cpu_side_ports
+    def connectMemSideCache(self, cache):
+        self.mem_side = cache.cpu_side
         
 class L3Cache(Cache):
-    size = '32MB'
+    size = '2MB'
+    assoc = 16
+    tag_latency = 32
+    data_latency = 32
+    response_latency = 32
+    mshrs = 64
+    tgts_per_mshr = 12
+    
+    def preset_config(self, preset):
+        if(preset == "medium"):
+            self.size = '2MB'
+            self.assoc = 16
+            self.tag_latency = 32
+            self.data_latency = 32
+            self.response_latency = 32
+            self.mshrs = 64
+            self.tgts_per_mshr = 12
+        if(preset == "embedded"):
+            pass
+        if(preset == "high"):
+            pass
+    
+    def __init__(self, options=None):
+        super(L3Cache, self).__init__()
+        if not options:
+            return
+        if options.preset:
+            self.preset_config(options.preset)
+        if options.l3_replpolicy:
+            self.replacement_policy = replParser(options.l3_replpolicy)
+            
+    def connectCPUSideCache(self, cache):
+        self.cpu_side = cache.mem_side
+        
+    def connectMemSideBus(self, bus):
+        self.mem_side = bus.cpu_side_ports
