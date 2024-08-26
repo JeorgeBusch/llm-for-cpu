@@ -42,3 +42,28 @@ def configMemory(memName):
     elif memName == "LPDDR5_6400_1x16_8B_BL32":
         return LPDDR5_6400_1x16_8B_BL32()
     return DDR3_1600_8x8()
+
+# Refer to src/cpu/pred/BranchPredictor.py
+
+def configBranchPred(predName):
+    if predName == "NULL":
+        return NULL
+    elif predName == "LocalBP":
+        return LocalBP()
+    elif predName == "TournamentBP":
+        return TournamentBP()
+    elif predName == "BiModeBP":
+        return BiModeBP()
+    elif predName == "TAGE":
+        return TAGE()
+    elif predName == "LTAGE_TAGE":
+        return LTAGE_TAGE()
+    elif predName == "TAGE_SC_L_TAGE":
+        return TAGE_SC_L_TAGE()
+    elif predName == "TAGE_SC_L_TAGE_64KB":
+        return TAGE_SC_L_TAGE_64KB()
+    elif predName == "TAGE_SC_L_TAGE_8KB":
+        return TAGE_SC_L_TAGE_8KB()
+    elif predName == "LTAGE":
+        return LTAGE()
+    return NULL
