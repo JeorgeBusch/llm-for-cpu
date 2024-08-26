@@ -15563,7 +15563,7 @@ static void ggml_compute_forward(struct ggml_compute_params * params, struct ggm
 	
 	m5_switch_cpu();
 	m5_reset_stats(0,0);
-
+	
 #ifdef GGML_USE_CUBLAS
     bool skip_cpu = ggml_cuda_compute_forward(params, tensor);
     if (skip_cpu) {
@@ -15881,7 +15881,7 @@ static void ggml_compute_forward(struct ggml_compute_params * params, struct ggm
 	m5_dump_reset_stats(0,0);
 	m5_switch_cpu();
 	
-	if (count == 100){
+	if (count == 139){
 		m5_exit(0);
 	}
 	

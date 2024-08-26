@@ -82,8 +82,8 @@ struct bert_layer
 	struct ggml_tensor *ff2_i_w;
     struct ggml_tensor *ff2_i_b;
 
-    struct ggml_tensor *ff_o_w;
-    struct ggml_tensor *ff_o_b;
+    //struct ggml_tensor *ff_o_w;
+    //struct ggml_tensor *ff_o_b;
 };
 
 struct bert_vocab
@@ -565,11 +565,11 @@ struct bert_ctx * bert_load_from_file(const char *fname)
 			layer.ff2_i_w = ggml_new_tensor_2d(ctx, wtype, n_intermediate, n_embd);
             layer.ff2_i_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
 
-            layer.ff_o_w = ggml_new_tensor_2d(ctx, wtype, n_intermediate, n_embd);
-            layer.ff_o_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
+            //layer.ff_o_w = ggml_new_tensor_2d(ctx, wtype, n_intermediate, n_embd);
+            //layer.ff_o_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
 
             // map by name
-			
+			/*
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.query.weight"] = layer.q_w;
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.query.bias"] = layer.q_b;
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".attention.self.key.weight"] = layer.k_w;
@@ -588,8 +588,8 @@ struct bert_ctx * bert_load_from_file(const char *fname)
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.LayerNorm.bias"] = layer.ln_out_b;
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.dense.weight"] = layer.ff_o_w;
             model.tensors["bert.encoder.layer." + std::to_string(i) + ".output.dense.bias"] = layer.ff_o_b;
+			*/
 			
-			/*
 			model.tensors["transformer.layer." + std::to_string(i) + ".attention.q_lin.weight"] = layer.q_w;
             model.tensors["transformer.layer." + std::to_string(i) + ".attention.q_lin.bias"] = layer.q_b;
             model.tensors["transformer.layer." + std::to_string(i) + ".attention.k_lin.weight"] = layer.k_w;
@@ -608,7 +608,7 @@ struct bert_ctx * bert_load_from_file(const char *fname)
             model.tensors["transformer.layer." + std::to_string(i) + ".ffn.lin2.bias"] = layer.ff2_i_b;
             model.tensors["transformer.layer." + std::to_string(i) + ".output_layer_norm.weight"] = layer.ln_out_w;
             model.tensors["transformer.layer." + std::to_string(i) + ".output_layer_norm.bias"] = layer.ln_out_b;
-			*/
+			
         }
     }
     // load weights
@@ -874,7 +874,7 @@ void bert_eval_batch(
         }
 		//printf("Embed norm done, iter %d / %d\n", ba, n_batch_size);
         // layers
-        for (int il = 0; il < n_layer; il++)
+        for (int il = 0; il < 1; il++)
         {
             struct ggml_tensor *cur = inpL;
 

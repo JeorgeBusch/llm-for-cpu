@@ -11,9 +11,9 @@ int main(int argc, char ** argv) {
 
     bert_params params;
     //params.model = "../../models/all-MiniLM-L6-v2/ggml-model-f32.bin";
-	//params.model = "/mnt/c/users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/models/distilbert-base-uncased-finetuned-sst-2-english/ggml-model-f16.bin";
+	params.model = "/mnt/c/users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/models/distilbert-base-uncased-finetuned-sst-2-english/ggml-model-f16.bin";
 	//params.model = "/mnt/c/users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/models/distilbert-sst-1-layer/ggml-model-f16.bin";
-	params.model = "/mnt/c/users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/models/bert-base-chinese/ggml-model-f16.bin";
+	//params.model = "/mnt/c/users/aej45/Desktop/llm-for-cpu/tools/bert.cpp/models/bert-base-chinese/ggml-model-f16.bin";
 
     if (bert_params_parse(argc, argv, params) == false) {
         return 1;
