@@ -479,8 +479,10 @@ extern "C" {
         char name[GGML_MAX_NAME];
 
         void * extra; // extra things e.g. for ggml-cuda.cu
-
-        char padding[4];
+		
+		int64_t attn_num;
+		
+		char padding[60];
     };
 
     static const size_t GGML_TENSOR_SIZE = sizeof(struct ggml_tensor);
@@ -624,25 +626,29 @@ extern "C" {
             struct ggml_context * ctx,
             enum   ggml_type type,
             int    n_dims,
-            const int64_t *ne);
+            const int64_t *ne,
+			int64_t attn_num);
 
     GGML_API struct ggml_tensor * ggml_new_tensor_1d(
             struct ggml_context * ctx,
             enum   ggml_type type,
-            int64_t ne0);
+            int64_t ne0,
+			int64_t attn_num);
 
     GGML_API struct ggml_tensor * ggml_new_tensor_2d(
             struct ggml_context * ctx,
             enum   ggml_type type,
             int64_t ne0,
-            int64_t ne1);
+            int64_t ne1,
+			int64_t attn_num);
 
     GGML_API struct ggml_tensor * ggml_new_tensor_3d(
             struct ggml_context * ctx,
             enum   ggml_type type,
             int64_t ne0,
             int64_t ne1,
-            int64_t ne2);
+            int64_t ne2,
+			int64_t attn_num);
 
     GGML_API struct ggml_tensor * ggml_new_tensor_4d(
             struct ggml_context * ctx,
@@ -650,7 +656,8 @@ extern "C" {
             int64_t ne0,
             int64_t ne1,
             int64_t ne2,
-            int64_t ne3);
+            int64_t ne3,
+			int64_t attn_num);
 
     GGML_API struct ggml_tensor * ggml_new_i32(struct ggml_context * ctx, int32_t value);
     GGML_API struct ggml_tensor * ggml_new_f32(struct ggml_context * ctx, float value);

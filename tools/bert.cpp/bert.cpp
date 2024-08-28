@@ -526,12 +526,12 @@ struct bert_ctx * bert_load_from_file(const char *fname)
 
         model.layers.resize(n_layer);
 
-        model.word_embeddings = ggml_new_tensor_2d(ctx, wtype, n_embd, n_vocab);
-        model.token_type_embeddings = ggml_new_tensor_2d(ctx, wtype, n_embd, 2);
-        model.position_embeddings = ggml_new_tensor_2d(ctx, wtype, n_embd, n_max_tokens);
+        model.word_embeddings = ggml_new_tensor_2d(ctx, wtype, n_embd, n_vocab, -1);
+        model.token_type_embeddings = ggml_new_tensor_2d(ctx, wtype, n_embd, 2, -1);
+        model.position_embeddings = ggml_new_tensor_2d(ctx, wtype, n_embd, n_max_tokens, -1);
 
-        model.ln_e_w = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
-        model.ln_e_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
+        model.ln_e_w = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, -1);
+        model.ln_e_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, -1);
 
         // map by name
         model.tensors["embeddings.word_embeddings.weight"] = model.word_embeddings;
@@ -540,30 +540,46 @@ struct bert_ctx * bert_load_from_file(const char *fname)
 
         model.tensors["embeddings.LayerNorm.weight"] = model.ln_e_w;
         model.tensors["embeddings.LayerNorm.bias"] = model.ln_e_b;
-
+		
         for (int i = 0; i < n_layer; ++i)
         {
             auto &layer = model.layers[i];
 
-            layer.ln_att_w = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
+            layer.ln_att_w = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, i);
+			//layer.ln_att_w->attn_num = i;
 			//layer.ln_att_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_embd);
-            layer.ln_att_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
-            layer.ln_out_w = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
-            layer.ln_out_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
+            layer.ln_att_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, i);
+			//layer.ln_att_b->attn_num = i;
+            layer.ln_out_w = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, i);
+			//layer.ln_out_w->attn_num = i;
+            layer.ln_out_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, i);
+			//layer.ln_out_b->attn_num = i;
 
-            layer.q_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_embd);
-            layer.q_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
-            layer.k_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_embd);
-            layer.k_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
-            layer.v_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_embd);
-            layer.v_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
-            layer.o_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_embd);
-            layer.o_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
+            layer.q_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_embd, i);
+			//layer.q_w->attn_num = i;
+            layer.q_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, i);
+			//layer.q_b->attn_num = i;
+            layer.k_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_embd, i);
+			//layer.k_w->attn_num = i;
+            layer.k_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, i);
+			//layer.k_b->attn_num = i;
+            layer.v_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_embd, i);
+			//layer.v_w->attn_num = i;
+            layer.v_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, i);
+			//layer.v_b->attn_num = i;
+            layer.o_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_embd, i);
+			//layer.o_w->attn_num = i;
+            layer.o_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, i);
+			//layer.o_b->attn_num = i;
 
-            layer.ff_i_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_intermediate);
-            layer.ff_i_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_intermediate);
-			layer.ff2_i_w = ggml_new_tensor_2d(ctx, wtype, n_intermediate, n_embd);
-            layer.ff2_i_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
+            layer.ff_i_w = ggml_new_tensor_2d(ctx, wtype, n_embd, n_intermediate, i);
+			//layer.ff_i_w->attn_num = i;
+            layer.ff_i_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_intermediate, i);
+			//layer.ff_i_b->attn_num = i;
+			layer.ff2_i_w = ggml_new_tensor_2d(ctx, wtype, n_intermediate, n_embd, i);
+			//layer.ff2_i_w->attn_num = i;
+            layer.ff2_i_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd, i);
+			//layer.ff2_i_b->attn_num = i;
 
             //layer.ff_o_w = ggml_new_tensor_2d(ctx, wtype, n_intermediate, n_embd);
             //layer.ff_o_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
@@ -842,13 +858,13 @@ void bert_eval_batch(
         struct ggml_cgraph gf = {};
 
         // Embeddings. word_embeddings + token_type_embeddings + position_embeddings
-        struct ggml_tensor *token_layer = ggml_new_tensor_1d(ctx0, GGML_TYPE_I32, N);
+        struct ggml_tensor *token_layer = ggml_new_tensor_1d(ctx0, GGML_TYPE_I32, N, 0);
         memcpy(token_layer->data, tokens, N * ggml_element_size(token_layer));
 
-        struct ggml_tensor *token_types = ggml_new_tensor_1d(ctx0, GGML_TYPE_I32, N);
+        struct ggml_tensor *token_types = ggml_new_tensor_1d(ctx0, GGML_TYPE_I32, N, 0);
         ggml_set_zero(token_types);
 
-        struct ggml_tensor *positions = ggml_new_tensor_1d(ctx0, GGML_TYPE_I32, N);
+        struct ggml_tensor *positions = ggml_new_tensor_1d(ctx0, GGML_TYPE_I32, N, 0);
         for (int i = 0; i < N; i++)
         {
             ggml_set_i32_1d(positions, i, i);
@@ -874,7 +890,7 @@ void bert_eval_batch(
         }
 		//printf("Embed norm done, iter %d / %d\n", ba, n_batch_size);
         // layers
-        for (int il = 0; il < 1; il++)
+        for (int il = 0; il < n_layer; il++)
         {
             struct ggml_tensor *cur = inpL;
 
@@ -915,7 +931,7 @@ void bert_eval_batch(
 
                 cur = ggml_cpy(ctx0,
                                KQV,
-                               ggml_new_tensor_2d(ctx0, GGML_TYPE_F32, n_embd, N));
+                               ggml_new_tensor_2d(ctx0, GGML_TYPE_F32, n_embd, N, il));
             }
 			//printf("Attention output, iter %d / %d\n", ba, n_batch_size);
             // attention output
@@ -979,7 +995,7 @@ void bert_eval_batch(
         inpL = ggml_cont(ctx0, ggml_transpose(ctx0, inpL));
         // pooler
 		//printf("Pooling, iter %d / %d\n", ba, n_batch_size);
-        struct ggml_tensor *sum = ggml_new_tensor_2d(ctx0, GGML_TYPE_F32, N, 1);
+        struct ggml_tensor *sum = ggml_new_tensor_2d(ctx0, GGML_TYPE_F32, N, 1, -1);
         ggml_set_f32(sum, 1.0f / N);
         // normalizer
 		//printf("Normalization, iter %d / %d\n", ba, n_batch_size);
