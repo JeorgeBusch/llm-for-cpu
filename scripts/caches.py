@@ -89,6 +89,12 @@ def prefetchParser(prefetchName):
     
 # Numbers for caches referenced from
 # Customizing Cache Indexing through Entropy Estimation
+# Numbers for embeded:
+# https://www.arm.com/products/silicon-ip-cpu/cortex-a/cortex-a72
+# Numbers for high:
+# https://www.nas.nasa.gov/hecc/support/kb/cascade-lake-processors_579.html
+# https://www.intel.com/content/www/us/en/products/sku/198652/intel-xeon-gold-6250-processor-35-75m-cache-3-90-ghz/specifications.html
+
     
 class L1Cache(Cache):
     assoc = 2
@@ -126,8 +132,21 @@ class L1ICache(L1Cache):
             self.mshrs = 8
             self.tgts_per_mshr = 20
         if(preset == "embedded"):
-            pass
+            self.size = '32kB' # 48kB causes gem5 to crash
+            self.assoc = 2
+            self.tag_latency = 2
+            self.data_latency = 2
+            self.response_latency = 2
+            self.mshrs = 8
+            self.tgts_per_mshr = 20
         if(preset == "high"):
+            self.size = '32kB'
+            self.assoc = 2
+            self.tag_latency = 2
+            self.data_latency = 2
+            self.response_latency = 2
+            self.mshrs = 16
+            self.tgts_per_mshr = 20
             pass
     
     def __init__(self, options=None):
@@ -155,9 +174,21 @@ class L1DCache(L1Cache):
             self.mshrs = 16
             self.tgts_per_mshr = 20
         if(preset == "embedded"):
-            pass
+            self.size = '32kB'
+            self.assoc = 2
+            self.tag_latency = 2
+            self.data_latency = 2
+            self.response_latency = 2
+            self.mshrs = 16
+            self.tgts_per_mshr = 20
         if(preset == "high"):
-            pass
+            self.size = '32kB'
+            self.assoc = 2
+            self.tag_latency = 2
+            self.data_latency = 2
+            self.response_latency = 2
+            self.mshrs = 16
+            self.tgts_per_mshr = 20
     
     def __init__(self, options=None):
         super(L1DCache, self).__init__(options)
@@ -192,9 +223,21 @@ class L2Cache(Cache):
             self.mshrs = 32
             self.tgts_per_mshr = 12
         if(preset == "embedded"):
-            pass
+            self.size = '128kB'
+            self.assoc = 4
+            self.tag_latency = 8
+            self.data_latency = 8
+            self.response_latency = 8
+            self.mshrs = 32
+            self.tgts_per_mshr = 12
         if(preset == "high"):
-            pass
+            self.size = '1MB'
+            self.assoc = 4
+            self.tag_latency = 8
+            self.data_latency = 8
+            self.response_latency = 8
+            self.mshrs = 32
+            self.tgts_per_mshr = 12
     
     def __init__(self, options=None):
         super(L2Cache, self).__init__()
@@ -209,6 +252,9 @@ class L2Cache(Cache):
     
     def connectCPUSideBus(self, bus):
         self.cpu_side = bus.mem_side_ports
+        
+    def connectMemSideBus(self, bus):
+        self.mem_side = bus.cpu_side_ports
         
     def connectMemSideCache(self, cache):
         self.mem_side = cache.cpu_side
@@ -234,6 +280,13 @@ class L3Cache(Cache):
         if(preset == "embedded"):
             pass
         if(preset == "high"):
+            self.size = '32MB' # Cannot be 35.75
+            self.assoc = 16
+            self.tag_latency = 32
+            self.data_latency = 32
+            self.response_latency = 32
+            self.mshrs = 64
+            self.tgts_per_mshr = 12
             pass
     
     def __init__(self, options=None):
