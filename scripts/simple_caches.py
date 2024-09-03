@@ -30,12 +30,11 @@ if options.mem_size:
     memSize = options.mem_size
 
 system.mem_ranges = [AddrRange(memSize)]
-
 system.cpu = AtomicSimpleCPU()
 system.cpu.icache = L1ICache(options)
 system.cpu.dcache = L1DCache(options)
 system.l2cache = L2Cache(options)
-system.l3cache = L3Cache(options)
+
 
 system.membus = SystemXBar()
 system.l2bus = L2XBar()
@@ -47,9 +46,13 @@ system.cpu.dcache.connectCPU(system.cpu)
 system.cpu.dcache.connectBus(system.l2bus)
 
 system.l2cache.connectCPUSideBus(system.l2bus)
-system.l2cache.connectMemSideCache(system.l3cache)
 
-system.l3cache.connectMemSideBus(system.membus)
+if options.preset == "embedded":
+    system.l2cache.connectMemSideBus(system.membus)
+else:
+    system.l3cache = L3Cache(options)
+    system.l2cache.connectMemSideCache(system.l3cache)
+    system.l3cache.connectMemSideBus(system.membus)
 
 system.cpu.createInterruptController()
 system.cpu.interrupts[0].pio = system.membus.mem_side_ports

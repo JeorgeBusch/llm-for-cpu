@@ -39,7 +39,7 @@
 * Run `python sample_params.py <num_batches> <num_samples_per_batch>` in the `llm-for-cpu/tools/bert.cpp/input_params` directory
   * The batches will be created in `llm-for-cpu/tools/bert.cpp/input_params/batches`
 
-## Enabling Simulation Warmup
+## Enabling M5 Utils
 * Run `scons build/x86/out/m5` in `llm-for-cpu/util/m5`
 * Change the absolute path on line 28 in `llm-for-cpu/tools/bert.cpp/examples/CMakeLists.txt` to your own path
 * Re-build the `fp16_dot` binary
