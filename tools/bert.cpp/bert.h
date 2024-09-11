@@ -17,7 +17,7 @@ extern "C" {
 
 struct bert_params
 {
-    int32_t n_threads = 6;
+    int32_t n_threads = 1;
     int32_t port = 8080; // server mode port to bind
 
     const char* model = "models/all-MiniLM-L6-v2/ggml-model-q4_0.bin"; // model path
