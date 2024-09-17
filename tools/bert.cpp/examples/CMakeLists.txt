@@ -24,11 +24,11 @@ endif()
 add_executable(main main.cpp)
 target_link_libraries(main PRIVATE bert ggml)
 
-add_executable(fp16_dot fp16_dot.cpp)
-target_link_libraries(fp16_dot PRIVATE bert ggml /mnt/c/Users/aej45/Desktop/llm-for-cpu/util/m5/build/x86/out/libm5.a)
+get_filename_component(PARENT_DIR ${CMAKE_SOURCE_DIR} DIRECTORY)
+get_filename_component(PARENT_DIR ${PARENT_DIR} DIRECTORY)
 
-add_executable(fp16_dot2 fp16_dot2.cpp)
-target_link_libraries(fp16_dot2 PRIVATE bert ggml /mnt/c/Users/aej45/Desktop/llm-for-cpu/util/m5/build/x86/out/libm5.a)
+add_executable(fp16_dot fp16_dot.cpp)
+target_link_libraries(fp16_dot PRIVATE bert ggml ${PARENT_DIR}/util/m5/build/x86/out/libm5.a)
 
 add_executable(test_tokenizer test_tokenizer.cpp)
 target_link_libraries(test_tokenizer PRIVATE bert ggml)

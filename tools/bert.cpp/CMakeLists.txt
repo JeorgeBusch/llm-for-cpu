@@ -204,8 +204,12 @@ add_library(bert
             bert.h)
 
 target_include_directories(bert PUBLIC .)
-target_compile_features(bert PUBLIC cxx_std_20)
-target_link_libraries(bert PRIVATE ggml ${BERT_EXTRA_LIBS} /mnt/c/Users/aej45/Desktop/llm-for-cpu/util/m5/build/x86/out/libm5.a)
+target_compile_features(bert PUBLIC cxx_std_20)  
+
+get_filename_component(PARENT_DIR ${CMAKE_SOURCE_DIR} DIRECTORY)
+get_filename_component(PARENT_DIR ${PARENT_DIR} DIRECTORY)
+
+target_link_libraries(bert PRIVATE ggml ${BERT_EXTRA_LIBS} ${PARENT_DIR}/util/m5/build/x86/out/libm5.a)
 
 if(WIN32)
 include_directories(${CMAKE_SOURCE_DIR}/include_win)

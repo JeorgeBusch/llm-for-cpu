@@ -70,7 +70,7 @@ system.mem_ctrl.dram.range = system.mem_ranges[0]
 system.mem_ctrl.port = system.membus.mem_side_ports
 
 
-binary = '/scratch/user/smb200007/research/llm-for-cpu/tools/bert.cpp/build/bin/main'
+binary = 'tools/bert.cpp/build/bin/main'
 
 # for gem5 V21 and beyond
 system.workload = SEWorkload.init_compatible(binary)
