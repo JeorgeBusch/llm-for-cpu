@@ -140,7 +140,9 @@ AbstractMemory::MemStats::MemStats(AbstractMemory &_mem)
              "Write bandwidth from this memory"),
     ADD_STAT(bwTotal, statistics::units::Rate<
                 statistics::units::Byte, statistics::units::Second>::get(),
-             "Total bandwidth to/from this memory")
+             "Total bandwidth to/from this memory"),
+	ADD_STAT(uniqueAccesses, statistics::units::Count::get(),
+             "Number of unique memory accesses")
 {
 }
 
@@ -238,7 +240,15 @@ AbstractMemory::MemStats::regStats()
     for (int i = 0; i < max_requestors; i++) {
         bwTotal.subname(i, sys->getRequestorName(i));
     }
-
+	
+	uniqueAccesses
+        .init(max_requestors)
+        .flags(total | nozero | nonan)
+        ;
+    for (int i = 0; i < max_requestors; i++) {
+        uniqueAccesses.subname(i, sys->getRequestorName(i));
+    }
+	
     bwRead = bytesRead / simSeconds;
     bwInstRead = bytesInstRead / simSeconds;
     bwWrite = bytesWritten / simSeconds;
@@ -375,9 +385,21 @@ tracePacket(System *sys, const char *label, PacketPtr pkt)
 #   define TRACE_PACKET(A)
 #endif
 
+int unique_access_count = 0;
+std::vector<int> access_history;
+
 void
 AbstractMemory::access(PacketPtr pkt)
 {
+	//printf("Accesses: %d\n", access_count);
+	//printf("Address: %ld\n", pkt->getAddr());
+	if (std::count(access_history.begin(), access_history.end(), pkt->getAddr()) == 0){
+		access_history.push_back(pkt->getAddr());
+		unique_access_count += 1;
+		printf("Unique Access Count: %d\n", unique_access_count);
+		stats.uniqueAccesses[pkt->req->requestorId()]++;
+	}
+	
     if (pkt->cacheResponding()) {
         DPRINTF(MemoryAccess, "Cache responding to %#llx: not responding\n",
                 pkt->getAddr());

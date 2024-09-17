@@ -1074,6 +1074,8 @@ class BaseCache : public ClockedObject
         statistics::Formula demandAccesses;
         /** The number of overall accesses. */
         statistics::Formula overallAccesses;
+		
+		statistics::Vector uniqueAccesses;
 
         /** The miss rate of all demand accesses. */
         statistics::Formula demandMissRate;

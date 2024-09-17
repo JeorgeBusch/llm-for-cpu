@@ -198,6 +198,8 @@ class AbstractMemory : public ClockedObject
         statistics::Formula bwWrite;
         /** Total bandwidth from this memory */
         statistics::Formula bwTotal;
+		/** Number of unique memory accesses */
+		statistics::Vector uniqueAccesses;
     } stats;
 
 
