@@ -15563,18 +15563,16 @@ static void ggml_compute_forward_cross_entropy_loss_back(
     }
 }
 
-
+int prev_layer_num = -1;
 /////////////////////////////////
 static void ggml_compute_forward(struct ggml_compute_params * params, struct ggml_tensor * tensor) {
     GGML_ASSERT(params);
 	
 	int layer_num = tensor->attn_num;
-	//printf("Layer: %d\n", layer_num);
-	
-	if (layer_num == 0){
-		m5_switch_cpu();
-		m5_reset_stats(0,0);
-	}
+  
+  if(layer_num != prev_layer_num){
+    m5_dump_reset_stats(0,0);
+  }
 	
 #ifdef GGML_USE_CUBLAS
     bool skip_cpu = ggml_cuda_compute_forward(params, tensor);
@@ -15889,13 +15887,8 @@ static void ggml_compute_forward(struct ggml_compute_params * params, struct ggm
                 GGML_ASSERT(false);
             } break;
     }
-	if (layer_num == 0){
-		m5_dump_reset_stats(0,0);
-		m5_switch_cpu();
-	}
-	if (layer_num > 0){
-		m5_exit(0);
-	}
+ 
+  prev_layer_num = layer_num;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
