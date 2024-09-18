@@ -391,12 +391,9 @@ std::vector<int> access_history;
 void
 AbstractMemory::access(PacketPtr pkt)
 {
-	//printf("Accesses: %d\n", access_count);
-	//printf("Address: %ld\n", pkt->getAddr());
 	if (std::count(access_history.begin(), access_history.end(), pkt->getAddr()) == 0){
 		access_history.push_back(pkt->getAddr());
 		unique_access_count += 1;
-		printf("Unique Access Count: %d\n", unique_access_count);
 		stats.uniqueAccesses[pkt->req->requestorId()]++;
 	}
 	
