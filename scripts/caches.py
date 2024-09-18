@@ -270,7 +270,7 @@ class L3Cache(Cache):
     
     def preset_config(self, preset):
         if(preset == "medium"):
-            self.size = '2MB'
+            self.size = '1MB'
             self.assoc = 16
             self.tag_latency = 32
             self.data_latency = 32
@@ -280,7 +280,7 @@ class L3Cache(Cache):
         if(preset == "embedded"):
             pass
         if(preset == "high"):
-            self.size = '32MB' # Cannot be 35.75
+            self.size = '2MB'
             self.assoc = 16
             self.tag_latency = 32
             self.data_latency = 32
