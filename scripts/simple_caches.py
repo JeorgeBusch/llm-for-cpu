@@ -80,7 +80,7 @@ process.cmd = [binary]
 system.cpu.workload = process
 system.cpu.createThreads()
 
-system.switch_cpu = TimingSimpleCPU(switched_out=True, cpu_id=0)
+system.switch_cpu = O3CPU(switched_out=True, cpu_id=0)
 
 system.switch_cpu.workload = process
 system.switch_cpu.createThreads()
