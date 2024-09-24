@@ -63,7 +63,7 @@
 #include "params/WriteAllocator.hh"
 #include "sim/cur_tick.hh"
 
-#include <set>
+#include <unordered_set>
 
 namespace gem5
 {
@@ -1152,27 +1152,15 @@ BaseCache::calculateAccessLatency(const CacheBlk* blk, const uint32_t delay,
     return lat;
 }
 
-int unique_access_count = 0;
-std::vector<int> access_history;
-std::set<int> unique_accesses;
+std::unordered_set<int> unique_accesses;
 
 bool
 BaseCache::access(PacketPtr pkt, CacheBlk *&blk, Cycles &lat,
                   PacketList &writebacks)
 {
-	/*
-	auto ret = unique_accesses.insert(pkt->getAddr());
-	if (ret.second)
+	if(unique_accesses.insert(pkt->getAddr()).second)
 		stats.uniqueAccesses[pkt->req->requestorId()]++;
-	*/
-	/*
-	// Collect and count unique addresses
-	if (std::count(access_history.begin(), access_history.end(), pkt->getAddr()) == 0){
-		access_history.push_back(pkt->getAddr());
-		unique_access_count += 1;
-		stats.uniqueAccesses[pkt->req->requestorId()]++;
-	}
-	*/
+	
     // sanity check
     assert(pkt->isRequest());
 
@@ -2162,8 +2150,8 @@ BaseCache::CacheStats::CacheStats(BaseCache &c)
              "number of demand (read+write) accesses"),
     ADD_STAT(overallAccesses, statistics::units::Count::get(),
              "number of overall (read+write) accesses"),
-	//ADD_STAT(uniqueAccesses, statistics::units::Count::get(),
-               //("number of unique (read+write) accesses")),
+	ADD_STAT(uniqueAccesses, statistics::units::Count::get(),
+               ("number of unique (read+write) accesses")),
     ADD_STAT(demandMissRate, statistics::units::Ratio::get(),
              "miss rate for demand accesses"),
     ADD_STAT(overallMissRate, statistics::units::Ratio::get(),
@@ -2309,17 +2297,6 @@ BaseCache::CacheStats::regStats()
         overallAccesses.subname(i, system->getRequestorName(i));
     }
 	
-	/*
-	uniqueAccesses.flags(total | nozero | nonan);
-	std::sort(access_history.begin(), access_history.end());
-	const int uniqueCount = std::set<int>(access_history.begin(), access_history.end() ).size();
-	printf("%d\n",uniqueCount);
-    uniqueAccesses = 5 + 6;
-    for (int i = 0; i < max_requestors; i++) {
-        uniqueAccesses.subname(i, system->getRequestorName(i));
-    }
-	*/
-	/*
 	uniqueAccesses
         .init(max_requestors)
         .flags(total | nozero | nonan)
@@ -2327,7 +2304,7 @@ BaseCache::CacheStats::regStats()
     for (int i = 0; i < max_requestors; i++) {
         uniqueAccesses.subname(i, system->getRequestorName(i));
     }
-	*/
+	
     demandMissRate.flags(total | nozero | nonan);
     demandMissRate = demandMisses / demandAccesses;
     for (int i = 0; i < max_requestors; i++) {
