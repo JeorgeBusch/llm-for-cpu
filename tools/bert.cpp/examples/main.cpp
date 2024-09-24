@@ -12,7 +12,7 @@ int main(int argc, char ** argv) {
     const int64_t t_main_start_us = ggml_time_us();
 
     bert_params params;
-	params.model = "../../models/distilbert-base-uncased-finetuned-sst-2-english/ggml-model-f16.bin";
+	params.model = "tools/bert.cpp/models/distilbert-base-uncased-finetuned-sst-2-english/ggml-model-f16.bin";
 
     if (bert_params_parse(argc, argv, params) == false) {
         return 1;
@@ -21,6 +21,10 @@ int main(int argc, char ** argv) {
     int64_t t_load_us = 0;
 
     bert_ctx * bctx;
+
+    m5_switch_cpu();
+	  m5_reset_stats(0,0);
+
 
     // load the model
     {
@@ -36,8 +40,7 @@ int main(int argc, char ** argv) {
 	
 	// increase context mem_size
 	  
-    m5_switch_cpu();
-	m5_reset_stats(0,0);
+    m5_dump_reset_stats(0,0);
     
     int64_t t_eval_us  = 0;
     int64_t t_start_us = ggml_time_us();
