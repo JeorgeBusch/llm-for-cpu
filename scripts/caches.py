@@ -215,7 +215,7 @@ class L2Cache(Cache):
     
     def preset_config(self, preset):
         if(preset == "medium"):
-            self.size = '128kB'
+            self.size = '512kB'
             self.assoc = 4
             self.tag_latency = 8
             self.data_latency = 8
