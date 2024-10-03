@@ -11,7 +11,7 @@
 ## Starting Miniconda
 * EVERY TIME you start a new terminal or hprc job, you will have to initialize and activate the Miniconda environment
 * Run `source start_conda` to activate your local conda base environment
-** Run `eval "$(tools/miniconda/bin/conda shell.bash hook)"` then `conda activate base` in the `llm-for-cpu` directory
+  * Run `eval "$(tools/miniconda/bin/conda shell.bash hook)"` then `conda activate base` in the `llm-for-cpu` directory
 
 ## Setting Up Enviornment
 * This only needs to be done once
