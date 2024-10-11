@@ -41,8 +41,7 @@
 
 ## Enabling M5 Utils
 * Run `scons build/x86/out/m5` in `llm-for-cpu/util/m5`
-* Change the absolute path on line 28 in `llm-for-cpu/tools/bert.cpp/examples/CMakeLists.txt` to your own path
-* Re-build the `fp16_dot` binary
+* Re-build the `main` binary
 
 ## Simulating with Input Parameter Batches
 * Run `./run_batches <num_batches> <batch_size>` in the `llm-for-cpu` directory
