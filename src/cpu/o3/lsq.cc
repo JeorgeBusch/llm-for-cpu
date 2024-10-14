@@ -1069,10 +1069,12 @@ void
 LSQ::LSQRequest::install()
 {
     if (isLoad()) {
+		printf("lsq Line 1072: Index: %ld: Size: %ld", _inst->lqIdx, _port.loadQueue.size());
         _port.loadQueue[_inst->lqIdx].setRequest(this);
     } else {
         // Store, StoreConditional, and Atomic requests are pushed
         // to this storeQueue
+		printf("lsq Line 1076: Index: %ld: Size: %ld", _inst->sqIdx, _port.loadQueue.size());
         _port.storeQueue[_inst->sqIdx].setRequest(this);
     }
 }

@@ -140,9 +140,9 @@ AbstractMemory::MemStats::MemStats(AbstractMemory &_mem)
              "Write bandwidth from this memory"),
     ADD_STAT(bwTotal, statistics::units::Rate<
                 statistics::units::Byte, statistics::units::Second>::get(),
-             "Total bandwidth to/from this memory"),
-	ADD_STAT(uniqueAccesses, statistics::units::Count::get(),
-             "Number of unique memory accesses")
+             "Total bandwidth to/from this memory")
+	//ADD_STAT(uniqueAccesses, statistics::units::Count::get(),
+             //"Number of unique memory accesses")
 {
 }
 
@@ -240,7 +240,7 @@ AbstractMemory::MemStats::regStats()
     for (int i = 0; i < max_requestors; i++) {
         bwTotal.subname(i, sys->getRequestorName(i));
     }
-	
+	/*
 	uniqueAccesses
         .init(max_requestors)
         .flags(total | nozero | nonan)
@@ -248,7 +248,7 @@ AbstractMemory::MemStats::regStats()
     for (int i = 0; i < max_requestors; i++) {
         uniqueAccesses.subname(i, sys->getRequestorName(i));
     }
-	
+	*/
     bwRead = bytesRead / simSeconds;
     bwInstRead = bytesInstRead / simSeconds;
     bwWrite = bytesWritten / simSeconds;
@@ -391,11 +391,13 @@ std::vector<int> access_history;
 void
 AbstractMemory::access(PacketPtr pkt)
 {
+	/*
 	if (std::count(access_history.begin(), access_history.end(), pkt->getAddr()) == 0){
 		access_history.push_back(pkt->getAddr());
 		unique_access_count += 1;
 		stats.uniqueAccesses[pkt->req->requestorId()]++;
 	}
+	*/
 	
     if (pkt->cacheResponding()) {
         DPRINTF(MemoryAccess, "Cache responding to %#llx: not responding\n",

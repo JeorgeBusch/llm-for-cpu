@@ -199,7 +199,7 @@ class AbstractMemory : public ClockedObject
         /** Total bandwidth from this memory */
         statistics::Formula bwTotal;
 		/** Number of unique memory accesses */
-		statistics::Vector uniqueAccesses;
+		//statistics::Vector uniqueAccesses;
     } stats;
 
 

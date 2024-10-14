@@ -83,6 +83,8 @@
             1: decode OPCODE_OP {
                 0xF0: crc32_Gd_Eb();
                 0xF1: crc32_Gd_Ev();
+				//0xF7: Inst::SHRX(Ev,Gv,Ib);
+				0xF7:	WarnUnimpl::SHRX();
                 default: Inst::UD2();
             }
             default: decode OPCODE_OP {

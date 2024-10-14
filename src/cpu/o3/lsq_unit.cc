@@ -683,8 +683,8 @@ LSQUnit::executeStore(const DynInstPtr &store_inst)
         store_inst->forwardOldRegs();
         return store_fault;
     }
-
-    if (storeQueue[store_idx].size() == 0) {
+	printf("Line 686: Index: %ld: Size: %ld", store_idx, storeQueue.size());
+    if (storeQueue[store_idx].size() == 0) { //indexed
         DPRINTF(LSQUnit,"Fault on Store PC %s, [sn:%lli], Size = 0\n",
                 store_inst->pcState(), store_inst->seqNum);
 
@@ -703,11 +703,12 @@ LSQUnit::executeStore(const DynInstPtr &store_inst)
     }
 
     assert(store_fault == NoFault);
-
+	
     if (store_inst->isStoreConditional() || store_inst->isAtomic()) {
         // Store conditionals and Atomics need to set themselves as able to
         // writeback if we haven't had a fault by here.
-        storeQueue[store_idx].canWB() = true;
+		printf("Line 710: Index: %ld: Size: %ld", store_idx, storeQueue.size());
+        storeQueue[store_idx].canWB() = true; //indexed
 
         ++storesToWB;
     }
@@ -1050,7 +1051,8 @@ LSQUnit::storePostSend()
                 stallingStoreIsn, stallingLoadIdx);
         stalled = false;
         stallingStoreIsn = 0;
-        iewStage->replayMemInst(loadQueue[stallingLoadIdx].instruction());
+		printf("Line 1054: Index: %ld: Size: %ld", stallingLoadIdx, loadQueue.size());
+        iewStage->replayMemInst(loadQueue[stallingLoadIdx].instruction()); //Indexed
     }
 
     if (!storeWBIt->instruction()->isStoreConditional()) {
@@ -1176,7 +1178,8 @@ LSQUnit::completeStore(typename StoreQueue::iterator store_idx)
                 stallingStoreIsn, stallingLoadIdx);
         stalled = false;
         stallingStoreIsn = 0;
-        iewStage->replayMemInst(loadQueue[stallingLoadIdx].instruction());
+		printf("Line 1181: Index: %ld: Size: %ld", stallingLoadIdx, loadQueue.size());
+        iewStage->replayMemInst(loadQueue[stallingLoadIdx].instruction()); //indexed
     }
 
     store_inst->setCompleted();
@@ -1284,7 +1287,8 @@ LSQUnit::cacheLineSize()
 Fault
 LSQUnit::read(LSQRequest *request, int load_idx)
 {
-    LQEntry& load_entry = loadQueue[load_idx];
+	printf("Line 1291: Index: %ld: Size: %ld", load_idx, loadQueue.size());
+    LQEntry& load_entry = loadQueue[load_idx]; //indexed
     const DynInstPtr& load_inst = load_entry.instruction();
 
     load_entry.setRequest(request);
@@ -1483,14 +1487,15 @@ LSQUnit::read(LSQRequest *request, int load_idx)
                 // have to be there.
                 assert(!request->mainReq()->isHTMCmd());
                 if (load_inst->inHtmTransactionalState()) {
-                    assert (!storeQueue[store_it._idx].completed());
+					printf("Line 1490: Index: %ld: Size: %ld", store_it._idx, storeQueue.size());
+                    assert (!storeQueue[store_it._idx].completed()); //indexed
                     assert (
-                        storeQueue[store_it._idx].instruction()->
-                          inHtmTransactionalState());
+                        storeQueue[store_it._idx].instruction()-> 
+                          inHtmTransactionalState()); //indexed
                     assert (
                         load_inst->getHtmTransactionUid() ==
                         storeQueue[store_it._idx].instruction()->
-                          getHtmTransactionUid());
+                          getHtmTransactionUid()); //indexed
                     data_pkt->setHtmTransactional(
                         load_inst->getHtmTransactionUid());
                     DPRINTF(HtmCpu, "HTM LD (ST2LDF) "
@@ -1535,10 +1540,11 @@ LSQUnit::read(LSQRequest *request, int load_idx)
 
                 // Must stall load and force it to retry, so long as it's the
                 // oldest load that needs to do so.
+				printf("Line 11543: Index: %ld: Size: %ld", stallingLoadIdx, loadQueue.size());
                 if (!stalled ||
                     (stalled &&
                      load_inst->seqNum <
-                     loadQueue[stallingLoadIdx].instruction()->seqNum)) {
+                     loadQueue[stallingLoadIdx].instruction()->seqNum)) { //indexed
                     stalled = true;
                     stallingStoreIsn = store_it->instruction()->seqNum;
                     stallingLoadIdx = load_idx;
@@ -1601,26 +1607,27 @@ LSQUnit::read(LSQRequest *request, int load_idx)
 Fault
 LSQUnit::write(LSQRequest *request, uint8_t *data, int store_idx)
 {
-    assert(storeQueue[store_idx].valid());
+	printf("Line 1490: Index: %ld: Size: %ld", store_idx, storeQueue.size());
+    assert(storeQueue[store_idx].valid()); //indexed
 
     DPRINTF(LSQUnit, "Doing write to store idx %i, addr %#x | storeHead:%i "
             "[sn:%llu]\n",
             store_idx - 1, request->req()->getPaddr(), storeQueue.head() - 1,
-            storeQueue[store_idx].instruction()->seqNum);
+            storeQueue[store_idx].instruction()->seqNum); //indexed
 
-    storeQueue[store_idx].setRequest(request);
+    storeQueue[store_idx].setRequest(request); //indexed
     unsigned size = request->_size;
-    storeQueue[store_idx].size() = size;
+    storeQueue[store_idx].size() = size; //indexed
     bool store_no_data =
         request->mainReq()->getFlags() & Request::STORE_NO_DATA;
-    storeQueue[store_idx].isAllZeros() = store_no_data;
+    storeQueue[store_idx].isAllZeros() = store_no_data; //indexed
     assert(size <= SQEntry::DataSize || store_no_data);
 
     // copy data into the storeQueue only if the store request has valid data
     if (!(request->req()->getFlags() & Request::CACHE_BLOCK_ZERO) &&
         !request->req()->isCacheMaintenance() &&
         !request->req()->isAtomic())
-        memcpy(storeQueue[store_idx].data(), data, size);
+        memcpy(storeQueue[store_idx].data(), data, size); //indexed
 
     // This function only writes the data to the store queue, so no fault
     // can happen here.

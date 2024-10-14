@@ -6,6 +6,7 @@ import argparse
 import pandas as pd
 from gem5.components.processors.simple_switchable_processor import SimpleSwitchableProcessor
 from gem5.components.processors.cpu_types import CPUTypes
+import time
 
 parser = argparse.ArgumentParser(description="Simple 2-level cache system.", epilog="Cache options may be found in src/mem/cache/Cache.py.\nReplacement options may be found in src/mem/cache/ReplacementPolicies.py")
 parser.add_argument("--mem_size", help=f"Memory size. Default: 512MB")
@@ -25,7 +26,7 @@ system.clk_domain = SrcClockDomain()
 system.clk_domain.clock = '1GHz'
 system.clk_domain.voltage_domain = VoltageDomain()
 
-memSize = '512MB'
+memSize = '16384MB'
 if options.mem_size:
     memSize = options.mem_size
 
@@ -71,6 +72,7 @@ system.mem_ctrl.port = system.membus.mem_side_ports
 
 
 binary = 'tools/bert.cpp/build/bin/main'
+#binary = 'tools/llama.cpp/build/bin/llama-cli'
 
 # for gem5 V21 and beyond
 system.workload = SEWorkload.init_compatible(binary)
@@ -96,6 +98,7 @@ print("Beginning simulation!")
 exit_event = None
 switched = False
 
+start = time.time()
 while exit_event is None:
     exit_event = m5.simulate()
     
@@ -108,6 +111,8 @@ while exit_event is None:
             m5.switchCpus(root.system, switch_cpu_list2)
             switched = False
         exit_event = None
+
+print("Runtime: ", time.time() - start)
 
 print('Exiting @ tick {} because {}'
       .format(m5.curTick(), exit_event.getCause()))

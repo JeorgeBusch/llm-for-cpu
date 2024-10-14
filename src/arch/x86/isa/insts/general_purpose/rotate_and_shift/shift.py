@@ -246,6 +246,52 @@ def macroop SHRD_P_R_I
     st t1, seg, riprel, disp
 };
 
+def macroop SHRX_R_R
+{
+    mdbi regm, 0
+    srd reg, reg, rcx
+};
+
+def macroop SHRX_M_R
+{
+    ldst t1, seg, sib, disp
+    mdbi reg, 0
+    srd t1, t1, rcx
+    st t1, seg, sib, disp
+};
+
+def macroop SHRX_P_R
+{
+    rdip t7
+    ldst t1, seg, riprel, disp
+    mdbi reg, 0
+    srd t1, t1, rcx
+    st t1, seg, riprel, disp
+};
+
+def macroop SHRX_R_R_I
+{
+    mdbi regm, 0
+    srdi reg, reg, imm
+};
+
+def macroop SHRX_M_R_I
+{
+    ldst t1, seg, sib, disp
+    mdbi reg, 0
+    srdi t1, t1, imm
+    st t1, seg, sib, disp
+};
+
+def macroop SHRX_P_R_I
+{
+    rdip t7
+    ldst t1, seg, riprel, disp
+    mdbi reg, 0
+    srdi t1, t1, imm
+    st t1, seg, riprel, disp
+};
+
 def macroop SAR_R_I
 {
     srai reg, reg, imm, flags=(CF,OF,SF,ZF,PF)
