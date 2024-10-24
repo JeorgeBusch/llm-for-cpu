@@ -1069,10 +1069,12 @@ void
 LSQ::LSQRequest::install()
 {
     if (isLoad()) {
+        //printf("IDX: %d\n", _inst->lqIdx);
         _port.loadQueue[_inst->lqIdx].setRequest(this);
     } else {
         // Store, StoreConditional, and Atomic requests are pushed
         // to this storeQueue
+        //printf("IDX: %d\n", _inst->sqIdx);
         _port.storeQueue[_inst->sqIdx].setRequest(this);
     }
 }
@@ -1411,7 +1413,7 @@ LSQ::HtmCmdRequest::finish(const Fault &fault, const RequestPtr &req,
 }
 
 Fault
-LSQ::read(LSQRequest* request, int load_idx)
+LSQ::read(LSQRequest* request, ssize_t load_idx)
 {
     assert(request->req()->contextId() == request->contextId());
     ThreadID tid = cpu->contextToThread(request->req()->contextId());
@@ -1420,7 +1422,7 @@ LSQ::read(LSQRequest* request, int load_idx)
 }
 
 Fault
-LSQ::write(LSQRequest* request, uint8_t *data, int store_idx)
+LSQ::write(LSQRequest* request, uint8_t *data, ssize_t store_idx)
 {
     ThreadID tid = cpu->contextToThread(request->req()->contextId());
 

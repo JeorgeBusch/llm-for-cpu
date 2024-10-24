@@ -1282,7 +1282,7 @@ LSQUnit::cacheLineSize()
 }
 
 Fault
-LSQUnit::read(LSQRequest *request, int load_idx)
+LSQUnit::read(LSQRequest *request, ssize_t load_idx)
 {
     LQEntry& load_entry = loadQueue[load_idx];
     const DynInstPtr& load_inst = load_entry.instruction();
@@ -1599,7 +1599,7 @@ LSQUnit::read(LSQRequest *request, int load_idx)
 }
 
 Fault
-LSQUnit::write(LSQRequest *request, uint8_t *data, int store_idx)
+LSQUnit::write(LSQRequest *request, uint8_t *data, ssize_t store_idx)
 {
     assert(storeQueue[store_idx].valid());
 
